@@ -7,6 +7,8 @@ program simple_network_example_p
     use rndgen_mod
     implicit none
 
+    character(len=*), parameter :: use_network = 'example.edgelist' ! 'manual' or filename
+
     type(network_t) :: net
     type(dyn_parameters_t) :: dyn_params
     class(net_state_base_t), allocatable :: dynamics_state
@@ -17,12 +19,14 @@ program simple_network_example_p
 
     call dyn_gen%init(9342342) ! initialize the random generator with a seed
 
-    ! Generate a simple network manually
-    call generate_manual_network(net)
-
-    ! OR read a network from an edgelist file
-    ! (do not use both at the same time)
-    !call read_network(net, 'example.edgelist')
+    select case (use_network)
+      case ('manual')
+        ! Generate a simple network
+        call generate_manual_network(net)
+      case default
+        ! Read the network from a file
+        call read_network(net, use_network)
+    end select
 
     ! Clean and check the network (always necessary)
     call net%clear_and_check_all(min_order=1)
