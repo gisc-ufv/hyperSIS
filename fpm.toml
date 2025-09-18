@@ -7,7 +7,7 @@ copyright = "Copyright 2025, Wesley Cota"
 [build]
 auto-executables = true
 auto-tests = false
-auto-examples = false
+auto-examples = true
 module-naming = false
 [install]
 library = true
@@ -21,4 +21,3 @@ datastructs-fortran = {git="https://github.com/wcota/datastructs-fortran", tag="
 rndgen-fortran = {git="https://github.com/wcota/rndgen-fortran", tag="v1.0.5"}
 FLAP = {git="https://github.com/szaghi/FLAP"}
 PENF = {git="https://github.com/szaghi/PENF"}
-StringiFor = {git="https://github.com/szaghi/StringiFor"}
