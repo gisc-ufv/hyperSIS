@@ -19,6 +19,7 @@ module hyperSIS_program_common_mod
 
     public :: check_qs_method
     public :: read_network
+    public :: set_dyn_params
     public :: set_initial_number_of_infected_nodes
     public :: get_path_prefix
 
@@ -65,7 +66,6 @@ contains
         call network_import(net, trim(adjustl(edges_filename)))
 
         call net%clear_and_check_all(min_order=1)
-        call net%build_hyperdegrees()
 
     end subroutine read_network
 
