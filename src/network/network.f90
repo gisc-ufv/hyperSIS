@@ -28,7 +28,6 @@ module hyperSIS_network_mod
     type node_t
         integer(kind=i4) :: degree = 0
         integer(kind=i4), allocatable :: edges(:), dual_nodes(:)
-        integer(kind=i4), allocatable :: hyperdegree(:) ! hyperdegree is the number of edges that the node belongs to for order m
     end type
 
     type network_props_t
@@ -43,7 +42,7 @@ module hyperSIS_network_mod
     type :: network_t
         integer(kind=i4) :: num_nodes = 0
         integer(kind=i4) :: num_edges = 0
-        integer(kind=i4) :: max_order = 0 ! calculated when building hyperdegrees. TODO: #13 should be a property of the network
+        integer(kind=i4) :: max_order = 0
         type(node_t), allocatable :: nodes(:)
         type(hyperedge_t), allocatable :: edges(:)
         type(network_props_t) :: props
@@ -53,12 +52,10 @@ module hyperSIS_network_mod
     contains
         procedure :: init => network_init
 
-        procedure :: build_hyperdegrees => network_build_hyperdegree
         procedure :: build_edges_from_nodes => network_build_edges_from_nodes
         procedure :: build_nodes_from_edges => network_build_nodes_from_edges
 
         procedure :: print_nodes_and_edges => network_print_nodes_and_edges
-        procedure :: print_hyperdegrees => network_print_hyperdegrees
 
         procedure :: clear_null_edges => network_clear_null_edges ! we can only remove the null edges (order -1)
         procedure :: check_topology_consistency => network_check_topology_consistency ! we can only check the topology consistency
@@ -75,31 +72,6 @@ module hyperSIS_network_mod
 
 contains
 
-    subroutine network_build_hyperdegree(net)
-        class(network_t), intent(inout) :: net
-        integer(kind=i4) :: i, node_id, edge_id
-
-        ! For each node, we will allocate the hyperdegree array with max_order
-        ! and fill it with the number of edges that the node belongs to
-        net%max_order = maxval(net%edges(:)%order)
-
-        do node_id = 1, net%num_nodes
-            if (allocated(net%nodes(node_id)%hyperdegree)) deallocate(net%nodes(node_id)%hyperdegree)
-            allocate(net%nodes(node_id)%hyperdegree(net%max_order))
-
-            ! Initialize the hyperdegree array to 0
-            net%nodes(node_id)%hyperdegree = 0
-
-            ! Loop over the edges that the node belongs to
-            do i = 1, net%nodes(node_id)%degree
-                edge_id = net%nodes(node_id)%edges(i)
-                net%nodes(node_id)%hyperdegree(net%edges(edge_id)%order) = net%nodes(node_id)%hyperdegree( &
-                                net%edges(edge_id)%order) + 1
-            end do
-        end do
-
-    end subroutine network_build_hyperdegree
-
     subroutine network_reset_props(net)
         class(network_t), intent(inout) :: net
 
@@ -113,6 +85,8 @@ contains
     subroutine network_clear_and_check_all(net, min_order)
         class(network_t), intent(inout) :: net
         integer(kind=i4), intent(in), optional :: min_order
+
+        net%max_order = maxval(net%edges(:)%order)
 
         if ((.not. net%props%cleaned_null_edges) .or. (min_order /= net%props%min_order)) call net%clear_null_edges(min_order)
         if (.not. net%props%removed_invalid_nodes_and_edges) call net%remove_invalid_nodes_and_edges()
@@ -408,20 +382,6 @@ contains
         edge%nodes = nodes
     end function hyperedge_new_from_nodes_list
 
-    !> Constructor for the node type.
-    !> It initializes the ID and degree of the node, and allocates memory for the edges array.
-    !> @param node The node object to be initialized.
-    !> @param degree The degree of the node.
-    !> @note This subroutine allocates memory for the edges array based on the provided size.
-    !> @note The edges array is allocated with the size specified by num_edges.
-    elemental function node_new(degree) result(node_obj)
-        integer(kind=i4), intent(in) :: degree
-        type(node_t) :: node_obj
-
-        node_obj%degree = degree
-        allocate(node_obj%edges(degree))
-    end function node_new
-
     !> Subroutine to build edges from nodes in the network.
     !> It iterates over each node and assigns the corresponding edges to the hyperedges.
     !> @param net The network object containing the nodes and edges.
@@ -494,22 +454,6 @@ contains
         net%num_edges = 0
 
     end subroutine network_destroy
-
-    subroutine network_print_hyperdegrees(net)
-        class(network_t), intent(in) :: net
-        integer(kind=i4) :: node_id, order
-
-        ! Print the hyperdegrees of each node
-        write(*, fmt_general) 'Hyperdegrees of nodes:'
-        do node_id = 1, net%num_nodes
-            write(*, fmt_general) 'Node', node_id, 'degree:', net%nodes(node_id)%degree
-            do order = 1, net%max_order
-                if (net%nodes(node_id)%hyperdegree(order) > 0) write(*, fmt_general) '  Order', order, &
-                                                                ':', net%nodes(node_id)%hyperdegree(order)
-            end do
-        end do
-
-    end subroutine network_print_hyperdegrees
 
     subroutine network_print_nodes_and_edges(net)
         class(network_t), intent(in) :: net
