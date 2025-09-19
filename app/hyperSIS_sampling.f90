@@ -25,9 +25,12 @@ program simple_network_example_p
     integer(kind=i4) :: i, i_sample
 
     ! Parameters (via CLI)
+    logical :: logger_verbose
+    character(len=:), allocatable :: logger_level
+
     integer(kind=i4) :: rnd_seed
     integer(kind=i4) :: n_samples
-    character(len=:), allocatable :: edges_file, algorithm, sampler_choice, time_scale, logger_level, output_prefix
+    character(len=:), allocatable :: output_prefix, edges_file, algorithm, sampler_choice, time_scale
     real(kind=dp) :: par_b, par_theta, initial_infected_fraction, beta_1, tmax
     logical :: use_qs, use_example_network, export_states_flag
 
@@ -60,26 +63,214 @@ program simple_network_example_p
 contains
 
     subroutine handle_cli()
+        use flap, only : command_line_interface
+        type(command_line_interface) :: cli    ! Command Line Interface (CLI)
+        character(len=2048) :: cli_string
+        integer(kind=i4) :: cli_error
+        character(len=*), parameter :: true_false_choices = 'true,false,T,F,0,1'
 
-        call set_verbose(.true.)
-        call set_level(LOG_DEBUG)
+        call cli%init(progname    = 'Run temporal dynamics on a hypergraph network', &
+            description = 'This program runs a temporal dynamics on a hypergraph network, using the Gillespie algorithm. The network can be read from a file or generated as a small example. The dynamics can be configured with various parameters.', &
+            version     = '1.0', &
+            authors      = 'Wesley Cota')
+
+        ! Add options to the CLI
+        ! IO parameters
+        call cli%add(switch='--output', &
+            switch_ab='-o', &
+            help='Output prefix for result files', &
+            required=.false., &
+            act='store', &
+            def='./output', &
+            error=cli_error); if (cli_error /= 0) error stop 'Error adding --output'
+        call cli%add(switch='--remove-files', &
+            switch_ab='-rm', &
+            help='Remove existing output files before running', &
+            required=.false., &
+            act='store', &
+            def='false', &
+            error=cli_error); if (cli_error /= 0) error stop 'Error adding --remove-files'
+        call cli%add(switch='--edges-file', &
+            switch_ab='-e', &
+            help='File containing the edge list of the network as input', &
+            required=.false., &
+            act='store', &
+            def='', &
+            error=cli_error); if (cli_error /= 0) error stop 'Error adding --edges-file'
+
+        ! Dynamics and sampler
+        call cli%add(switch='--algorithm', &
+            switch_ab='-a', &
+            help='Dynamics algorithm to use', &
+            required=.false., &
+            act='store', &
+            choices='HB_OGA,NB_OGA', &
+            def='HB_OGA', &
+            error=cli_error); if (cli_error /= 0) error stop 'Error adding --algorithm'
+        call cli%add(switch='--sampler', &
+            switch_ab='-s', &
+            help='Sampler choice', &
+            required=.false., &
+            act='store', &
+            choices='rejection_maxheap,btree', &
+            def='rejection_maxheap', &
+            error=cli_error); if (cli_error /= 0) error stop 'Error adding --sampler'
+
+        ! Temporal parameters
+        call cli%add(switch='--tmax', &
+            switch_ab='-t', &
+            help='Maximum simulation time', &
+            required=.false., &
+            act='store', &
+            def='1000.0', &
+            error=cli_error); if (cli_error /= 0) error stop 'Error adding --tmax'
+        call cli%add(switch='--use-qs', &
+            switch_ab='-qs', &
+            help='Use Quasi-Stationary method', &
+            required=.false., &
+            act='store', &
+            def='true', &
+            choices=true_false_choices, &
+            error=cli_error); if (cli_error /= 0) error stop 'Error adding --use-qs'
+
+        ! Sampling and statistics
+        call cli%add(switch='--n-samples', &
+            switch_ab='-ns', &
+            help='Number of samples to average over', &
+            required=.false., &
+            act='store', &
+            def='10', &
+            error=cli_error); if (cli_error /= 0) error stop 'Error adding --n-samples'
+        call cli%add(switch='--time-scale', &
+            switch_ab='-ts', &
+            help='Time scale to use', &
+            required=.false., &
+            act='store', &
+            choices='powerlaw,uniform', &
+            def='powerlaw', &
+            error=cli_error); if (cli_error /= 0) error stop 'Error adding --time-scale'
+
+        ! Dynamical parameters
+        call cli%add(switch='initial_fraction', &
+            switch_ab='-if', &
+            help='Initial fraction of infected nodes', &
+            required=.false., &
+            act='store', &
+            def='1.0', &
+            error=cli_error); if (cli_error /= 0) error stop 'Error adding --initial_fraction'
+        call cli%add(switch='initial_number', &
+            switch_ab='-in', &
+            help='Initial number of infected nodes (overrides initial_fraction)', &
+            required=.false., &
+            act='store', &
+            def='0', &
+            error=cli_error); if (cli_error /= 0) error stop 'Error adding --initial_number'
+        call cli%add(switch='--beta-1', &
+            switch_ab='-b1', &
+            help='Infection rate parameter beta_1', &
+            required=.true., &
+            act='store', &
+            error=cli_error); if (cli_error /= 0) error stop 'Error adding --beta-1'
+        call cli%add(switch='--par-b', &
+            switch_ab='-pb', &
+            help='Dynamical parameter b', &
+            required=.false., &
+            act='store', &
+            def='0.5', &
+            error=cli_error); if (cli_error /= 0) error stop 'Error adding --par-b'
+        call cli%add(switch='--par-theta', &
+            switch_ab='-pt', &
+            help='Dynamical parameter theta', &
+            required=.false., &
+            act='store', &
+            def='0.5', &
+            error=cli_error); if (cli_error /= 0) error stop 'Error adding --par-theta'
+
+        ! Additional parameters
+        call cli%add(switch='--export-states', &
+            switch_ab='-es', &
+            help='Export the states of nodes and edges at the end of each sample (be careful with large networks)', &
+            required=.false., &
+            act='store', &
+            def='false', &
+            choices=true_false_choices, &
+            error=cli_error); if (cli_error /= 0) error stop 'Error adding --export-states'
+        call cli%add(switch='--seed', &
+            switch_ab='-rs', &
+            help='Random seed for the dynamics', &
+            required=.false., &
+            act='store', &
+            def='42', &
+            error=cli_error); if (cli_error /= 0) error stop 'Error adding --seed'
+        call cli%add(switch='--verbose', &
+            switch_ab='-vv', &
+            help='Enable verbose logging', &
+            required=.false., &
+            act='store', &
+            def='true', &
+            choices=true_false_choices, &
+            error=cli_error); if (cli_error /= 0) error stop 'Error adding --verbose'
+        call cli%add(switch='--verbose-level', &
+            switch_ab='-vl', &
+            help='Logging level', &
+            required=.false., &
+            act='store', &
+            choices='error,warning,info,debug', &
+            def='info', &
+            error=cli_error); if (cli_error /= 0) error stop 'Error adding --verbose-level'
+
+        call cli%parse()
+
+        ! Collect parameters from CLI
+        call cli%get(switch='--output', val=cli_string, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --output'
+        output_prefix = trim(adjustl(cli_string))
+        call cli%get(switch='--remove-files', val=export_states_flag, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --remove-files'
+        call cli%get(switch='--edges-file', val=cli_string, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --edges-file'
+        edges_file = trim(adjustl(cli_string))
+        call cli%get(switch='--algorithm', val=cli_string, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --algorithm'
+        algorithm = trim(adjustl(cli_string))
+        call cli%get(switch='--sampler', val=cli_string, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --sampler'
+        sampler_choice = trim(adjustl(cli_string))
+        use_example_network = (len_trim(edges_file) == 0)
+        call cli%get(switch='--tmax', val=tmax, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --tmax'
+        call cli%get(switch='--use-qs', val=use_qs, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --use-qs'
+        call cli%get(switch='--n-samples', val=n_samples, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --n-samples'
+        call cli%get(switch='--time-scale', val=time_scale, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --time-scale'
+        call cli%get(switch='--initial_fraction', val=initial_infected_fraction, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --initial_fraction'
+        call cli%get(switch='--initial_number', val=i, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --initial_number'
+        call cli%get(switch='--beta-1', val=beta_1, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --beta-1'
+        call cli%get(switch='--par-b', val=par_b, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --par-b'
+        call cli%get(switch='--par-theta', val=par_theta, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --par-theta'
+        call cli%get(switch='--export-states', val=export_states_flag, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --export-states'
+        call cli%get(switch='--seed', val=rnd_seed, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --seed'
+        call cli%get(switch='--verbose', val=logger_verbose, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --verbose'
+        call cli%get(switch='--verbose-level', val=cli_string, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --verbose-level'
+        logger_level = trim(adjustl(cli_string))
+
+        ! TODO:
+        ! - Add command line argument parsing to override default parameters
+        ! - Use prefix for output files
+        ! - Define functions to get the filename based on prefix and parameters, time, etc
+
+        !call set_verbose(.true.)
+        !call set_level(LOG_DEBUG)
 
         ! Default parameters
-        use_qs = .true.
-        rnd_seed = 9342342
-        n_samples = 10
-        edges_file = 'example.edgelist'
-        par_b = 0.5_dp
-        par_theta = 0.5_dp
-        initial_infected_fraction = 1.0_dp
-        beta_1 = 0.1_dp
-        tmax = 1000.0_dp
-        time_scale = 'powerlaw' ! or powerlaw
-        algorithm = 'HB_OGA' ! or NB-OGA
-        sampler_choice = 'rejection_maxheap' ! or btree
+        !use_qs = .true.
+        !rnd_seed = 9342342
+        !n_samples = 10
+        !edges_file = 'example.edgelist'
+        !par_b = 0.5_dp
+        !par_theta = 0.5_dp
+        !initial_infected_fraction = 1.0_dp
+        !beta_1 = 0.1_dp
+        !tmax = 1000.0_dp
+        !time_scale = 'powerlaw' ! or powerlaw
+        !algorithm = 'NB_OGA' ! or NB-OGA
+        !sampler_choice = 'rejection_maxheap' ! or btree
 
-        use_example_network = .false. ! if true, generate a small example network; if false, read from edges_file
-        export_states_flag = .true. ! if true, export the states of nodes and edges at the end of each sample ! better use with small networks and uniform time scale
+        !use_example_network = .true. ! if true, generate a small example network; if false, read from edges_file
+        !export_states_flag = .true. ! if true, export the states of nodes and edges at the end of each sample ! better use with small networks and uniform time scale
 
         ! Here you can add code to handle command line arguments to override defaults
     end subroutine
