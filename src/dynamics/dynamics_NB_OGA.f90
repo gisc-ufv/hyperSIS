@@ -60,8 +60,9 @@ contains
         integer(kind=i4) :: funit, i
 
         open(newunit=funit, file=filename, status='replace', action='write')
+        write(funit, fmt_general) "# time = ", this%time
         do i = 1, net%num_edges
-            write(funit, fmt_general) i, merge(1, 0, this%infected%is_edge_active(i))
+            if (this%infected%is_edge_active(i)) write(funit, fmt_general) i, merge(1, 0, this%infected%is_edge_active(i))
         end do
         close(funit)
 

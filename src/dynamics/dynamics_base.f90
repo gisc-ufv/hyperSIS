@@ -44,6 +44,8 @@ module hyperSIS_dynamics_base_mod
 
         ! procedure to export the nodes states
         procedure :: export_nodes_states => net_state_export_nodes_states
+        ! procedure to export the nodes states (need to override)
+        procedure(net_state_base_export_edges_states), deferred :: export_edges_states
 
         procedure(get_num_infected_interface), deferred :: get_num_infected
     end type
@@ -102,6 +104,13 @@ module hyperSIS_dynamics_base_mod
             type(network_t), intent(in) :: net
             integer(kind=i4), intent(in) :: node_id, node_pos
             integer(kind=i2), intent(in) :: new_state
+        end subroutine
+
+        subroutine net_state_base_export_edges_states(this, net, filename)
+            import :: net_state_base_t, network_t
+            class(net_state_base_t) :: this
+            type(network_t), intent(in) :: net
+            character(len=*), intent(in) :: filename
         end subroutine
         !/ base procedures
     end interface
@@ -203,8 +212,9 @@ contains
         integer(kind=i4) :: funit, i
 
         open(newunit=funit, file=filename, status='replace', action='write')
+        write(funit, fmt_general) "# time = ", this%time
         do i = 1, net%num_nodes
-            write(funit, fmt_general) i, this%node_state(i)
+            if (this%node_state(i) /= 0) write(funit, fmt_general) i, this%node_state(i)
         end do
         close(funit)
 

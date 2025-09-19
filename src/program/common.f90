@@ -15,16 +15,51 @@ module hyperSIS_program_common_mod
             class(net_state_base_t), intent(inout) :: state
             class(rndgen), intent(inout) :: gen
         end subroutine proc_net_state_gen
+        subroutine proc_export_states(net, state, nodes_filename, edges_filename)
+            import :: net_state_base_t, rndgen, network_t
+            class(network_t), intent(in) :: net
+            class(net_state_base_t), intent(inout) :: state
+            character(len=*), intent(in) :: nodes_filename, edges_filename
+        end subroutine proc_export_states
     end interface
 
-    public :: proc_net_state_gen
+    public :: proc_net_state_gen, proc_export_states
     public :: check_qs_method
     public :: read_network
     public :: set_dyn_params
     public :: set_initial_number_of_infected_nodes
     public :: get_path_prefix
+    public :: check_export_nodes_and_edges_state
 
 contains
+
+    subroutine export_nodes_and_edges_state(net, state, nodes_filename, edges_filename)
+        class(network_t), intent(in) :: net
+        class(net_state_base_t), intent(inout) :: state
+        character(len=*), intent(in) :: nodes_filename, edges_filename
+
+        call state%export_nodes_states(net, trim(adjustl(nodes_filename)))
+        call state%export_edges_states(net, trim(adjustl(edges_filename)))
+
+    end subroutine
+
+    subroutine do_not_export_nodes_and_edges_state(net, state, nodes_filename, edges_filename)
+        class(network_t), intent(in) :: net
+        class(net_state_base_t), intent(inout) :: state
+        character(len=*), intent(in) :: nodes_filename, edges_filename
+
+    end subroutine
+
+    subroutine check_export_nodes_and_edges_state(export_states, input_export_states)
+        procedure(proc_export_states), pointer :: export_states
+        logical, intent(in) :: input_export_states
+
+        if (input_export_states) then
+            export_states => export_nodes_and_edges_state
+        else
+            export_states => do_not_export_nodes_and_edges_state
+        end if
+    end subroutine check_export_nodes_and_edges_state
 
     !> QS reactivation (randomly chosen node)
     subroutine reactivate_random_node(net, state, gen)
