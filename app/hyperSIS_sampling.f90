@@ -1,18 +1,21 @@
 program simple_network_example_p
-    use hyperSIS_kinds_mod
-    use hyperSIS_network_mod
-    use hyperSIS_network_io_mod
-    use hyperSIS_dynamics_mod
+    use hyperSIS_kinds_mod, only: dp, i4, fmt_general
+    use hyperSIS_network_mod, only : network_t
+    use hyperSIS_dynamics_mod, only: dyn_parameters_t, net_state_base_t, net_state_choose
+    use hyperSIS_program_common_mod, only: read_network, set_dyn_params, check_qs_method, proc_net_state_gen
 
     use datastructs_mod, only: measure_controller_t, statistical_measure_t
 
-    use rndgen_mod
+    use rndgen_mod, only: rndgen
+
+    use datastructs_mod, only: log_write, set_level, set_verbose, LOGGER_OK, LOG_ERROR, LOG_WARNING, LOG_INFO, LOG_DEBUG
     implicit none
 
     ! Network and dynamics variables
     type(network_t) :: net
     type(dyn_parameters_t) :: dyn_params
     class(net_state_base_t), allocatable :: dynamics_state
+    procedure(proc_net_state_gen), pointer :: after_dynamics_step => null()
 
     ! Random number generator
     type(rndgen) :: dyn_gen
@@ -20,39 +23,48 @@ program simple_network_example_p
     ! Auxiliary variables
     integer(kind=i4) :: i, i_sample
 
-    ! Parameters
+    ! Parameters (via CLI)
     integer(kind=i4) :: rnd_seed
     integer(kind=i4) :: n_samples
-    character(len=:), allocatable :: edges_file, algorithm, sampler_choice, time_scale
+    character(len=:), allocatable :: edges_file, algorithm, sampler_choice, time_scale, logger_level, output_prefix
     real(kind=dp) :: par_b, par_theta, initial_infected_fraction, beta_1, tmax
+    logical :: use_qs
 
     ! Measurers
     type(measure_controller_t) :: time_control
     type(statistical_measure_t) :: time_average
     type(statistical_measure_t) :: rho_average
 
+    ! Get input data
     call handle_cli()
 
+    ! Initialize main structures (network, parameters, measurers)
     call init_main()
 
-    !$omp parallel do schedule(dynamic) private(dynamics_state) firstprivate(time_control)
+    ! Loop over dynamics samples
     do i_sample = 1, n_samples
+        ! Allocate dynamics state
         call init_dynamics(i_sample + (n_samples + 1))
 
+        ! Run the dynamics up to time tmax, while there are infected nodes
         call loop_over_time()
 
-        print*, dynamics_state%time
-
+        ! Write results to a file
         call write_results()
 
+        ! Deallocate dynamics state for the next sample
         deallocate(dynamics_state)
     end do
-    !$omp end parallel do
 
 contains
 
     subroutine handle_cli()
+
+        call set_verbose(.true.)
+        call set_level(LOG_DEBUG)
+
         ! Default parameters
+        use_qs = .true.
         rnd_seed = 9342342
         n_samples = 10
         edges_file = 'example.edgelist'
@@ -61,7 +73,7 @@ contains
         initial_infected_fraction = 1.0_dp
         beta_1 = 0.1_dp
         tmax = 1000.0_dp
-        time_scale = 'uniform' ! or powerlaw
+        time_scale = 'powerlaw' ! or powerlaw
         algorithm = 'HB_OGA' ! or NB-OGA
         sampler_choice = 'rejection_maxheap' ! or btree
 
@@ -82,6 +94,9 @@ contains
 
         ! Set the dynamical parameters
         call set_dyn_params(net, dyn_params, par_b, par_theta)
+
+        ! Check if the chosen QS method is compatible with the dynamics
+        call check_qs_method(after_dynamics_step, use_qs)
 
     end subroutine init_main
 
@@ -114,23 +129,27 @@ contains
     end subroutine init_dynamics
 
     subroutine loop_over_time()
+
         ! main dynamics loop
         do while (dynamics_state%time < tmax)
 
             ! get Gillespie time
-            if (.not. dynamics_state%dynamics_update_dt(net, dyn_gen)) exit ! exit if no infected nodes
+            call dynamics_state%just_update_dt(net, dyn_gen)
 
             ! update the state
             call dynamics_state%dynamics_step(net, dyn_gen)
 
             ! do something after the dynamics step
-            !call after_dynamics_step(net, dynamics_state, dyn_gen)
+            call after_dynamics_step(net, dynamics_state, dyn_gen)
 
             ! collect the new data
             call collect_data()
 
             ! leave if no infected nodes
-            if (dynamics_state%get_num_infected() == 0) exit
+            if (dynamics_state%get_num_infected() == 0) then
+                call log_write(LOG_DEBUG, "No more events can occur, stopping the dynamics at t = ", dynamics_state%time)
+                exit ! exit if no infected nodes
+            end if
         end do
     end subroutine loop_over_time
 
@@ -170,31 +189,5 @@ contains
         !$omp end critical
 
     end subroutine write_results
-
-    subroutine set_dyn_params(net, dyn_params, par_b, par_theta)
-        class(network_t), intent(in) :: net
-        type(dyn_parameters_t), intent(inout) :: dyn_params
-        real(kind=dp), intent(in) :: par_b, par_theta
-
-        integer(kind=i4) :: edge_order
-
-        ! Set parameters
-        call dyn_params%init(net)
-
-        ! Fill the beta and theta parameters
-        do edge_order = 1, net%max_order
-            dyn_params%beta(edge_order) = 1.0_dp + par_b * (edge_order -1)
-            dyn_params%theta(edge_order) = ceiling(1.0_dp + (edge_order-1) * par_theta)
-        end do
-
-    end subroutine set_dyn_params
-
-    subroutine read_network(net, edges_filename)
-        type(network_t), intent(inout) :: net
-        character(len=*), intent(in) :: edges_filename
-
-        call network_import(net, trim(adjustl(edges_filename)))
-
-    end subroutine read_network
 
 end program simple_network_example_p
