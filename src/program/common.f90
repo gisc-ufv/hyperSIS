@@ -1,8 +1,8 @@
 module hyperSIS_program_common_mod
-    use hyperSIS_kinds_mod
-    use hyperSIS_network_mod
-    use hyperSIS_network_io_mod
-    use hyperSIS_dynamics_mod
+    use hyperSIS_kinds_mod, only: dp, i4
+    use hyperSIS_network_mod, only: network_t
+    use hyperSIS_network_io_mod, only: network_import
+    use hyperSIS_dynamics_mod, only: dyn_parameters_t, net_state_base_t
 
     use rndgen_mod
     implicit none
@@ -17,6 +17,7 @@ module hyperSIS_program_common_mod
         end subroutine proc_net_state_gen
     end interface
 
+    public :: proc_net_state_gen
     public :: check_qs_method
     public :: read_network
     public :: set_dyn_params
@@ -58,18 +59,6 @@ contains
         end if
     end subroutine
 
-    !> Build auxiliary variables in the network
-    subroutine read_network(net, edges_filename)
-        class(network_t), intent(inout) :: net
-        character(len=*), intent(in) :: edges_filename
-
-        call network_import(net, trim(adjustl(edges_filename)))
-
-        call net%clear_and_check_all(min_order=1)
-
-    end subroutine read_network
-
-    !> Set parameters
     subroutine set_dyn_params(net, dyn_params, par_b, par_theta)
         class(network_t), intent(in) :: net
         type(dyn_parameters_t), intent(inout) :: dyn_params
@@ -87,6 +76,14 @@ contains
         end do
 
     end subroutine set_dyn_params
+
+    subroutine read_network(net, edges_filename)
+        type(network_t), intent(inout) :: net
+        character(len=*), intent(in) :: edges_filename
+
+        call network_import(net, trim(adjustl(edges_filename)))
+
+    end subroutine read_network
 
     subroutine set_initial_number_of_infected_nodes(net, inf_fraction, initial_number)
         class(network_t), intent(in) :: net
