@@ -211,11 +211,12 @@ contains
         character(len=*), intent(in) :: filename
         integer(kind=i4) :: funit, i
 
-        open(newunit=funit, file=filename, status='replace', action='write')
-        write(funit, fmt_general) "# time = ", this%time
+        open(newunit=funit, file=filename, status='unknown', action='write', position='append')
+        write(funit, fmt_general, advance='no') this%time
         do i = 1, net%num_nodes
-            if (this%node_state(i) /= 0) write(funit, fmt_general) i, this%node_state(i)
+            if (this%node_state(i) /= 0) write(funit, fmt_general, advance='no') i
         end do
+        write(funit, *) ! new line
         close(funit)
 
     end subroutine

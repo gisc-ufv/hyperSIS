@@ -59,11 +59,12 @@ contains
         character(len=*), intent(in) :: filename
         integer(kind=i4) :: funit, i
 
-        open(newunit=funit, file=filename, status='replace', action='write')
-        write(funit, fmt_general) "# time = ", this%time
+        open(newunit=funit, file=filename, status='unknown', action='write', position='append')
+        write(funit, fmt_general, advance='no') this%time
         do i = 1, net%num_edges
-            if (this%infected%is_edge_active(i)) write(funit, fmt_general) i, merge(1, 0, this%infected%is_edge_active(i))
+            if (this%infected%is_edge_active(i)) write(funit, fmt_general, advance='no') i
         end do
+        write(funit, *) ! new line
         close(funit)
 
     end subroutine
