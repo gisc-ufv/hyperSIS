@@ -2,7 +2,7 @@ program simple_network_example_p
     use hyperSIS_kinds_mod, only: dp, i4, fmt_general
     use hyperSIS_network_mod, only : network_t
     use hyperSIS_dynamics_mod, only: dyn_parameters_t, net_state_base_t, net_state_choose
-    use hyperSIS_program_common_mod, only: read_network, set_dyn_params, check_qs_method, proc_net_state_gen
+    use hyperSIS_program_common_mod, only: read_network, set_dyn_params, check_qs_method, proc_net_state_gen, proc_export_states, check_export_nodes_and_edges_state
 
     use datastructs_mod, only: measure_controller_t, statistical_measure_t
 
@@ -16,6 +16,7 @@ program simple_network_example_p
     type(dyn_parameters_t) :: dyn_params
     class(net_state_base_t), allocatable :: dynamics_state
     procedure(proc_net_state_gen), pointer :: after_dynamics_step => null()
+    procedure(proc_export_states), pointer :: export_states => null()
 
     ! Random number generator
     type(rndgen) :: dyn_gen
@@ -28,7 +29,7 @@ program simple_network_example_p
     integer(kind=i4) :: n_samples
     character(len=:), allocatable :: edges_file, algorithm, sampler_choice, time_scale, logger_level, output_prefix
     real(kind=dp) :: par_b, par_theta, initial_infected_fraction, beta_1, tmax
-    logical :: use_qs
+    logical :: use_qs, use_example_network, export_states_flag
 
     ! Measurers
     type(measure_controller_t) :: time_control
@@ -77,6 +78,9 @@ contains
         algorithm = 'HB_OGA' ! or NB-OGA
         sampler_choice = 'rejection_maxheap' ! or btree
 
+        use_example_network = .false. ! if true, generate a small example network; if false, read from edges_file
+        export_states_flag = .true. ! if true, export the states of nodes and edges at the end of each sample ! better use with small networks and uniform time scale
+
         ! Here you can add code to handle command line arguments to override defaults
     end subroutine
 
@@ -86,8 +90,14 @@ contains
         call time_average%init(time_control%get_max_array_size(real(tmax,dp)))
         call rho_average%init(time_control%get_max_array_size(real(tmax,dp)))
 
-        ! Read the edgelist
-        call read_network(net, edges_file)
+        select case (use_example_network)
+          case (.true.)
+            ! Generate a simple network
+            call generate_example_network(net)
+          case (.false.)
+            ! Read the network from a file
+            call read_network(net, edges_file)
+        end select
 
         ! Clear and check the network (always necessary)
         call net%clear_and_check_all(min_order=1)
@@ -97,6 +107,9 @@ contains
 
         ! Check if the chosen QS method is compatible with the dynamics
         call check_qs_method(after_dynamics_step, use_qs)
+
+        ! Check if the export states procedure is set
+        call check_export_nodes_and_edges_state(export_states, export_states_flag)
 
     end subroutine init_main
 
@@ -163,6 +176,8 @@ contains
         do time_pos = 1, size(time_pos_array)
             call time_average%add_point(time_pos_array(time_pos), dynamics_state%time)
             call rho_average%add_point(time_pos_array(time_pos), 1.0_dp * dynamics_state%get_num_infected() / net%num_nodes)
+
+            call export_states(net, dynamics_state, 'nodes.dat', 'edges.dat')
         end do
         !$omp end critical
 
@@ -189,5 +204,47 @@ contains
         !$omp end critical
 
     end subroutine write_results
+
+    subroutine generate_example_network(net)
+        use hyperSIS_network_mod, only : hyperedge, network
+        type(network_t), intent(inout) :: net
+        integer(kind=i4) :: edge_id, node_pos, node_id
+
+        net = network(num_nodes = 10, num_edges = 7)
+
+        net%edges(1) = hyperedge([1, 2, 3])
+        net%edges(2) = hyperedge([2, 3, 4])
+        net%edges(3) = hyperedge([4, 5])
+        net%edges(4) = hyperedge([1, 5])
+        net%edges(5) = hyperedge([6, 7, 8])
+        net%edges(6) = hyperedge([1, 2, 3, 7, 8, 9])
+        net%edges(7) = hyperedge([9, 10])
+
+        net%nodes(:)%degree = 0
+
+        ! for each edge, collect the degree of each node
+        do edge_id = 1, net%num_edges
+            do node_pos = 1, net%edges(edge_id)%order + 1
+                node_id = net%edges(edge_id)%nodes(node_pos)
+                net%nodes(node_id)%degree = net%nodes(node_id)%degree + 1
+            end do
+        end do
+
+        ! allocate the arrays of edges for each node
+        do node_id = 1, net%num_nodes
+            allocate(net%nodes(node_id)%edges(net%nodes(node_id)%degree))
+            net%nodes(node_id)%degree = 0 ! reset to use as position counter
+        end do
+
+        ! for each edge, fill the edges array of each node
+        do edge_id = 1, net%num_edges
+            do node_pos = 1, net%edges(edge_id)%order + 1
+                node_id = net%edges(edge_id)%nodes(node_pos)
+                net%nodes(node_id)%degree = net%nodes(node_id)%degree + 1
+                net%nodes(node_id)%edges(net%nodes(node_id)%degree) = edge_id
+            end do
+        end do
+
+    end subroutine generate_example_network
 
 end program simple_network_example_p
