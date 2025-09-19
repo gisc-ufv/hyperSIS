@@ -39,6 +39,12 @@ program simple_network_example_p
     do i_sample = 1, n_samples
         call init_dynamics(i_sample + (n_samples + 1))
 
+        call loop_over_time()
+
+        print*, dynamics_state%time
+
+        call write_results()
+
         deallocate(dynamics_state)
     end do
     !$omp end parallel do
@@ -53,11 +59,11 @@ contains
         par_b = 0.5_dp
         par_theta = 0.5_dp
         initial_infected_fraction = 1.0_dp
-        beta_1 = 0.5_dp
-        tmax = 100.0_dp
-        time_scale = 'uniform'
-        algorithm = 'HB_OGA'
-        sampler_choice = 'rejection_maxheap'
+        beta_1 = 0.1_dp
+        tmax = 1000.0_dp
+        time_scale = 'uniform' ! or powerlaw
+        algorithm = 'HB_OGA' ! or NB-OGA
+        sampler_choice = 'rejection_maxheap' ! or btree
 
         ! Here you can add code to handle command line arguments to override defaults
     end subroutine
@@ -89,6 +95,8 @@ contains
             seed_offset = 0
         end if
 
+        ! reset the time control
+        call time_control%reset()
         call dyn_gen%init(rnd_seed + seed_offset) ! initialize the random generator with a seed
 
         ! select dynamics algorithm
@@ -104,6 +112,64 @@ contains
         ! Initialize the dynamics
         call dynamics_state%dynamics_init(net)
     end subroutine init_dynamics
+
+    subroutine loop_over_time()
+        ! main dynamics loop
+        do while (dynamics_state%time < tmax)
+
+            ! get Gillespie time
+            if (.not. dynamics_state%dynamics_update_dt(net, dyn_gen)) exit ! exit if no infected nodes
+
+            ! update the state
+            call dynamics_state%dynamics_step(net, dyn_gen)
+
+            ! do something after the dynamics step
+            !call after_dynamics_step(net, dynamics_state, dyn_gen)
+
+            ! collect the new data
+            call collect_data()
+
+            ! leave if no infected nodes
+            if (dynamics_state%get_num_infected() == 0) exit
+        end do
+    end subroutine loop_over_time
+
+    subroutine collect_data()
+        integer(kind=i4), allocatable :: time_pos_array(:)
+        integer(kind=i4) :: time_pos
+
+        !$omp critical
+        time_pos_array = time_control%get_pos_array(dynamics_state%time)
+
+        do time_pos = 1, size(time_pos_array)
+            call time_average%add_point(time_pos_array(time_pos), dynamics_state%time)
+            call rho_average%add_point(time_pos_array(time_pos), 1.0_dp * dynamics_state%get_num_infected() / net%num_nodes)
+        end do
+        !$omp end critical
+
+    end subroutine collect_data
+
+    subroutine write_results()
+        integer(kind=i4) :: unidade_arquivo
+        integer(kind=i4) :: time_pos
+
+        !$omp critical
+        ! write time average
+        open(newunit=unidade_arquivo, file='teste', status='replace', action='write', form='formatted')
+        ! write even when not finished
+        ! For that, we need to know the maximum number of samples
+
+        write(unidade_arquivo, fmt_general) '# Number of samples: ', time_average%max_n_samples
+        write(unidade_arquivo, fmt_general) '# time', 'rho', 'rho_variance', 'n_samples'
+        do time_pos = 1, time_control%get_max_array_size(real(tmax,dp))
+            if (rho_average%n_samples(time_pos) > 0) then
+                write(unidade_arquivo, fmt_general) time_average%get_mean(time_pos), rho_average%get_mean(time_pos, use_max=.true.), rho_average%get_variance(time_pos, use_max=.true.), rho_average%n_samples(time_pos)
+            end if
+        end do
+        close(unidade_arquivo)
+        !$omp end critical
+
+    end subroutine write_results
 
     subroutine set_dyn_params(net, dyn_params, par_b, par_theta)
         class(network_t), intent(in) :: net
