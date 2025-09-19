@@ -33,6 +33,7 @@ module hyperSIS_dynamics_base_mod
         procedure(net_state_base_remove_infected), deferred :: remove_infected
         procedure(net_state_base_dynamics_init), deferred :: dynamics_init
         procedure(net_state_base_dynamics_update_dt), deferred :: dynamics_update_dt
+        procedure :: just_update_dt => dynamics_just_update_dt
         procedure(net_state_base_dynamics_step), deferred :: dynamics_step
 
         ! procedure to initialize the infected nodes (no need to override)
@@ -108,6 +109,17 @@ module hyperSIS_dynamics_base_mod
     public :: net_state_base_t, dyn_parameters_t, state_compartment_base_t
 
 contains
+
+    ! just update dt (without returning a logical)
+    subroutine dynamics_just_update_dt(this, net, gen)
+        use rndgen_mod
+        class(net_state_base_t) :: this
+        class(network_t), intent(in) :: net
+        type(rndgen) :: gen
+        logical :: res
+
+        res = this%dynamics_update_dt(net, gen)
+    end subroutine
 
     ! subroutines to initialize the infected nodes
     subroutine net_state_init_config_node(this, net, params, sampler_choice, node_id)
