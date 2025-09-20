@@ -67,7 +67,6 @@ contains
         type(command_line_interface) :: cli    ! Command Line Interface (CLI)
         character(len=2048) :: cli_string
         integer(kind=i4) :: cli_error
-        character(len=*), parameter :: true_false_choices = 'true,false,T,F,0,1'
 
         call cli%init(progname    = 'Run temporal dynamics on a hypergraph network', &
             description = 'This program runs a temporal dynamics on a hypergraph network, using the Gillespie algorithm. The network can be read from a file or generated as a small example. The dynamics can be configured with various parameters.', &
@@ -129,8 +128,7 @@ contains
             help='Use Quasi-Stationary method', &
             required=.false., &
             act='store', &
-            def='true', &
-            choices=true_false_choices, &
+            def='false', &
             error=cli_error); if (cli_error /= 0) error stop 'Error adding --use-qs'
 
         ! Sampling and statistics
@@ -151,26 +149,26 @@ contains
             error=cli_error); if (cli_error /= 0) error stop 'Error adding --time-scale'
 
         ! Dynamical parameters
-        call cli%add(switch='initial_fraction', &
+        call cli%add(switch='--initial_fraction', &
             switch_ab='-if', &
             help='Initial fraction of infected nodes', &
             required=.false., &
             act='store', &
             def='1.0', &
             error=cli_error); if (cli_error /= 0) error stop 'Error adding --initial_fraction'
-        call cli%add(switch='initial_number', &
+        call cli%add(switch='--initial_number', &
             switch_ab='-in', &
             help='Initial number of infected nodes (overrides initial_fraction)', &
             required=.false., &
             act='store', &
             def='0', &
             error=cli_error); if (cli_error /= 0) error stop 'Error adding --initial_number'
-        call cli%add(switch='--beta-1', &
+        call cli%add(switch='--beta1', &
             switch_ab='-b1', &
-            help='Infection rate parameter beta_1', &
+            help='Infection rate parameter beta1', &
             required=.true., &
             act='store', &
-            error=cli_error); if (cli_error /= 0) error stop 'Error adding --beta-1'
+            error=cli_error); if (cli_error /= 0) error stop 'Error adding --beta1'
         call cli%add(switch='--par-b', &
             switch_ab='-pb', &
             help='Dynamical parameter b', &
@@ -193,7 +191,6 @@ contains
             required=.false., &
             act='store', &
             def='false', &
-            choices=true_false_choices, &
             error=cli_error); if (cli_error /= 0) error stop 'Error adding --export-states'
         call cli%add(switch='--seed', &
             switch_ab='-rs', &
@@ -208,7 +205,6 @@ contains
             required=.false., &
             act='store', &
             def='true', &
-            choices=true_false_choices, &
             error=cli_error); if (cli_error /= 0) error stop 'Error adding --verbose'
         call cli%add(switch='--verbose-level', &
             switch_ab='-vl', &
@@ -219,7 +215,7 @@ contains
             def='info', &
             error=cli_error); if (cli_error /= 0) error stop 'Error adding --verbose-level'
 
-        call cli%parse()
+        call cli%parse(error=cli_error); if (cli_error /= 0) error stop 'Error parsing command line arguments'
 
         ! Collect parameters from CLI
         call cli%get(switch='--output', val=cli_string, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --output'
@@ -235,10 +231,11 @@ contains
         call cli%get(switch='--tmax', val=tmax, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --tmax'
         call cli%get(switch='--use-qs', val=use_qs, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --use-qs'
         call cli%get(switch='--n-samples', val=n_samples, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --n-samples'
-        call cli%get(switch='--time-scale', val=time_scale, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --time-scale'
+        call cli%get(switch='--time-scale', val=cli_string, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --time-scale'
+        time_scale = trim(adjustl(cli_string))
         call cli%get(switch='--initial_fraction', val=initial_infected_fraction, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --initial_fraction'
         call cli%get(switch='--initial_number', val=i, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --initial_number'
-        call cli%get(switch='--beta-1', val=beta_1, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --beta-1'
+        call cli%get(switch='--beta1', val=beta_1, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --beta1'
         call cli%get(switch='--par-b', val=par_b, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --par-b'
         call cli%get(switch='--par-theta', val=par_theta, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --par-theta'
         call cli%get(switch='--export-states', val=export_states_flag, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --export-states'
