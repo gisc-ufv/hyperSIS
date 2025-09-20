@@ -2,7 +2,7 @@ program simple_network_example_p
     use hyperSIS_kinds_mod, only: dp, i4, fmt_general
     use hyperSIS_network_mod, only : network_t
     use hyperSIS_dynamics_mod, only: dyn_parameters_t, net_state_base_t, net_state_choose
-    use hyperSIS_program_common_mod, only: read_network, set_dyn_params, check_qs_method, proc_net_state_gen, proc_export_states, check_export_nodes_and_edges_state
+    use hyperSIS_program_common_mod, only: read_network, set_dyn_params, check_qs_method, proc_net_state_gen, proc_export_states, check_export_nodes_and_edges_state, set_initial_number_of_infected_nodes
 
     use datastructs_mod, only: measure_controller_t, statistical_measure_t
 
@@ -30,6 +30,7 @@ program simple_network_example_p
 
     integer(kind=i4) :: rnd_seed
     integer(kind=i4) :: n_samples
+    integer(kind=i4) :: initial_number
     character(len=:), allocatable :: output_prefix, edges_file, algorithm, sampler_choice, time_scale
     real(kind=dp) :: par_b, par_theta, initial_infected_fraction, beta_1, tmax
     logical :: use_qs, use_example_network, export_states_flag
@@ -234,7 +235,7 @@ contains
         call cli%get(switch='--time-scale', val=cli_string, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --time-scale'
         time_scale = trim(adjustl(cli_string))
         call cli%get(switch='--initial_fraction', val=initial_infected_fraction, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --initial_fraction'
-        call cli%get(switch='--initial_number', val=i, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --initial_number'
+        call cli%get(switch='--initial_number', val=initial_number, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --initial_number'
         call cli%get(switch='--beta1', val=beta_1, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --beta1'
         call cli%get(switch='--par-b', val=par_b, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --par-b'
         call cli%get(switch='--par-theta', val=par_theta, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --par-theta'
@@ -244,13 +245,30 @@ contains
         call cli%get(switch='--verbose-level', val=cli_string, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --verbose-level'
         logger_level = trim(adjustl(cli_string))
 
+        call set_verbose(logger_verbose)
+        select case (trim(adjustl(logger_level)))
+            case ('error')
+                call set_level(LOG_ERROR)
+            case ('warning')
+                call set_level(LOG_WARNING)
+            case ('info')
+                call set_level(LOG_INFO)
+            case ('debug')
+                call set_level(LOG_DEBUG)
+            case default
+                call set_level(LOG_INFO)
+        end select
+
+        if (len(edges_file) == 0) then
+            use_example_network = .true.
+        else
+            use_example_network = .false.
+        end if
+
         ! TODO:
         ! - Add command line argument parsing to override default parameters
         ! - Use prefix for output files
         ! - Define functions to get the filename based on prefix and parameters, time, etc
-
-        !call set_verbose(.true.)
-        !call set_level(LOG_DEBUG)
 
         ! Default parameters
         !use_qs = .true.
@@ -265,9 +283,6 @@ contains
         !time_scale = 'powerlaw' ! or powerlaw
         !algorithm = 'NB_OGA' ! or NB-OGA
         !sampler_choice = 'rejection_maxheap' ! or btree
-
-        !use_example_network = .true. ! if true, generate a small example network; if false, read from edges_file
-        !export_states_flag = .true. ! if true, export the states of nodes and edges at the end of each sample ! better use with small networks and uniform time scale
 
         ! Here you can add code to handle command line arguments to override defaults
     end subroutine
@@ -289,6 +304,9 @@ contains
 
         ! Clear and check the network (always necessary)
         call net%clear_and_check_all(min_order=1)
+
+        ! Set initial number of infected nodes if specified
+        call set_initial_number_of_infected_nodes(net, initial_infected_fraction, initial_number)
 
         ! Set the dynamical parameters
         call set_dyn_params(net, dyn_params, par_b, par_theta)
