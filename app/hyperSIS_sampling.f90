@@ -383,6 +383,7 @@ contains
         write(unidade_arquivo, fmt_general) '# time', 'rho', 'rho_variance', 'n_samples'
         do time_pos = 1, time_control%get_max_array_size(real(tmax,dp))
             if (rho_average%n_samples(time_pos) > 0) then
+                ! We use `use_max=.true.` since the missing samples have zero infected nodes
                 write(unidade_arquivo, fmt_general) time_average%get_mean(time_pos), rho_average%get_mean(time_pos, use_max=.true.), rho_average%get_variance(time_pos, use_max=.true.), rho_average%n_samples(time_pos)
             end if
         end do
