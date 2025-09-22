@@ -363,7 +363,7 @@ contains
             call time_average%add_point(time_pos_array(time_pos), dynamics_state%time)
             call rho_average%add_point(time_pos_array(time_pos), 1.0_dp * dynamics_state%get_num_infected() / net%num_nodes)
 
-            call export_states(net, dynamics_state, 'nodes.dat', 'edges.dat')
+            call export_states(net, dynamics_state, get_filename('states_nodes.dat'), get_filename('states_edges.dat'))
         end do
         !$omp end critical
 
@@ -375,7 +375,7 @@ contains
 
         !$omp critical
         ! write time average
-        open(newunit=unidade_arquivo, file=get_filename(), status='replace', action='write', form='formatted')
+        open(newunit=unidade_arquivo, file=get_filename('results.dat'), status='replace', action='write', form='formatted')
         ! write even when not finished
         ! For that, we need to know the maximum number of samples
 
@@ -433,9 +433,10 @@ contains
 
     end subroutine generate_example_network
 
-    function get_filename() result(filename)
-        character(len=256) :: filename
-        write(filename, '(A,"_results.dat")') trim(adjustl(output_prefix))
+    function get_filename(filename) result(pathname)
+        character(len=*), intent(in) :: filename
+        character(len=256) :: pathname
+        write(pathname, '(g0)') trim(adjustl(output_prefix))//'_'//trim(adjustl(filename))
     end function get_filename
 
 end program simple_network_example_p
