@@ -265,26 +265,6 @@ contains
             use_example_network = .false.
         end if
 
-        ! TODO:
-        ! - Add command line argument parsing to override default parameters
-        ! - Use prefix for output files
-        ! - Define functions to get the filename based on prefix and parameters, time, etc
-
-        ! Default parameters
-        !use_qs = .true.
-        !rnd_seed = 9342342
-        !n_samples = 10
-        !edges_file = 'example.edgelist'
-        !par_b = 0.5_dp
-        !par_theta = 0.5_dp
-        !initial_infected_fraction = 1.0_dp
-        !beta_1 = 0.1_dp
-        !tmax = 1000.0_dp
-        !time_scale = 'powerlaw' ! or powerlaw
-        !algorithm = 'NB_OGA' ! or NB-OGA
-        !sampler_choice = 'rejection_maxheap' ! or btree
-
-        ! Here you can add code to handle command line arguments to override defaults
     end subroutine
 
     subroutine init_main()
@@ -395,7 +375,7 @@ contains
 
         !$omp critical
         ! write time average
-        open(newunit=unidade_arquivo, file='teste', status='replace', action='write', form='formatted')
+        open(newunit=unidade_arquivo, file=get_filename(), status='replace', action='write', form='formatted')
         ! write even when not finished
         ! For that, we need to know the maximum number of samples
 
@@ -452,5 +432,10 @@ contains
         end do
 
     end subroutine generate_example_network
+
+    function get_filename() result(filename)
+        character(len=256) :: filename
+        write(filename, '(A,"_results.dat")') trim(adjustl(output_prefix))
+    end function get_filename
 
 end program simple_network_example_p
