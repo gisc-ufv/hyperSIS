@@ -150,20 +150,20 @@ contains
             error=cli_error); if (cli_error /= 0) error stop 'Error adding --time-scale'
 
         ! Dynamical parameters
-        call cli%add(switch='--initial_fraction', &
+        call cli%add(switch='--initial-fraction', &
             switch_ab='-if', &
             help='Initial fraction of infected nodes', &
             required=.false., &
             act='store', &
             def='1.0', &
-            error=cli_error); if (cli_error /= 0) error stop 'Error adding --initial_fraction'
-        call cli%add(switch='--initial_number', &
+            error=cli_error); if (cli_error /= 0) error stop 'Error adding --initial-fraction'
+        call cli%add(switch='--initial-number', &
             switch_ab='-in', &
-            help='Initial number of infected nodes (overrides initial_fraction)', &
+            help='Initial number of infected nodes (overrides initial-fraction)', &
             required=.false., &
             act='store', &
             def='0', &
-            error=cli_error); if (cli_error /= 0) error stop 'Error adding --initial_number'
+            error=cli_error); if (cli_error /= 0) error stop 'Error adding --initial-number'
         call cli%add(switch='--beta1', &
             switch_ab='-b1', &
             help='Infection rate parameter beta1', &
@@ -234,8 +234,8 @@ contains
         call cli%get(switch='--n-samples', val=n_samples, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --n-samples'
         call cli%get(switch='--time-scale', val=cli_string, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --time-scale'
         time_scale = trim(adjustl(cli_string))
-        call cli%get(switch='--initial_fraction', val=initial_infected_fraction, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --initial_fraction'
-        call cli%get(switch='--initial_number', val=initial_number, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --initial_number'
+        call cli%get(switch='--initial-fraction', val=initial_infected_fraction, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --initial-fraction'
+        call cli%get(switch='--initial-number', val=initial_number, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --initial-number'
         call cli%get(switch='--beta1', val=beta_1, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --beta1'
         call cli%get(switch='--par-b', val=par_b, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --par-b'
         call cli%get(switch='--par-theta', val=par_theta, error=cli_error); if (cli_error /= 0) error stop 'Error parsing --par-theta'
