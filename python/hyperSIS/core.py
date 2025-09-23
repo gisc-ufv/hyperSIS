@@ -4,10 +4,10 @@ import tempfile
 from typing import Tuple
 import numpy as np
 
-from .types import SimulationArgs
-from .io_utils import process_results
+from .types import SimulationArgs, TemporalResult, SimulationResult
+from .io_utils import process_results, prepare_network_file
 
-def run_simulation(beta1: float, args: SimulationArgs) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+def run_simulation(beta1: float, args: SimulationArgs) -> SimulationResult:
     """
     Runs a simulation by calling the Fortran binary via fpm.
 
@@ -36,6 +36,12 @@ def run_simulation(beta1: float, args: SimulationArgs) -> Tuple[np.ndarray, np.n
         cleanup_tmp = False
 
     try:
+        # Here we prepare the network file for Fortran
+        network_file_fortran, map_nodes = prepare_network_file(
+            args.network_file,
+            args.network_format
+        )
+
         # Chooses initial_fraction or initial_number
         kind, value = args.initial_condition
         if kind == "number":
@@ -48,7 +54,7 @@ def run_simulation(beta1: float, args: SimulationArgs) -> Tuple[np.ndarray, np.n
             f"fpm run hyperSIS_sampling -- "
             f"--output {tmpdir}/ "
             f"--remove-files {args.remove_files} "
-            f"--edges-file {args.network_file} "
+            f"--edges-file {network_file_fortran} "
             f"--algorithm {args.algorithm} "
             f"--sampler {args.sampler} "
             f"--tmax {args.tmax} "
@@ -75,7 +81,24 @@ def run_simulation(beta1: float, args: SimulationArgs) -> Tuple[np.ndarray, np.n
 
         # Processes the results and returns numpy arrays
         times, rho_mean, rho_var, n_samples = process_results(tmpdir)
-        return times, rho_mean, rho_var, n_samples
+
+        # Create TemporalResult dataclass instance
+        temporal = TemporalResult(
+            t=times,          # mean time per Gillespie tick
+            rho_avg=rho_mean,  # mean number of infected nodes (over all runs)
+            rho_var=rho_var,   # variance of infected nodes
+            n_samples=n_samples  # number of runs where rho != 0
+        )
+
+        # Create SimulationResult dataclass instance
+        result = SimulationResult(
+            network_file=args.network_file,  # original network file
+            node_map=map_nodes,              # mapping from original node IDs to Fortran node IDs
+            temporal=temporal
+        )
+
+        # Return the structured result object
+        return result
 
     finally:
         if cleanup_tmp:
