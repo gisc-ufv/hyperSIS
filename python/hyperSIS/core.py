@@ -1,0 +1,82 @@
+from pathlib import Path
+import subprocess
+import tempfile
+from typing import Tuple
+import numpy as np
+
+from .types import SimulationArgs
+from .io_utils import process_results
+
+def run_simulation(beta1: float, args: SimulationArgs) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """
+    Runs a simulation by calling the Fortran binary via fpm.
+
+    Parameters
+    ----------
+    beta1 : float
+        Value of the $\beta(1)$ parameter.
+    args : SimulationArgs
+        Simulation arguments.
+
+    Returns
+    -------
+    times : np.ndarray
+        Array of time points.
+    rho_mean : np.ndarray
+        Mean infection density.
+    """
+    # If no output_dir is provided, create a temporary one
+    if args.output_dir is None:
+        tmp_context = tempfile.TemporaryDirectory()
+        tmpdir = Path(tmp_context.name)
+        cleanup_tmp = True
+    else:
+        tmpdir = Path(args.output_dir)
+        tmpdir.mkdir(parents=True, exist_ok=True)
+        cleanup_tmp = False
+
+    try:
+        # Chooses initial_fraction or initial_number
+        kind, value = args.initial_condition
+        if kind == "number":
+            initial_arg = f"--initial-number {value}"
+        else:
+            initial_arg = f"--initial-fraction {value}"
+
+        # Builds the command string
+        inner_cmd = (
+            f"fpm run hyperSIS_sampling -- "
+            f"--output {tmpdir}/ "
+            f"--remove-files {args.remove_files} "
+            f"--edges-file {args.network_file} "
+            f"--algorithm {args.algorithm} "
+            f"--sampler {args.sampler} "
+            f"--tmax {args.tmax} "
+            f"--use-qs {args.use_qs} "
+            f"--n-samples {args.n_samples} "
+            f"--time-scale {args.time_scale} "
+            f"{initial_arg} "
+            f"--beta1 {beta1} "
+            f"--par-b {args.par_b} "
+            f"--par-theta {args.par_theta} "
+            f"--export-states {args.export_states} "
+            f"--seed {args.seed} "
+            f"--verbose {args.verbose} "
+            f"--verbose-level {args.verbose_level} "
+        )
+
+        # Executes the command
+        result = subprocess.run(inner_cmd, shell=True, capture_output=True, text=True)
+        if result.returncode != 0:
+            raise RuntimeError(
+                f"Command failed with code {result.returncode}\n"
+                f"stderr:\n{result.stderr}"
+            )
+
+        # Processes the results and returns numpy arrays
+        times, rho_mean, rho_var, n_samples = process_results(tmpdir)
+        return times, rho_mean, rho_var, n_samples
+
+    finally:
+        if cleanup_tmp:
+            tmp_context.cleanup()
