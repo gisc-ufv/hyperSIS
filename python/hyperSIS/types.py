@@ -1,5 +1,19 @@
 from dataclasses import dataclass
 from typing import Literal, Tuple, Union, Optional
+import numpy as np
+
+@dataclass
+class TemporalResult:
+    t: np.ndarray
+    rho_avg: np.ndarray
+    rho_var: np.ndarray
+    n_samples: int
+
+@dataclass
+class SimulationResult:
+    network_file: str
+    node_map: dict
+    temporal: TemporalResult
 
 @dataclass
 class SimulationArgs:
