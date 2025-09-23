@@ -72,6 +72,7 @@ def prepare_network_file(spec: NetworkFormat) -> NetworkFileResult:
             raise FileNotFoundError(f"Network file not found: {file}")
         return prepare_bipartite(file, delimiter, comment, cache)
 
+    # TODO: #1 add cache creation for xgi, xgi_json and hif
     elif kind == "xgi":
         _, source = spec
         return prepare_xgi(source)
