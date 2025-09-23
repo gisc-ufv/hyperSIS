@@ -23,7 +23,7 @@ def process_results(directory: str) -> Tuple[np.ndarray, np.ndarray, np.ndarray,
 
     return times, rho_mean, rho_var, n_samples
 
-def prepare_network_file(network_file: str, network_format: str) -> NetworkFileResult:
+def prepare_network_file(network_file: str, network_file_delimiter : str, network_file_comment: str, network_file_cache: bool, network_format: str) -> NetworkFileResult:
     """
     Prepares the network file for the Fortran simulation.
     """
@@ -43,9 +43,9 @@ def prepare_network_file(network_file: str, network_format: str) -> NetworkFileR
     if network_format not in dispatch:
         raise ValueError(f"Unknown network format: {network_format}")
 
-    return dispatch[network_format](network_file)
+    return dispatch[network_format](network_file, network_file_delimiter, network_file_comment, network_file_cache)
 
-def prepare_edgelist(file: str) -> NetworkFileResult:
+def prepare_edgelist(file: str, delimiter: str, comment: str, cache: bool) -> NetworkFileResult:
     """
     Prepares an edgelist network file for Fortran.
 
@@ -71,12 +71,17 @@ def prepare_edgelist(file: str) -> NetworkFileResult:
         n_nodes = 0
         node_map = {}
         edges_mapped = []
+        max_num_nodes_in_an_edge = 0
 
         # read file and collect edges and node_map
         with open(file, 'r') as f:
             for line in f:
+                # skip comments
+                if comment is not None and line.startswith(comment):
+                    continue
+
                 # split line into nodes (strings)
-                edge = line.strip().split()
+                edge = line.strip().split(delimiter)
                 mapped_edge = []
                 for n in edge:
                     if n not in node_map:
@@ -84,6 +89,8 @@ def prepare_edgelist(file: str) -> NetworkFileResult:
                         node_map[n] = n_nodes
                     mapped_edge.append(node_map[n])
                 edges_mapped.append(mapped_edge)
+                if len(mapped_edge) > max_num_nodes_in_an_edge:
+                    max_num_nodes_in_an_edge = len(mapped_edge)
 
         # write edges
         write_edges(edges_mapped, file_fortran)
@@ -91,24 +98,27 @@ def prepare_edgelist(file: str) -> NetworkFileResult:
         # write node_map
         write_map(node_map, map_file)
 
+        if max_num_nodes_in_an_edge < 2:
+            raise ValueError("The edgelist must contain at least one edge with two nodes. Please check your input file and delimiter setting.")
+
         return str(file_fortran), node_map
 
-def prepare_bipartite(file: str) -> NetworkFileResult:
+def prepare_bipartite(file: str, delimiter: str, comment: str, cache: bool) -> NetworkFileResult:
     # placeholder
     node_map = {node_id: i for i, node_id in enumerate(range(1, 101))}
     return file, node_map
 
-def prepare_xgi(file: str) -> NetworkFileResult:
+def prepare_xgi(file: str, delimiter: str, comment: str, cache: bool) -> NetworkFileResult:
     # placeholder
     node_map = {node_id: i for i, node_id in enumerate(range(1, 102))}
     return file, node_map
 
-def prepare_hif(file: str) -> NetworkFileResult:
+def prepare_hif(file: str, delimiter: str, comment: str, cache: bool) -> NetworkFileResult:
     # placeholder
     node_map = {node_id: i for i, node_id in enumerate(range(1, 103))}
     return file, node_map
 
-def prepare_output_files(input_file: str, prefix: str = "") -> Tuple[Path, Path, bool]:
+def prepare_output_files(input_file: str, prefix: str = "", cache: bool = False) -> Tuple[Path, Path, bool]:
     """
     Prepares the paths for Fortran-ready network files.
 
@@ -135,9 +145,9 @@ def prepare_output_files(input_file: str, prefix: str = "") -> Tuple[Path, Path,
     file_fortran = dirname / f"{prefix}.{basename}_edges.hyperSIS"
     map_file = dirname / f"{prefix}.{basename}_map_nodes.hyperSIS"
 
-    # Check if both files already exist
+    # Check if both files already exist, but is False if not cache
     if file_fortran.exists() and map_file.exists():
-        return file_fortran, map_file, True
+        return file_fortran, map_file, True and cache
 
     # Test if we can write to the directory
     try:

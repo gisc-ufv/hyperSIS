@@ -39,6 +39,9 @@ def run_simulation(beta1: float, args: SimulationArgs) -> SimulationResult:
         # Here we prepare the network file for Fortran
         network_file_fortran, map_nodes = prepare_network_file(
             args.network_file,
+            args.network_file_delimiter,
+            args.network_file_comment,
+            args.network_file_cache,
             args.network_format
         )
 

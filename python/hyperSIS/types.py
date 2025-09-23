@@ -34,6 +34,12 @@ class SimulationArgs:
         Remove temporary files after execution.
     network_file : str
         Path to the network edgelist file.
+    network_file_delimiter : Optional[str]
+        Delimiter used in the network file. Default is None (any whitespace). There is no auto-detection.
+    network_file_comment : Optional[str]
+        Comment character in the network file. Default is '#'. If None, no comments are ignored.
+    network_file_cache: Optional[bool]
+        Whether to cache the processed network file for faster subsequent runs. Default is False.
     network_format : str
         Format of the input network file. Options are:
         'edgelist' (default), 'bipartite', 'xgi_json', or 'hif'.
@@ -70,6 +76,9 @@ class SimulationArgs:
 
     # IO
     network_file: str = "example.edgelist"
+    network_file_delimiter: Optional[str] = ' '
+    network_file_comment: Optional[str] = '#'
+    network_file_cache: Optional[bool] = False
     network_format: Literal["edgelist", "bipartite", "xgi", "hif"] = "edgelist"
     output_dir: Optional[str] = None
 
