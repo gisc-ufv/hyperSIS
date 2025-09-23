@@ -139,12 +139,17 @@ def prepare_bipartite(file: str, delimiter: str, comment: str, cache: bool) -> N
             edges_mapped[edge] = edges_mapped.get(edge, []) + [node_map[node]]
 
     edges_mapped = list(edges_mapped.values())
+    max_num_nodes_in_an_edge = max(len(edge) for edge in edges_mapped) if edges_mapped else 0
 
     # write edges
     write_edges(edges_mapped, file_fortran)
 
     # write node_map
     write_map(node_map, map_file)
+
+    if max_num_nodes_in_an_edge < 2:
+        raise ValueError("The edgelist must contain at least one edge with two nodes. Please check your input file and delimiter setting.")
+
     return file_fortran, node_map
 
 def prepare_xgi(file: str, delimiter: str, comment: str, cache: bool) -> NetworkFileResult:
