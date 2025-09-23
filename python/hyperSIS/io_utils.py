@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Tuple
+from typing import Tuple, Dict
 import numpy as np
 
 def process_results(directory: str) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
@@ -18,3 +18,55 @@ def process_results(directory: str) -> Tuple[np.ndarray, np.ndarray, np.ndarray,
     n_samples = data[:, 3]
 
     return times, rho_mean, rho_var, n_samples
+
+def prepare_network_file(network_file: str, network_format: str) -> Tuple[str, Dict[any, int]]:
+    """
+    Prepares the network file for the Fortran simulation.
+
+    Parameters
+    ----------
+    network_file : str
+        Path to the input network file.
+    network_format : str
+        Format of the input network: 'edgelist', 'bipartite', 'xgi', or 'hif'.
+
+    Returns
+    -------
+    network_file_fortran : str
+        Path to the network file ready for Fortran (currently a dummy).
+    node_map : dict
+        Mapping from original node IDs to Fortran node IDs (currently identity mapping).
+    """
+    network_path = Path(network_file)
+    if not network_path.exists():
+        raise FileNotFoundError(f"Network file not found: {network_file}")
+
+    # Dummy node map (identity mapping)
+    node_map = {}
+
+    if network_format == "edgelist":
+        # For edges list, just return the file itself
+        for i, node_id in enumerate(range(1, 100)):  # dummy IDs 1..99
+            node_map[node_id] = i
+        return network_file, node_map
+
+    elif network_format == "bipartite":
+        # placeholder: return same file and dummy map
+        for i, node_id in enumerate(range(1, 101)):
+            node_map[node_id] = i
+        return network_file, node_map
+
+    elif network_format == "xgi":
+        # placeholder
+        for i, node_id in enumerate(range(1, 102)):
+            node_map[node_id] = i
+        return network_file, node_map
+
+    elif network_format == "hif":
+        # placeholder
+        for i, node_id in enumerate(range(1, 103)):
+            node_map[node_id] = i
+        return network_file, node_map
+
+    else:
+        raise ValueError(f"Unknown network format: {network_format}")
