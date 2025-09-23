@@ -4,6 +4,10 @@ import tempfile
 import numpy as np
 import csv
 
+import gzip
+import bz2
+import lzma
+
 from .types import NetworkFileResult, NetworkFormat
 
 def process_results(directory: str) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
@@ -119,7 +123,7 @@ def prepare_edgelist(file: str, delimiter: str, comment: str, cache: bool) -> Ne
     max_num_nodes_in_an_edge = 0
 
     # read file and collect edges and node_map
-    with open(file, 'r') as f:
+    with smart_open(file, "rt") as f:
         for line in f:
             # skip comments
             if comment is not None and line.startswith(comment):
@@ -166,7 +170,7 @@ def prepare_bipartite(file: str, delimiter: str, comment: str, cache: bool) -> N
     # In this case, we consider that each line contains node: edge
     node_map = {}
     edges_mapped = {}
-    with open(file, 'r') as f:
+    with smart_open(file, "rt") as f:
         for line in f:
             if comment is not None and line.startswith(comment):
                 continue
@@ -322,3 +326,18 @@ def write_edges(edges: List[List[int]], file_path: str) -> None:
         for edge in edges:
             line = " ".join(str(node) for node in edge)
             f.write(f"{line}\n")
+
+def smart_open(file: str, mode: str = "rt"):
+    """
+    Opens a file, automatically handling compression based on extension.
+    Supports .gz, .bz2, .xz (lzma) and regular files.
+    """
+    path = Path(file)
+    if path.suffix == ".gz":
+        return gzip.open(file, mode)
+    elif path.suffix == ".bz2":
+        return bz2.open(file, mode)
+    elif path.suffix == ".xz":
+        return lzma.open(file, mode)
+    else:
+        return open(file, mode)
