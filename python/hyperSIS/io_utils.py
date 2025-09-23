@@ -35,6 +35,7 @@ def prepare_network_file(network_file: str, network_file_delimiter : str, networ
 
     dispatch = {
         "edgelist": prepare_edgelist,
+        "fortran-edgelist": prepare_fortran_edgelist,
         "bipartite": prepare_bipartite,
         "xgi": prepare_xgi,
         "hif": prepare_hif,
@@ -102,6 +103,11 @@ def prepare_edgelist(file: str, delimiter: str, comment: str, cache: bool) -> Ne
             raise ValueError("The edgelist must contain at least one edge with two nodes. Please check your input file and delimiter setting.")
 
         return str(file_fortran), node_map
+
+def prepare_fortran_edgelist(file: str, delimiter: str, comment: str, cache: bool) -> NetworkFileResult:
+    # we do not create a new file!
+
+    return str(file), {}
 
 def prepare_bipartite(file: str, delimiter: str, comment: str, cache: bool) -> NetworkFileResult:
     # placeholder

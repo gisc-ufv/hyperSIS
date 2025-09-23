@@ -79,7 +79,7 @@ class SimulationArgs:
     network_file_delimiter: Optional[str] = ' '
     network_file_comment: Optional[str] = '#'
     network_file_cache: Optional[bool] = False
-    network_format: Literal["edgelist", "bipartite", "xgi", "hif"] = "edgelist"
+    network_format: Literal["edgelist", "fortran-edgelist", "bipartite", "xgi", "hif"] = "edgelist"
     output_dir: Optional[str] = None
 
     # Algorithm
