@@ -10,7 +10,8 @@ authors = [
   {name = "Wesley Cota", email = "wesley.cota@ufv.br"}
 ]
 dependencies = [
-  "numpy>=1.26"
+  "numpy>=1.26",
+  "xgi>=0.10",
 ]
 
 [tool.setuptools.packages.find]
