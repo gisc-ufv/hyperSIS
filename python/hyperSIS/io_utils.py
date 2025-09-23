@@ -1,6 +1,10 @@
 from pathlib import Path
-from typing import Tuple, Dict
+from typing import Tuple, Dict, Any, List
+import tempfile
 import numpy as np
+import csv
+
+from .types import NetworkFileResult
 
 def process_results(directory: str) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     """
@@ -19,54 +23,197 @@ def process_results(directory: str) -> Tuple[np.ndarray, np.ndarray, np.ndarray,
 
     return times, rho_mean, rho_var, n_samples
 
-def prepare_network_file(network_file: str, network_format: str) -> Tuple[str, Dict[any, int]]:
+def prepare_network_file(network_file: str, network_format: str) -> NetworkFileResult:
     """
     Prepares the network file for the Fortran simulation.
-
-    Parameters
-    ----------
-    network_file : str
-        Path to the input network file.
-    network_format : str
-        Format of the input network: 'edgelist', 'bipartite', 'xgi', or 'hif'.
-
-    Returns
-    -------
-    network_file_fortran : str
-        Path to the network file ready for Fortran (currently a dummy).
-    node_map : dict
-        Mapping from original node IDs to Fortran node IDs (currently identity mapping).
     """
+    from pathlib import Path
+
     network_path = Path(network_file)
     if not network_path.exists():
         raise FileNotFoundError(f"Network file not found: {network_file}")
 
-    # Dummy node map (identity mapping)
-    node_map = {}
+    dispatch = {
+        "edgelist": prepare_edgelist,
+        "bipartite": prepare_bipartite,
+        "xgi": prepare_xgi,
+        "hif": prepare_hif,
+    }
 
-    if network_format == "edgelist":
-        # For edges list, just return the file itself
-        for i, node_id in enumerate(range(1, 100)):  # dummy IDs 1..99
-            node_map[node_id] = i
-        return network_file, node_map
-
-    elif network_format == "bipartite":
-        # placeholder: return same file and dummy map
-        for i, node_id in enumerate(range(1, 101)):
-            node_map[node_id] = i
-        return network_file, node_map
-
-    elif network_format == "xgi":
-        # placeholder
-        for i, node_id in enumerate(range(1, 102)):
-            node_map[node_id] = i
-        return network_file, node_map
-
-    elif network_format == "hif":
-        # placeholder
-        for i, node_id in enumerate(range(1, 103)):
-            node_map[node_id] = i
-        return network_file, node_map
-
-    else:
+    if network_format not in dispatch:
         raise ValueError(f"Unknown network format: {network_format}")
+
+    return dispatch[network_format](network_file)
+
+def prepare_edgelist(file: str) -> NetworkFileResult:
+    """
+    Prepares an edgelist network file for Fortran.
+
+    Parameters
+    ----------
+    file : str
+        Path to the input edgelist file.
+
+    Returns
+    -------
+    file_fortran : str
+        Path to the network file ready for Fortran.
+    node_map : dict
+        Mapping from original node IDs to Fortran node IDs.
+    """
+    file_fortran, map_file, already_exists = prepare_output_files(file)
+
+    if (already_exists):
+        node_map = read_map(map_file)
+
+        return str(file_fortran), node_map
+    else:
+        n_nodes = 0
+        node_map = {}
+        edges_mapped = []
+
+        # read file and collect edges and node_map
+        with open(file, 'r') as f:
+            for line in f:
+                # split line into nodes (strings)
+                edge = line.strip().split()
+                mapped_edge = []
+                for n in edge:
+                    if n not in node_map:
+                        n_nodes += 1
+                        node_map[n] = n_nodes
+                    mapped_edge.append(node_map[n])
+                edges_mapped.append(mapped_edge)
+
+        # write edges
+        write_edges(edges_mapped, file_fortran)
+
+        # write node_map
+        write_map(node_map, map_file)
+
+        return str(file_fortran), node_map
+
+def prepare_bipartite(file: str) -> NetworkFileResult:
+    # placeholder
+    node_map = {node_id: i for i, node_id in enumerate(range(1, 101))}
+    return file, node_map
+
+def prepare_xgi(file: str) -> NetworkFileResult:
+    # placeholder
+    node_map = {node_id: i for i, node_id in enumerate(range(1, 102))}
+    return file, node_map
+
+def prepare_hif(file: str) -> NetworkFileResult:
+    # placeholder
+    node_map = {node_id: i for i, node_id in enumerate(range(1, 103))}
+    return file, node_map
+
+def prepare_output_files(input_file: str, prefix: str = "") -> Tuple[Path, Path, bool]:
+    """
+    Prepares the paths for Fortran-ready network files.
+
+    Parameters
+    ----------
+    input_file : str
+        Path to the original input file.
+    prefix : str
+        Optional prefix for the generated files (default: '').
+
+    Returns
+    -------
+    file_fortran : Path
+        Path to the Fortran-ready network file.
+    map_file : Path
+        Path to the node map file.
+    already_exists : bool
+        True if both files already exist.
+    """
+    input_path = Path(input_file)
+    dirname = input_path.parent
+    basename = input_path.name
+
+    file_fortran = dirname / f"{prefix}.{basename}_edges.hyperSIS"
+    map_file = dirname / f"{prefix}.{basename}_map_nodes.hyperSIS"
+
+    # Check if both files already exist
+    if file_fortran.exists() and map_file.exists():
+        return file_fortran, map_file, True
+
+    # Test if we can write to the directory
+    try:
+        test_file = dirname / ".write_test"
+        with open(test_file, "w") as f:
+            f.write("test")
+        test_file.unlink()
+    except Exception:
+        # Fallback to temporary directory
+        tmpdir = Path(tempfile.mkdtemp())
+        file_fortran = tmpdir / f"{basename}_edges.hyperSIS"
+        map_file = tmpdir / f"{basename}_map_nodes.hyperSIS"
+
+    return file_fortran, map_file, False
+
+def write_map(mapping: Dict[Any, int], file_path: str) -> None:
+    """
+    Writes a mapping to a CSV file.
+
+    Parameters
+    ----------
+    mapping : dict
+        Dictionary mapping any hashable type to int.
+    file_path : str
+        Path to the CSV file to write.
+    """
+    file_path = Path(file_path)
+    with file_path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        # write header
+        writer.writerow(["original_id", "fortran_id"])
+        # write data
+        for key, value in mapping.items():
+            writer.writerow([key, value])
+
+
+def read_map(file_path: str) -> Dict[str, int]:
+    """
+    Reads a mapping from a CSV file.
+
+    Parameters
+    ----------
+    file_path : str
+        Path to the CSV file to read.
+
+    Returns
+    -------
+    mapping : dict
+        Dictionary mapping string keys to int values.
+    """
+    mapping = {}
+    file_path = Path(file_path)
+    with file_path.open("r", newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            key = row["original_id"]
+            value = int(row["fortran_id"])
+            mapping[key] = value
+    return mapping
+
+def write_edges(edges: List[List[int]], file_path: str) -> None:
+    """
+    Writes a list of edges to a plain text file.
+
+    Each sublist in `edges` represents an edge (or hyperedge),
+    and the integers are separated by spaces. No header is written.
+
+    Parameters
+    ----------
+    edges : List[List[int]]
+        List of edges (or hyperedges), each as a list of node IDs.
+    file_path : str
+        Path to the file to write.
+    """
+    file_path = Path(file_path)
+    with file_path.open("w", encoding="utf-8") as f:
+        for edge in edges:
+            line = " ".join(str(node) for node in edge)
+            f.write(f"{line}\n")

@@ -1,6 +1,8 @@
 from dataclasses import dataclass
-from typing import Literal, Tuple, Union, Optional
+from typing import Literal, Tuple, Union, Optional, Dict, Any
 import numpy as np
+
+NetworkFileResult = Tuple[str, Dict[Any, int]]
 
 @dataclass
 class TemporalResult:
