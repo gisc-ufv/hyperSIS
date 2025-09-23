@@ -62,57 +62,90 @@ def prepare_edgelist(file: str, delimiter: str, comment: str, cache: bool) -> Ne
     node_map : dict
         Mapping from original node IDs to Fortran node IDs.
     """
-    file_fortran, map_file, already_exists = prepare_output_files(file)
+    file_fortran, map_file, already_exists = prepare_output_files(file, cache=cache)
 
-    if (already_exists):
+    if already_exists:
         node_map = read_map(map_file)
-
         return str(file_fortran), node_map
-    else:
-        n_nodes = 0
-        node_map = {}
-        edges_mapped = []
-        max_num_nodes_in_an_edge = 0
 
-        # read file and collect edges and node_map
-        with open(file, 'r') as f:
-            for line in f:
-                # skip comments
-                if comment is not None and line.startswith(comment):
+    n_nodes = 0
+    node_map = {}
+    edges_mapped = []
+    max_num_nodes_in_an_edge = 0
+
+    # read file and collect edges and node_map
+    with open(file, 'r') as f:
+        for line in f:
+            # skip comments
+            if comment is not None and line.startswith(comment):
+                continue
+
+            # split line into nodes (strings)
+            edge = line.strip().split(delimiter)
+            mapped_edge = []
+            for _n in edge:
+                n = _n.strip()
+                if n == "":
                     continue
+                if n not in node_map:
+                    n_nodes += 1
+                    node_map[n] = n_nodes
+                mapped_edge.append(node_map[n])
+            edges_mapped.append(mapped_edge)
+            if len(mapped_edge) > max_num_nodes_in_an_edge:
+                max_num_nodes_in_an_edge = len(mapped_edge)
 
-                # split line into nodes (strings)
-                edge = line.strip().split(delimiter)
-                mapped_edge = []
-                for n in edge:
-                    if n not in node_map:
-                        n_nodes += 1
-                        node_map[n] = n_nodes
-                    mapped_edge.append(node_map[n])
-                edges_mapped.append(mapped_edge)
-                if len(mapped_edge) > max_num_nodes_in_an_edge:
-                    max_num_nodes_in_an_edge = len(mapped_edge)
+    # write edges
+    write_edges(edges_mapped, file_fortran)
 
-        # write edges
-        write_edges(edges_mapped, file_fortran)
+    # write node_map
+    write_map(node_map, map_file)
 
-        # write node_map
-        write_map(node_map, map_file)
+    if max_num_nodes_in_an_edge < 2:
+        raise ValueError("The edgelist must contain at least one edge with two nodes. Please check your input file and delimiter setting.")
 
-        if max_num_nodes_in_an_edge < 2:
-            raise ValueError("The edgelist must contain at least one edge with two nodes. Please check your input file and delimiter setting.")
-
-        return str(file_fortran), node_map
+    return str(file_fortran), node_map
 
 def prepare_fortran_edgelist(file: str, delimiter: str, comment: str, cache: bool) -> NetworkFileResult:
     # we do not create a new file!
-
     return str(file), {}
 
 def prepare_bipartite(file: str, delimiter: str, comment: str, cache: bool) -> NetworkFileResult:
-    # placeholder
-    node_map = {node_id: i for i, node_id in enumerate(range(1, 101))}
-    return file, node_map
+    # In this case, we consider that each line contains node: edge
+    file_fortran, map_file, already_exists = prepare_output_files(file, cache=cache)
+
+    if already_exists:
+        node_map = read_map(map_file)
+        return file_fortran, node_map
+
+    # If not cached, we need to process the file
+    node_map = {}
+    edges_mapped = {}
+    with open(file, 'r') as f:
+        for line in f:
+            if comment is not None and line.startswith(comment):
+                continue
+            # Here we expect lines to be in the format "node: edge"
+            parts = line.strip().split(delimiter)
+            if len(parts) != 2: # we just ignore malformed lines
+                continue
+            _node, _edge = parts
+            node = _node.strip()
+            edge = _edge.strip()
+            if node == "" or edge == "":
+                continue
+            if node not in node_map:
+                node_map[node] = len(node_map) + 1
+            edges_mapped[edge] = edges_mapped.get(edge, []) + [node_map[node]]
+
+    edges_mapped = list(edges_mapped.values())
+
+    # write edges
+    write_edges(edges_mapped, file_fortran)
+
+    # write node_map
+    write_map(node_map, map_file)
+    return file_fortran, node_map
 
 def prepare_xgi(file: str, delimiter: str, comment: str, cache: bool) -> NetworkFileResult:
     # placeholder
