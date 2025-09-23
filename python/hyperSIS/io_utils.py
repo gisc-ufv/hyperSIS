@@ -256,21 +256,21 @@ def prepare_xgi_json(file: str, cache: bool) -> NetworkFileResult:
         node_map = read_map(map_file)
         return file_fortran, node_map
 
-    H = xgi.readwrite.json.read_xgi_json(file)
+    H = xgi.readwrite.json.read_json(file)
 
     return prepare_xgi_object(H)
 
 
-def prepare_hif(file: str, delimiter: str, comment: str, cache: bool) -> NetworkFileResult:
+def prepare_hif(file: str, cache: bool) -> NetworkFileResult:
     file_fortran, map_file, already_exists = prepare_output_files(file, cache=cache)
 
     if already_exists:
         node_map = read_map(map_file)
         return file_fortran, node_map
 
-    H = xgi.read_hif(file)
+    H = xgi.readwrite.hif.read_hif(file)
 
-    return prepare_xgi_object(H, cache)
+    return prepare_xgi_object(H)
 
 def prepare_output_files(input_file: str, prefix: str = "", cache: bool = False) -> Tuple[Path, Path, bool]:
     """
