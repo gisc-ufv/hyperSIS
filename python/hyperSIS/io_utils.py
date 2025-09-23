@@ -1,8 +1,9 @@
 from pathlib import Path
-from typing import Tuple, Dict, Any, List
+from typing import Tuple, Dict, Any, List, Union
 import tempfile
 import numpy as np
 import csv
+import xgi
 
 import gzip
 import bz2
@@ -72,9 +73,8 @@ def prepare_network_file(spec: NetworkFormat) -> NetworkFileResult:
         return prepare_bipartite(file, delimiter, comment, cache)
 
     elif kind == "xgi":
-        _, source, *rest = spec
-        cache = rest[0] if len(rest) > 0 else False
-        return prepare_xgi(source, cache)
+        _, source = spec
+        return prepare_xgi(source)
 
     elif kind == "xgi_json":
         _, file, *rest = spec
@@ -82,7 +82,7 @@ def prepare_network_file(spec: NetworkFormat) -> NetworkFileResult:
         file_path = Path(file)
         if not file_path.exists():
             raise FileNotFoundError(f"XGI JSON file not found: {file}")
-        return prepare_xgi(file, cache)
+        return prepare_xgi_json(file, cache)
 
     elif kind == "hif":
         _, file, *rest = spec
@@ -201,21 +201,76 @@ def prepare_bipartite(file: str, delimiter: str, comment: str, cache: bool) -> N
 
     return file_fortran, node_map
 
-def prepare_xgi(file: str, delimiter: str, comment: str, cache: bool) -> NetworkFileResult:
+def prepare_xgi_object(H: xgi.core.hypergraph) -> NetworkFileResult:
+    # use a temp file name, randomized
+    temp_file_name = tempfile.mkstemp()[1]
+    file_fortran, map_file, already_exists = prepare_output_files(temp_file_name, cache=False)
+
+    if already_exists:
+        node_map = read_map(map_file)
+        return file_fortran, node_map
+
+    edgelist = xgi.readwrite.edgelist.generate_edgelist(H)
+
+    node_map = {}
+    edges_mapped = []
+    n_nodes = 0
+    max_num_nodes_in_an_edge = 0
+
+    for edge in edgelist:
+        mapped_edge = []
+        for n in edge:
+            if n not in node_map:
+                n_nodes += 1
+                node_map[n] = n_nodes
+            mapped_edge.append(node_map[n])
+        edges_mapped.append(mapped_edge)
+        if len(mapped_edge) > max_num_nodes_in_an_edge:
+            max_num_nodes_in_an_edge = len(mapped_edge)
+
+    # write edges
+    write_edges(edges_mapped, file_fortran)
+
+    # write node_map
+    write_map(node_map, map_file)
+
+    if max_num_nodes_in_an_edge < 2:
+        raise ValueError("The hypergraph must contain at least one edge with two nodes. Please check your input file.")
+
+    return file_fortran, node_map
+
+def prepare_xgi(name_or_object: Union[str, xgi.core.hypergraph.Hypergraph]) -> NetworkFileResult:
+
+    # check if file is a path or a name of a pre-loaded object
+    if isinstance(name_or_object, xgi.core.hypergraph.Hypergraph):
+        H = name_or_object
+    else:
+        H = xgi.readwrite.xgi_data.load_xgi_data(name_or_object)
+
+    return prepare_xgi_object(H)
+
+def prepare_xgi_json(file: str, cache: bool) -> NetworkFileResult:
     file_fortran, map_file, already_exists = prepare_output_files(file, cache=cache)
 
     if already_exists:
         node_map = read_map(map_file)
         return file_fortran, node_map
 
-    # if not cached, we need to process the file
-    # we have two options: to use H = xgi.load_xgi_data("<dataset_name>"), if the file does not exist
-    # or to use H = xgi.read_xgi_json("<file>")
+    H = xgi.readwrite.json.read_xgi_json(file)
+
+    return prepare_xgi_object(H)
+
 
 def prepare_hif(file: str, delimiter: str, comment: str, cache: bool) -> NetworkFileResult:
-    # placeholder
-    node_map = {node_id: i for i, node_id in enumerate(range(1, 103))}
-    return file, node_map
+    file_fortran, map_file, already_exists = prepare_output_files(file, cache=cache)
+
+    if already_exists:
+        node_map = read_map(map_file)
+        return file_fortran, node_map
+
+    H = xgi.read_hif(file)
+
+    return prepare_xgi_object(H, cache)
 
 def prepare_output_files(input_file: str, prefix: str = "", cache: bool = False) -> Tuple[Path, Path, bool]:
     """
