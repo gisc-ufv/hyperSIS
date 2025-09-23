@@ -4,7 +4,7 @@ import tempfile
 import numpy as np
 import csv
 
-from .types import NetworkFileResult
+from .types import NetworkFileResult, NetworkFormat
 
 def process_results(directory: str) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     """
@@ -23,28 +23,73 @@ def process_results(directory: str) -> Tuple[np.ndarray, np.ndarray, np.ndarray,
 
     return times, rho_mean, rho_var, n_samples
 
-def prepare_network_file(network_file: str, network_file_delimiter : str, network_file_comment: str, network_file_cache: bool, network_format: str) -> NetworkFileResult:
+def prepare_network_file(spec: NetworkFormat) -> NetworkFileResult:
     """
     Prepares the network file for the Fortran simulation.
+
+    Parameters
+    ----------
+    spec : NetworkFormat
+        Tuple describing the network and its format.
+
+    Returns
+    -------
+    NetworkFileResult
+        Paths for Fortran-ready network file, map file, and already_exists flag.
     """
-    from pathlib import Path
+    kind = spec[0]
 
-    network_path = Path(network_file)
-    if not network_path.exists():
-        raise FileNotFoundError(f"Network file not found: {network_file}")
+    if kind == "edgelist":
+        _, file, *rest = spec
+        delimiter = rest[0] if len(rest) > 0 else None
+        comment   = rest[1] if len(rest) > 1 else "#"
+        cache     = rest[2] if len(rest) > 2 else False
 
-    dispatch = {
-        "edgelist": prepare_edgelist,
-        "fortran-edgelist": prepare_fortran_edgelist,
-        "bipartite": prepare_bipartite,
-        "xgi": prepare_xgi,
-        "hif": prepare_hif,
-    }
+        file_path = Path(file)
+        if not file_path.exists():
+            raise FileNotFoundError(f"Network file not found: {file}")
+        return prepare_edgelist(file, delimiter, comment, cache)
 
-    if network_format not in dispatch:
-        raise ValueError(f"Unknown network format: {network_format}")
+    elif kind == "fortran-edgelist":
+        _, file = spec
+        file_path = Path(file)
+        if not file_path.exists():
+            raise FileNotFoundError(f"Network file not found: {file}")
+        return prepare_fortran_edgelist(file)
 
-    return dispatch[network_format](network_file, network_file_delimiter, network_file_comment, network_file_cache)
+    elif kind == "bipartite":
+        _, file, *rest = spec
+        delimiter = rest[0] if len(rest) > 0 else None
+        comment   = rest[1] if len(rest) > 1 else "#"
+        cache     = rest[2] if len(rest) > 2 else False
+        file_path = Path(file)
+        if not file_path.exists():
+            raise FileNotFoundError(f"Network file not found: {file}")
+        return prepare_bipartite(file, delimiter, comment, cache)
+
+    elif kind == "xgi":
+        _, source, *rest = spec
+        cache = rest[0] if len(rest) > 0 else False
+        return prepare_xgi(source, cache)
+
+    elif kind == "xgi_json":
+        _, file, *rest = spec
+        cache = rest[0] if len(rest) > 0 else False
+        file_path = Path(file)
+        if not file_path.exists():
+            raise FileNotFoundError(f"XGI JSON file not found: {file}")
+        return prepare_xgi(file, cache)
+
+    elif kind == "hif":
+        _, file, *rest = spec
+        cache = rest[0] if len(rest) > 0 else False
+        file_path = Path(file)
+        if not file_path.exists():
+            raise FileNotFoundError(f"HIF network file not found: {file}")
+        return prepare_hif(file, cache)
+
+    else:
+        raise ValueError(f"Unknown network format: {kind}")
 
 def prepare_edgelist(file: str, delimiter: str, comment: str, cache: bool) -> NetworkFileResult:
     """
@@ -106,12 +151,11 @@ def prepare_edgelist(file: str, delimiter: str, comment: str, cache: bool) -> Ne
 
     return str(file_fortran), node_map
 
-def prepare_fortran_edgelist(file: str, delimiter: str, comment: str, cache: bool) -> NetworkFileResult:
+def prepare_fortran_edgelist(file: str) -> NetworkFileResult:
     # we do not create a new file!
     return str(file), {}
 
 def prepare_bipartite(file: str, delimiter: str, comment: str, cache: bool) -> NetworkFileResult:
-    # In this case, we consider that each line contains node: edge
     file_fortran, map_file, already_exists = prepare_output_files(file, cache=cache)
 
     if already_exists:
@@ -119,6 +163,7 @@ def prepare_bipartite(file: str, delimiter: str, comment: str, cache: bool) -> N
         return file_fortran, node_map
 
     # If not cached, we need to process the file
+    # In this case, we consider that each line contains node: edge
     node_map = {}
     edges_mapped = {}
     with open(file, 'r') as f:
@@ -153,9 +198,15 @@ def prepare_bipartite(file: str, delimiter: str, comment: str, cache: bool) -> N
     return file_fortran, node_map
 
 def prepare_xgi(file: str, delimiter: str, comment: str, cache: bool) -> NetworkFileResult:
-    # placeholder
-    node_map = {node_id: i for i, node_id in enumerate(range(1, 102))}
-    return file, node_map
+    file_fortran, map_file, already_exists = prepare_output_files(file, cache=cache)
+
+    if already_exists:
+        node_map = read_map(map_file)
+        return file_fortran, node_map
+
+    # if not cached, we need to process the file
+    # we have two options: to use H = xgi.load_xgi_data("<dataset_name>"), if the file does not exist
+    # or to use H = xgi.read_xgi_json("<file>")
 
 def prepare_hif(file: str, delimiter: str, comment: str, cache: bool) -> NetworkFileResult:
     # placeholder

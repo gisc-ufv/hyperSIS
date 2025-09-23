@@ -1,8 +1,49 @@
 from dataclasses import dataclass
 from typing import Literal, Tuple, Union, Optional, Dict, Any
 import numpy as np
+import xgi
 
 NetworkFileResult = Tuple[str, Dict[Any, int]]
+
+NetworkFormatEdgelist = Tuple[
+    Literal["edgelist"], str, Optional[str], Optional[str], Optional[bool]
+]
+# ("edgelist", path, delimiter, comment, cache)
+
+NetworkFormatFortranEdgelist = Tuple[
+    Literal["fortran-edgelist"], str
+]
+# ("fortran-edgelist", path, cache)
+
+NetworkFormatBipartite = Tuple[
+    Literal["bipartite"], str, Optional[str], Optional[str], Optional[bool]
+]
+# ("bipartite", path, delimiter, comment, cache)
+
+NetworkFormatXGI = Tuple[
+    Literal["xgi"], Union[str, xgi.core.hypergraph], Optional[bool]
+]
+# ("xgi", name_or_object, cache)
+
+NetworkFormatJSON = Tuple[
+    Literal["xgi_json"], str, Optional[bool]
+]
+# ("xgi_json", path, cache)
+
+NetworkFormatHIF = Tuple[
+    Literal["hif"], str, Optional[bool]
+]
+# ("hif", path, cache)
+
+
+NetworkFormat = Union[
+    NetworkFormatEdgelist,
+    NetworkFormatFortranEdgelist,
+    NetworkFormatBipartite,
+    NetworkFormatXGI,
+    NetworkFormatJSON,
+    NetworkFormatHIF,
+]
 
 @dataclass
 class TemporalResult:
@@ -13,7 +54,7 @@ class TemporalResult:
 
 @dataclass
 class SimulationResult:
-    network_file: str
+    network: NetworkFormat
     node_map: dict
     temporal: TemporalResult
 
@@ -32,17 +73,14 @@ class SimulationArgs:
         Random seed.
     remove_files : bool
         Remove temporary files after execution.
-    network_file : str
-        Path to the network edgelist file.
-    network_file_delimiter : Optional[str]
-        Delimiter used in the network file. Default is None (any whitespace). There is no auto-detection.
-    network_file_comment : Optional[str]
-        Comment character in the network file. Default is '#'. If None, no comments are ignored.
-    network_file_cache: Optional[bool]
-        Whether to cache the processed network file for faster subsequent runs. Default is False.
-    network_format : str
-        Format of the input network file. Options are:
-        'edgelist' (default), 'bipartite', 'xgi_json', or 'hif'.
+    network: NetworkFormat
+        Network specification as a tuple ([optional parameters in brackets]):
+        ("edgelist", path, [delimiter], [comment], [cache])
+        ("fortran-edgelist", path, [cache])
+        ("bipartite", path, [delimiter], [comment], [cache])
+        ("xgi", name_or_object, [cache])
+        ("xgi_json", path, [cache])
+        ("hif", path, [cache])
     output_dir : Optional[str]
         Directory to store simulation output. If None, uses temporary folder.
     algorithm : str
@@ -75,11 +113,12 @@ class SimulationArgs:
     remove_files: bool = False
 
     # IO
-    network_file: str = "example.edgelist"
-    network_file_delimiter: Optional[str] = ' '
-    network_file_comment: Optional[str] = '#'
-    network_file_cache: Optional[bool] = False
-    network_format: Literal["edgelist", "fortran-edgelist", "bipartite", "xgi", "hif"] = "edgelist"
+    network: NetworkFormat = ("edgelist", # default
+                              "example.edgelist", # path
+                              None, # delimiter
+                              "#", # comment
+                              False # cache
+                            )
     output_dir: Optional[str] = None
 
     # Algorithm

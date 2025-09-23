@@ -38,11 +38,7 @@ def run_simulation(beta1: float, args: SimulationArgs) -> SimulationResult:
     try:
         # Here we prepare the network file for Fortran
         network_file_fortran, map_nodes = prepare_network_file(
-            args.network_file,
-            args.network_file_delimiter,
-            args.network_file_comment,
-            args.network_file_cache,
-            args.network_format
+            args.network
         )
 
         # Chooses initial_fraction or initial_number
@@ -95,8 +91,8 @@ def run_simulation(beta1: float, args: SimulationArgs) -> SimulationResult:
 
         # Create SimulationResult dataclass instance
         result = SimulationResult(
-            network_file=args.network_file,  # original network file
-            node_map=map_nodes,              # mapping from original node IDs to Fortran node IDs
+            network=args.network, # original network specification
+            node_map=map_nodes, # mapping from original node IDs to Fortran node IDs
             temporal=temporal
         )
 
