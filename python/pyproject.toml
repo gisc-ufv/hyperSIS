@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hyperSIS"
-version = "0.1.0"
+version = "1.0.0"
 description = "Python wrapper for hyperSIS Fortran simulations"
 authors = [
   {name = "Wesley Cota", email = "wesley.cota@ufv.br"}
