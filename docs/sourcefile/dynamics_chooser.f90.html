@@ -1,0 +1,527 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Documentation for HyperSIS">
+    <meta name="author" content="Wesley Cota <https://wcota.me/>" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>dynamics_chooser.f90 &ndash; HyperSIS</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">HyperSIS </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>dynamics_chooser.f90
+      <small>Source File</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 1.7% of total for source files.">23 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/dynamics_chooser.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+            <li class="breadcrumb-item active" aria-current="page">dynamics_chooser.f90</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#mods-0"
+         aria-expanded="false" aria-controls="mods-0">
+         <h4 class="card-header bg-primary text-white">Modules</h4>
+      </a>
+      <div id="mods-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/hypersis_dynamics_chooser_mod.html">hyperSIS_dynamics_chooser_mod</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../sourcefile/dynamics_chooser.f90.html#src">dynamics_chooser.f90</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    <div class="col-md-9" id='text'>
+      
+      <br>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">This file depends on</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 13.1.1 (0)
+ -->
+<!-- Title: sourcefile~~dynamics_chooser.f90~~EfferentGraph Pages: 1 -->
+<svg id="sourcefiledynamics_chooserf90EfferentGraph" width="619pt" height="136pt"
+ viewBox="0.00 0.00 619.00 136.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~dynamics_chooser.f90~~EfferentGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 131.76)">
+<title>sourcefile~~dynamics_chooser.f90~~EfferentGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-131.76 615.1,-131.76 615.1,4 -4,4"/>
+<!-- sourcefile~dynamics_chooser.f90 -->
+<g id="sourcefile~~dynamics_chooser.f90~~EfferentGraph_node1" class="node">
+<title>sourcefile~dynamics_chooser.f90</title>
+<polygon fill="none" stroke="black" points="611.1,-83.52 493.08,-83.52 493.08,-60 611.1,-60 611.1,-83.52"/>
+<text xml:space="preserve" text-anchor="middle" x="552.09" y="-67.79" font-family="Helvetica,sans-Serif" font-size="10.50">dynamics_chooser.f90</text>
+</g>
+<!-- sourcefile~dynamics_base.f90 -->
+<g id="sourcefile~~dynamics_chooser.f90~~EfferentGraph_node2" class="node">
+<title>sourcefile~dynamics_base.f90</title>
+<g id="a_sourcefile~~dynamics_chooser.f90~~EfferentGraph_node2"><a xlink:href="../sourcefile/dynamics_base.f90.html" xlink:title="dynamics_base.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="297.06,-65.52 193.29,-65.52 193.29,-42 297.06,-42 297.06,-65.52"/>
+<text xml:space="preserve" text-anchor="middle" x="245.18" y="-49.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dynamics_base.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~dynamics_chooser.f90&#45;&gt;sourcefile~dynamics_base.f90 -->
+<g id="sourcefile~~dynamics_chooser.f90~~EfferentGraph_edge1" class="edge">
+<title>sourcefile~dynamics_chooser.f90&#45;&gt;sourcefile~dynamics_base.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M492.66,-68.31C439.98,-65.2 362.72,-60.64 308.79,-57.46"/>
+<polygon fill="#000000" stroke="#000000" points="309.01,-53.96 298.82,-56.87 308.6,-60.95 309.01,-53.96"/>
+</g>
+<!-- sourcefile~dynamics_hb_oga.f90 -->
+<g id="sourcefile~~dynamics_chooser.f90~~EfferentGraph_node3" class="node">
+<title>sourcefile~dynamics_hb_oga.f90</title>
+<g id="a_sourcefile~~dynamics_chooser.f90~~EfferentGraph_node3"><a xlink:href="../sourcefile/dynamics_hb_oga.f90.html" xlink:title="dynamics_HB_OGA.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="457.08,-103.52 333.06,-103.52 333.06,-80 457.08,-80 457.08,-103.52"/>
+<text xml:space="preserve" text-anchor="middle" x="395.07" y="-87.79" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dynamics_HB_OGA.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~dynamics_chooser.f90&#45;&gt;sourcefile~dynamics_hb_oga.f90 -->
+<g id="sourcefile~~dynamics_chooser.f90~~EfferentGraph_edge2" class="edge">
+<title>sourcefile~dynamics_chooser.f90&#45;&gt;sourcefile~dynamics_hb_oga.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M492.93,-79.26C485.04,-80.28 476.87,-81.34 468.78,-82.38"/>
+<polygon fill="#000000" stroke="#000000" points="468.38,-78.9 458.91,-83.65 469.28,-85.84 468.38,-78.9"/>
+</g>
+<!-- sourcefile~dynamics_nb_oga.f90 -->
+<g id="sourcefile~~dynamics_chooser.f90~~EfferentGraph_node4" class="node">
+<title>sourcefile~dynamics_nb_oga.f90</title>
+<g id="a_sourcefile~~dynamics_chooser.f90~~EfferentGraph_node4"><a xlink:href="../sourcefile/dynamics_nb_oga.f90.html" xlink:title="dynamics_NB_OGA.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="457.08,-23.52 333.06,-23.52 333.06,0 457.08,0 457.08,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="395.07" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dynamics_NB_OGA.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~dynamics_chooser.f90&#45;&gt;sourcefile~dynamics_nb_oga.f90 -->
+<g id="sourcefile~~dynamics_chooser.f90~~EfferentGraph_edge3" class="edge">
+<title>sourcefile~dynamics_chooser.f90&#45;&gt;sourcefile~dynamics_nb_oga.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M519.72,-59.62C496.26,-50.54 463.94,-38.03 438.23,-28.08"/>
+<polygon fill="#000000" stroke="#000000" points="439.66,-24.88 429.07,-24.53 437.13,-31.41 439.66,-24.88"/>
+</g>
+<!-- sourcefile~kinds.f90 -->
+<g id="sourcefile~~dynamics_chooser.f90~~EfferentGraph_node5" class="node">
+<title>sourcefile~kinds.f90</title>
+<g id="a_sourcefile~~dynamics_chooser.f90~~EfferentGraph_node5"><a xlink:href="../sourcefile/kinds.f90.html" xlink:title="kinds.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="54.27,-65.52 0,-65.52 0,-42 54.27,-42 54.27,-65.52"/>
+<text xml:space="preserve" text-anchor="middle" x="27.13" y="-49.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">kinds.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~dynamics_chooser.f90&#45;&gt;sourcefile~kinds.f90 -->
+<g id="sourcefile~~dynamics_chooser.f90~~EfferentGraph_edge4" class="edge">
+<title>sourcefile~dynamics_chooser.f90&#45;&gt;sourcefile~kinds.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M530.27,-83.83C511.75,-93.82 483.57,-107.23 457.08,-112.76 312.27,-142.96 269.95,-122.2 124.78,-93.76"/>
+</g>
+<!-- sourcefile~dynamics_base.f90&#45;&gt;sourcefile~kinds.f90 -->
+<g id="sourcefile~~dynamics_chooser.f90~~EfferentGraph_edge5" class="edge">
+<title>sourcefile~dynamics_base.f90&#45;&gt;sourcefile~kinds.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M217.94,-65.94C188.59,-78.96 142.8,-97.29 124.78,-93.76"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M122.78,-93.76C100.93,-89.48 77.89,-79.87 60.01,-71.14"/>
+<polygon fill="#000000" stroke="#000000" points="61.73,-68.08 51.22,-66.69 58.57,-74.33 61.73,-68.08"/>
+</g>
+<!-- sourcefile~network.f90 -->
+<g id="sourcefile~~dynamics_chooser.f90~~EfferentGraph_node6" class="node">
+<title>sourcefile~network.f90</title>
+<g id="a_sourcefile~~dynamics_chooser.f90~~EfferentGraph_node6"><a xlink:href="../sourcefile/network.f90.html" xlink:title="network.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="157.29,-65.52 90.27,-65.52 90.27,-42 157.29,-42 157.29,-65.52"/>
+<text xml:space="preserve" text-anchor="middle" x="123.78" y="-49.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">network.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~dynamics_base.f90&#45;&gt;sourcefile~network.f90 -->
+<g id="sourcefile~~dynamics_chooser.f90~~EfferentGraph_edge6" class="edge">
+<title>sourcefile~dynamics_base.f90&#45;&gt;sourcefile~network.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M192.85,-53.76C184.96,-53.76 176.87,-53.76 169.15,-53.76"/>
+<polygon fill="#000000" stroke="#000000" points="169.29,-50.26 159.29,-53.76 169.29,-57.26 169.29,-50.26"/>
+</g>
+<!-- sourcefile~dynamics_hb_oga.f90&#45;&gt;sourcefile~dynamics_base.f90 -->
+<g id="sourcefile~~dynamics_chooser.f90~~EfferentGraph_edge7" class="edge">
+<title>sourcefile~dynamics_hb_oga.f90&#45;&gt;sourcefile~dynamics_base.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M346.46,-79.53C333.13,-76.1 318.5,-72.34 304.62,-68.78"/>
+<polygon fill="#000000" stroke="#000000" points="305.72,-65.45 295.16,-66.35 303.98,-72.22 305.72,-65.45"/>
+</g>
+<!-- sourcefile~dynamics_hb_oga.f90&#45;&gt;sourcefile~kinds.f90 -->
+<g id="sourcefile~~dynamics_chooser.f90~~EfferentGraph_edge8" class="edge">
+<title>sourcefile~dynamics_hb_oga.f90&#45;&gt;sourcefile~kinds.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M244.18,-93.76C191.26,-89.79 176.85,-103.96 124.78,-93.76"/>
+</g>
+<!-- sourcefile~dynamics_hb_oga.f90&#45;&gt;sourcefile~network.f90 -->
+<g id="sourcefile~~dynamics_chooser.f90~~EfferentGraph_edge9" class="edge">
+<title>sourcefile~dynamics_hb_oga.f90&#45;&gt;sourcefile~network.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M332.83,-95.01C306.18,-95.8 274.6,-95.89 246.18,-93.76"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M244.18,-93.76C214.63,-91.54 182.9,-80.46 159.59,-70.52"/>
+<polygon fill="#000000" stroke="#000000" points="161.13,-67.38 150.57,-66.54 158.3,-73.78 161.13,-67.38"/>
+</g>
+<!-- sourcefile~dynamics_nb_oga.f90&#45;&gt;sourcefile~dynamics_base.f90 -->
+<g id="sourcefile~~dynamics_chooser.f90~~EfferentGraph_edge10" class="edge">
+<title>sourcefile~dynamics_nb_oga.f90&#45;&gt;sourcefile~dynamics_base.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M351.29,-23.91C335.27,-28.46 316.85,-33.69 299.95,-38.49"/>
+<polygon fill="#000000" stroke="#000000" points="299.23,-35.05 290.57,-41.15 301.14,-41.79 299.23,-35.05"/>
+</g>
+<!-- sourcefile~dynamics_nb_oga.f90&#45;&gt;sourcefile~kinds.f90 -->
+<g id="sourcefile~~dynamics_chooser.f90~~EfferentGraph_edge11" class="edge">
+<title>sourcefile~dynamics_nb_oga.f90&#45;&gt;sourcefile~kinds.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M332.8,-10.54C306.14,-10.54 274.57,-11.25 246.18,-13.76"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M244.18,-13.76C175.52,-19.84 157.46,-17.43 90.27,-32.76 82.1,-34.62 73.5,-37.15 65.38,-39.81"/>
+<polygon fill="#000000" stroke="#000000" points="64.47,-36.42 56.14,-42.96 66.73,-43.04 64.47,-36.42"/>
+</g>
+<!-- sourcefile~dynamics_nb_oga.f90&#45;&gt;sourcefile~network.f90 -->
+<g id="sourcefile~~dynamics_chooser.f90~~EfferentGraph_edge12" class="edge">
+<title>sourcefile~dynamics_nb_oga.f90&#45;&gt;sourcefile~network.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M244.18,-13.76C214.85,-16.36 183.34,-27.29 160.05,-37.07"/>
+<polygon fill="#000000" stroke="#000000" points="158.81,-33.79 151.04,-40.99 161.61,-40.21 158.81,-33.79"/>
+</g>
+<!-- sourcefile~network.f90&#45;&gt;sourcefile~kinds.f90 -->
+<g id="sourcefile~~dynamics_chooser.f90~~EfferentGraph_edge13" class="edge">
+<title>sourcefile~network.f90&#45;&gt;sourcefile~kinds.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M89.94,-53.76C82.2,-53.76 73.87,-53.76 65.93,-53.76"/>
+<polygon fill="#000000" stroke="#000000" points="66.17,-50.26 56.17,-53.76 66.17,-57.26 66.17,-50.26"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#EfferentGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="EfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 13.1.1 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="188pt" height="32pt"
+ viewBox="0.00 0.00 188.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 27.52)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-27.52 183.89,-27.52 183.89,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="65.52,-23.52 0,-23.52 0,0 65.52,0 65.52,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="32.76" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="179.89,-23.52 83.62,-23.52 83.62,0 179.89,0 179.89,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="131.76" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Files dependent on this one</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 13.1.1 (0)
+ -->
+<!-- Title: sourcefile~~dynamics_chooser.f90~~AfferentGraph Pages: 1 -->
+<svg id="sourcefiledynamics_chooserf90AfferentGraph" width="343pt" height="32pt"
+ viewBox="0.00 0.00 343.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~dynamics_chooser.f90~~AfferentGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 27.52)">
+<title>sourcefile~~dynamics_chooser.f90~~AfferentGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-27.52 339.31,-27.52 339.31,4 -4,4"/>
+<!-- sourcefile~dynamics_chooser.f90 -->
+<g id="sourcefile~~dynamics_chooser.f90~~AfferentGraph_node1" class="node">
+<title>sourcefile~dynamics_chooser.f90</title>
+<polygon fill="none" stroke="black" points="118.02,-23.52 0,-23.52 0,0 118.02,0 118.02,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="59.01" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50">dynamics_chooser.f90</text>
+</g>
+<!-- sourcefile~dynamics.f90 -->
+<g id="sourcefile~~dynamics_chooser.f90~~AfferentGraph_node2" class="node">
+<title>sourcefile~dynamics.f90</title>
+<g id="a_sourcefile~~dynamics_chooser.f90~~AfferentGraph_node2"><a xlink:href="../sourcefile/dynamics.f90.html" xlink:title="dynamics.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="228.54,-23.52 154.02,-23.52 154.02,0 228.54,0 228.54,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="191.28" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dynamics.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~dynamics.f90&#45;&gt;sourcefile~dynamics_chooser.f90 -->
+<g id="sourcefile~~dynamics_chooser.f90~~AfferentGraph_edge1" class="edge">
+<title>sourcefile~dynamics.f90&#45;&gt;sourcefile~dynamics_chooser.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M153.65,-11.76C146.09,-11.76 137.9,-11.76 129.61,-11.76"/>
+<polygon fill="#000000" stroke="#000000" points="129.82,-8.26 119.82,-11.76 129.82,-15.26 129.82,-8.26"/>
+</g>
+<!-- sourcefile~common.f90 -->
+<g id="sourcefile~~dynamics_chooser.f90~~AfferentGraph_node3" class="node">
+<title>sourcefile~common.f90</title>
+<g id="a_sourcefile~~dynamics_chooser.f90~~AfferentGraph_node3"><a xlink:href="../sourcefile/common.f90.html" xlink:title="common.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="335.31,-23.52 264.54,-23.52 264.54,0 335.31,0 335.31,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="299.92" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">common.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~common.f90&#45;&gt;sourcefile~dynamics.f90 -->
+<g id="sourcefile~~dynamics_chooser.f90~~AfferentGraph_edge2" class="edge">
+<title>sourcefile~common.f90&#45;&gt;sourcefile~dynamics.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M264.3,-11.76C256.61,-11.76 248.33,-11.76 240.21,-11.76"/>
+<polygon fill="#000000" stroke="#000000" points="240.45,-8.26 230.45,-11.76 240.45,-15.26 240.45,-8.26"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#AfferentGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="AfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 13.1.1 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="188pt" height="32pt"
+ viewBox="0.00 0.00 188.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 27.52)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-27.52 183.89,-27.52 183.89,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="65.52,-23.52 0,-23.52 0,0 65.52,0 65.52,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="32.76" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="179.89,-23.52 83.62,-23.52 83.62,0 179.89,0 179.89,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="131.76" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+<br>
+      <section>
+        <h2><span class="anchor" id="src"></span>Source Code</h2>
+        <div class="hl codehilite"><pre><span></span><a id="ln-1" name="ln-1" href="#ln-1"></a><span class="k">module </span><span class="n">hyperSIS_dynamics_chooser_mod</span>
+<a id="ln-2" name="ln-2" href="#ln-2"></a><span class="w">    </span><span class="k">use </span><span class="n">hyperSIS_kinds_mod</span>
+<a id="ln-3" name="ln-3" href="#ln-3"></a><span class="w">    </span><span class="k">use </span><span class="n">hyperSIS_dynamics_base_mod</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">net_state_base_t</span>
+<a id="ln-4" name="ln-4" href="#ln-4"></a><span class="w">    </span><span class="k">implicit none</span>
+<a id="ln-5" name="ln-5" href="#ln-5"></a><span class="k">    private</span>
+<a id="ln-6" name="ln-6" href="#ln-6"></a>
+<a id="ln-7" name="ln-7" href="#ln-7"></a><span class="k">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">alg_choices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;HB_OGA,NB_OGA&#39;</span>
+<a id="ln-8" name="ln-8" href="#ln-8"></a>
+<a id="ln-9" name="ln-9" href="#ln-9"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">net_state_choose</span><span class="p">,</span><span class="w"> </span><span class="n">alg_choices</span>
+<a id="ln-10" name="ln-10" href="#ln-10"></a>
+<a id="ln-11" name="ln-11" href="#ln-11"></a><span class="k">contains</span>
+<a id="ln-12" name="ln-12" href="#ln-12"></a>
+<a id="ln-13" name="ln-13" href="#ln-13"></a><span class="k">    subroutine </span><span class="n">net_state_choose</span><span class="p">(</span><span class="n">net_state</span><span class="p">,</span><span class="w"> </span><span class="n">selected_algorithm</span><span class="p">)</span>
+<a id="ln-14" name="ln-14" href="#ln-14"></a>
+<a id="ln-15" name="ln-15" href="#ln-15"></a><span class="w">        </span><span class="k">use </span><span class="n">hyperSIS_dynamics_HB_OGA_mod</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">HB_OGA_mod_net_state_t</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">net_state_t</span>
+<a id="ln-16" name="ln-16" href="#ln-16"></a><span class="w">        </span><span class="k">use </span><span class="n">hyperSIS_dynamics_NB_OGA_mod</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NB_OGA_mod_net_state_t</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">net_state_t</span>
+<a id="ln-17" name="ln-17" href="#ln-17"></a>
+<a id="ln-18" name="ln-18" href="#ln-18"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">net_state_base_t</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">net_state</span>
+<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="w">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">selected_algorithm</span>
+<a id="ln-20" name="ln-20" href="#ln-20"></a>
+<a id="ln-21" name="ln-21" href="#ln-21"></a><span class="w">        </span><span class="k">select case</span><span class="w"> </span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">selected_algorithm</span><span class="p">)))</span>
+<a id="ln-22" name="ln-22" href="#ln-22"></a><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;HB_OGA&#39;</span><span class="p">)</span>
+<a id="ln-23" name="ln-23" href="#ln-23"></a><span class="w">                </span><span class="k">allocate</span><span class="p">(</span><span class="n">HB_OGA_mod_net_state_t</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">net_state</span><span class="p">)</span>
+<a id="ln-24" name="ln-24" href="#ln-24"></a><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;NB_OGA&#39;</span><span class="p">)</span>
+<a id="ln-25" name="ln-25" href="#ln-25"></a><span class="w">                </span><span class="k">allocate</span><span class="p">(</span><span class="n">NB_OGA_mod_net_state_t</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">net_state</span><span class="p">)</span>
+<a id="ln-26" name="ln-26" href="#ln-26"></a><span class="w">            </span><span class="k">case </span><span class="n">default</span>
+<a id="ln-27" name="ln-27" href="#ln-27"></a><span class="w">                </span><span class="k">error stop</span><span class="w"> </span><span class="s1">&#39;Unknown algorithm selected: &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">selected_algorithm</span><span class="p">))</span>
+<a id="ln-28" name="ln-28" href="#ln-28"></a><span class="w">        </span><span class="k">end select</span>
+<a id="ln-29" name="ln-29" href="#ln-29"></a><span class="k">    end subroutine</span>
+<a id="ln-30" name="ln-30" href="#ln-30"></a>
+<a id="ln-31" name="ln-31" href="#ln-31"></a><span class="k">end module</span>
+</pre></div>
+
+      </section>
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              HyperSIS
+ was developed by Wesley Cota <https://wcota.me/><br>              &copy; 2025 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

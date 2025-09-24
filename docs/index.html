@@ -1,0 +1,391 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Documentation for HyperSIS">
+    <meta name="author" content="Wesley Cota <https://wcota.me/>" >
+    <link rel="icon" href="./favicon.png">
+
+    <title> HyperSIS </title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="./css/fontawesome.min.css" rel="stylesheet">
+    <link href="./css/brands.min.css" rel="stylesheet">
+    <link href="./css/regular.min.css" rel="stylesheet">
+    <link href="./css/solid.min.css" rel="stylesheet">
+    <link href="./css/v4-font-face.min.css" rel="stylesheet">
+    <link href="./css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="./css/local.css" rel="stylesheet">
+    <link href="./css/pygments.css" rel="stylesheet">
+    <script src="./js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="./index.html">HyperSIS </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="./lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="./search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <!-- Main component for a primary marketing message or call to action -->
+    <div class="p-5 mb-4 bg-light border rounded-3" id="jumbotron">
+      
+        <p> Find us on&hellip;</p>
+      <p>
+        <a class="btn btn-lg btn-primary" href="https://github.com/gisc-ufv/hyperSIS" role="button">GitHub</a>
+        
+        
+        
+        
+      </p>
+    </div>
+
+      <div class="row" id='text'>
+        <div class=col-md-8>
+          <h1>HyperSIS</h1>
+          <h1>Efficient Gillespie algorithms for spreading phenomena in large and heterogeneous higher-order networks</h1>
+<p>Code implemented using the <a href="https://fpm.fortran-lang.org/">Fortran Package Manager</a>.</p>
+<p>Main paper: <em>Efficient Gillespie algorithms for spreading phenomena in large and heterogeneous higher-order networks</em>, by Hugo P. Maia, Wesley Cota, Yamir Moreno, and Silvio C. Ferreira.</p>
+<h2>Hyper-SIS Dynamical Model</h2>
+<p>This code simulates SIS dynamics on hypergraphs (Hyper-SIS). Each of the $N$ agents can be either susceptible ($\sigma_i = 0$) or infected ($\sigma_i = 1$). Infections occur via hyperedges, which are active if a critical mass of members is infected, while infected nodes recover spontaneously.</p>
+<p>Key points:</p>
+<ul>
+<li>Node recovery rate: $\alpha = 1$.</li>
+<li>Hyperedge activation threshold: $\theta(m) = 1 + (m-1)\theta_0$, where $m$ is the hyperedge order.</li>
+<li>Infection rate as a function of hyperedge order: $\beta(m) = \beta[1 + b(m-1)]$.</li>
+<li>Pairwise infection rate: $\beta(1) = \beta$.</li>
+<li>Parameters <code>par_b</code> and <code>par_theta</code> correspond to $b$ and $\theta_0$.</li>
+</ul>
+<p>See the main paper for full details.</p>
+<h2>Using it as a dependency</h2>
+<p>Add this package as a dependency using the <a href="https://fpm.fortran-lang.org/">Fortran Package Manager</a> (fpm):</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[dependencies]</span>
+<span class="n">hyperSIS</span><span class="p">.</span><span class="n">git</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://github.com/gisc-ufv/hyperSIS&quot;</span>
+</code></pre></div>
+
+<p>See the <a href="http://pages.giscbr.org/hyperSIS/">documentation</a> and main program for details.</p>
+<h2>Python package Installation</h2>
+<p>The easiest way to use this project is through its Python interface.</p>
+<p>This package will be published on PyPI in the future. Until then, you need to clone the repository manually.</p>
+<p>Before installing, make sure that at least one Fortran compiler is available. By default, the package assumes <strong>GNU Fortran</strong> (<code>gfortran</code>) installed and available in your PATH. See <a href="https://fortran-lang.org/learn/os_setup/install_gfortran/">Installing GFortran</a> for help.</p>
+<p>Steps:</p>
+<ol>
+<li>
+<p>Clone the repository:</p>
+<p><code>sh
+git clone https://github.com/gisc-ufv/hyperSIS.git
+cd hyperSIS</code></p>
+</li>
+<li>
+<p>Activate your preferred Python environment (e.g., <code>venv</code>, <code>conda</code>, etc.):</p>
+<p>```sh</p>
+<h1>Example with venv</h1>
+<p>python -m venv venv
+source venv/bin/activate</p>
+<h1>Example with conda</h1>
+<p>conda create -n hyperSIS python=3.11
+conda activate hyperSIS
+```</p>
+</li>
+<li>
+<p>Install the Python package:</p>
+<p><code>sh
+pip install ./python</code></p>
+</li>
+<li>
+<p>Verify if <code>gfortran</code> and <code>fpm</code> are accessible:</p>
+<p><code>sh
+gfortran --version
+fpm --version</code></p>
+</li>
+<li>
+<p>(Optional) A Google Colab notebook demonstrating all installation and usage steps is available <a href="https://colab.research.google.com/drive/1KZanZNdr1M6bEEfw0vdAGBpkHyVrV9XH?usp=sharing">here</a>.</p>
+</li>
+</ol>
+<h2>Usage</h2>
+<p><em>See <a href="https://github.com/gisc-ufv/hyperSIS/blob/main/examples.ipynb">examples.ipynb</a> for examples.</em></p>
+<p>Import the package with</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">hyperSIS</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">hs</span>
+</code></pre></div>
+
+<p>The simulation interface revolves around <strong>two main objects</strong>:</p>
+<ol>
+<li>
+<p><code>SimulationArgs</code>
+   A dataclass containing all parameters required to configure a hyperSIS simulation, including network specification, algorithm choices, temporal settings, initial conditions, and epidemic parameters.</p>
+</li>
+<li>
+<p><code>run_simulation(beta1: float, args: SimulationArgs)</code>
+   The function that executes the simulation with the given arguments. Returns a <code>SimulationResult</code> object containing the processed results, including network mapping, temporal evolution, and statistics of infected nodes.</p>
+</li>
+</ol>
+<h3>Simulation arguments</h3>
+<p>The <code>SimulationArgs</code> dataclass contains all configurable parameters for running a hyperSIS simulation.</p>
+<ul>
+<li>
+<p><code>verbose: bool</code>
+  Enable verbose output.
+  Default: <code>True</code></p>
+</li>
+<li>
+<p><code>verbose_level: str</code>
+  Logging level: <code>'info'</code>, <code>'warning'</code>, <code>'error'</code>, <code>'debug'</code>.
+  Default: <code>warning</code></p>
+</li>
+<li>
+<p><code>seed: int</code>
+  Random seed for reproducibility.
+  Default: <code>42</code></p>
+</li>
+<li>
+<p><code>remove_files: bool</code>
+  Remove temporary files after execution.
+  Default: <code>False</code></p>
+</li>
+<li>
+<p><code>network: NetworkFormat</code>
+  Network specification as a tuple. Optional parameters are in brackets:</p>
+</li>
+<li><code>("edgelist", path, [delimiter], [comment], [cache])</code></li>
+<li><code>("fortran-edgelist", path, [cache])</code></li>
+<li><code>("bipartite", path, [delimiter], [comment], [cache])</code></li>
+<li><code>("xgi", name_or_object, [cache])</code></li>
+<li><code>("xgi_json", path, [cache])</code></li>
+<li><code>("hif", path, [cache])</code></li>
+<li>
+<p><code>("PL", gamma, N, [sample])</code>
+  Default: <code>("edgelist", "example.edgelist", None, "#", False)</code></p>
+</li>
+<li>
+<p><code>output_dir: Optional[str]</code>
+  Directory to store simulation output. If <code>None</code>, a temporary folder is used.
+  Default: <code>None</code></p>
+</li>
+<li>
+<p><code>algorithm: str</code>
+  Simulation algorithm: <code>'HB_OGA'</code> or <code>'NB_OGA'</code>.
+  Default: <code>HB_OGA</code></p>
+</li>
+<li>
+<p><code>sampler: str</code>
+  Sampling method: <code>'rejection_maxheap'</code> or <code>'btree'</code>.
+  Default: <code>btree</code></p>
+</li>
+<li>
+<p><code>tmax: int</code>
+  Maximum simulation time.
+  Default: <code>100</code></p>
+</li>
+<li>
+<p><code>use_qs: bool</code>
+  Whether to use the quasi-stationary method.
+  Default: <code>False</code></p>
+</li>
+<li>
+<p><code>n_samples: int</code>
+  Number of samples per simulation.
+  Default: <code>10</code></p>
+</li>
+<li>
+<p><code>time_scale: str</code>
+  Temporal scale for output: <code>'uniform'</code> or <code>'powerlaw'</code>.
+  Default: <code>uniform</code></p>
+</li>
+<li>
+<p><code>initial_condition: tuple</code>
+  Initial state specification:</p>
+</li>
+<li><code>('fraction', float)</code> → fraction of infected nodes</li>
+<li>
+<p><code>('number', int)</code> → exact number of initially infected nodes
+  Default: <code>("fraction", 1.0)</code></p>
+</li>
+<li>
+<p><code>export_states: bool</code>
+  Whether to export the full state trajectory.
+  Default: <code>False</code></p>
+</li>
+<li>
+<p><code>par_b: float</code>
+  Epidemic infection rate scale $b$ in $\beta(m) = \beta[1 + b(m-1)]$.
+  Default: <code>0.5</code></p>
+</li>
+<li>
+<p><code>par_theta: float</code>
+  Epidemic critical mass threshold $\theta_0$ in $\theta(m) = 1 + (m-1)\theta_0$.
+  Default: <code>0.5</code></p>
+</li>
+</ul>
+<h3>Function</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">run_simulation</span><span class="p">(</span><span class="n">beta1</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">args</span><span class="p">:</span> <span class="n">SimulationArgs</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Runs a Hyper-SIS simulation on the specified network.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>beta1: float</code>
+  Base infection rate $\beta(1)$ for pairwise interactions.</li>
+<li><code>args: SimulationArgs</code>
+  Simulation parameters, including network specification, algorithm choice, number of samples, initial condition, and epidemic parameters <code>par_b</code> and <code>par_theta</code>.</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li>
+<p><code>SimulationResult</code>
+  Object containing:</p>
+</li>
+<li>
+<p><code>network: NetworkFormat</code> – the network specification used.</p>
+</li>
+<li><code>node_map: dict</code> – mapping from original node IDs to Fortran node IDs.</li>
+<li><code>temporal: TemporalResult</code> – temporal dynamics with:<ul>
+<li><code>t: np.ndarray</code> – mean time per Gillespie tick.</li>
+<li><code>rho_avg: np.ndarray</code> – mean number of infected nodes over all runs.</li>
+<li><code>rho_var: np.ndarray</code> – variance of infected nodes.</li>
+<li><code>n_samples: int</code> – number of runs where infection is non-zero.</li>
+</ul>
+</li>
+</ul>
+<h2>How to Cite</h2>
+<p>When using this package, please cite the following paper:</p>
+<p><em>Efficient Gillespie algorithms for spreading phenomena in large and heterogeneous higher-order networks</em>, by Hugo P. Maia, Wesley Cota, Yamir Moreno, and Silvio C. Ferreira (2025)</p>
+<p>The BibTeX entry is:</p>
+<p>[to be defined]</p>
+        </div>
+          <div class="col-md-4">
+            <div class="card card-body bg-light">
+              <h2 class="card-title">Developer Info</h2>
+              <h4 class="card-text">Wesley Cota <https://wcota.me/></h4>
+              <p class="card-text"><p>Co-authors in main paper: Hugo P. Maia, Yamir Moreno, and Silvio C. Ferreira</p></p>
+                <div class="text-center"><div class="btn-group" role="group">
+                    <a class="btn btn-lg btn-primary" href="https://giscbr.org/"><i class="fa fa-globe fa-lg"></i></a>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div></div>
+            </div>
+          </div>
+      </div>
+        <div class="row">
+          <hr>
+          <div class="col-xs-6 col-sm-3">
+            <div>
+              <h3>Source Files</h3>
+              <ul><li><a href='sourcefile/common.f90.html'>common.f90</a></li><li><a href='sourcefile/dynamics.f90.html'>dynamics.f90</a></li><li><a href='sourcefile/dynamics_base.f90.html'>dynamics_base.f90</a></li><li><a href='sourcefile/dynamics_chooser.f90.html'>dynamics_chooser.f90</a></li><li><a href='sourcefile/dynamics_hb_oga.f90.html'>dynamics_HB_OGA.f90</a></li><li><a href='sourcefile/dynamics_nb_oga.f90.html'>dynamics_NB_OGA.f90</a></li><li><a href='sourcefile/kinds.f90.html'>kinds.f90</a></li><li><a href='sourcefile/network.f90.html'>network.f90</a></li><li><a href='sourcefile/network_io.f90.html'>network_io.f90</a></li></ul>
+            </div>
+            <div>
+              <ul>
+                <li><a href="./lists/files.html"><em>All source files&hellip;</em></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+            <div>
+              <h3>Modules</h3>
+              <ul><li><a href='module/hypersis_dynamics_base_mod.html'>hyperSIS_dynamics_base_mod</a></li><li><a href='module/hypersis_dynamics_chooser_mod.html'>hyperSIS_dynamics_chooser_mod</a></li><li><a href='module/hypersis_dynamics_hb_oga_mod.html'>hyperSIS_dynamics_HB_OGA_mod</a></li><li><a href='module/hypersis_dynamics_mod.html'>hyperSIS_dynamics_mod</a></li><li><a href='module/hypersis_dynamics_nb_oga_mod.html'>hyperSIS_dynamics_NB_OGA_mod</a></li><li><a href='module/hypersis_kinds_mod.html'>hyperSIS_kinds_mod</a></li><li><a href='module/hypersis_network_io_mod.html'>hyperSIS_network_io_mod</a></li><li><a href='module/hypersis_network_mod.html'>hyperSIS_network_mod</a></li><li><a href='module/hypersis_program_common_mod.html'>hyperSIS_program_common_mod</a></li></ul>
+            </div>
+            <div>
+              <ul>
+                <li><a href="./lists/modules.html"><em>All modules&hellip;</em></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+            <div>
+              <h3>Procedures</h3>
+              <ul><li><a href='proc/check_export_nodes_and_edges_state.html'>check_export_nodes_and_edges_state</a></li><li><a href='proc/check_qs_method.html'>check_qs_method</a></li><li><a href='proc/count_integers_from_string.html'>count_integers_from_string</a></li><li><a href='proc/get_path_prefix.html'>get_path_prefix</a></li><li><a href='interface/hyperedge.html'>hyperedge</a></li><li><a href='proc/net_state_choose.html'>net_state_choose</a></li><li><a href='interface/network.html'>network</a></li><li><a href='proc/network_export.html'>network_export</a></li><li><a href='proc/network_import.html'>network_import</a></li><li><a href='interface/proc_export_states.html'>proc_export_states</a></li></ul>
+            </div>
+            <div>
+              <ul>
+                <li><a href="./lists/procedures.html"><em>All procedures&hellip;</em></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+            <div>
+              <h3>Derived Types</h3>
+              <ul><li><a href='type/dyn_parameters_t.html'>dyn_parameters_t</a></li><li><a href='type/hyperedge_t.html'>hyperedge_t</a></li><li><a href='type/net_state_base_t.html'>net_state_base_t</a></li><li><a href='type/net_state_t~2.html'>net_state_t</a></li><li><a href='type/net_state_t.html'>net_state_t</a></li><li><a href='type/network_t.html'>network_t</a></li><li><a href='type/node_t.html'>node_t</a></li><li><a href='type/state_compartment_base_t.html'>state_compartment_base_t</a></li></ul>
+            </div>
+            <div>
+              <ul>
+                <li><a href="./lists/types.html"><em>All derived types&hellip;</em></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              HyperSIS
+ was developed by Wesley Cota <https://wcota.me/><br>              &copy; 2025 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

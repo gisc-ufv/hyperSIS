@@ -1,0 +1,627 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Documentation for HyperSIS">
+    <meta name="author" content="Wesley Cota <https://wcota.me/>" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>common.f90 &ndash; HyperSIS</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">HyperSIS </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>common.f90
+      <small>Source File</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 8.4% of total for source files.">112 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/common.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+            <li class="breadcrumb-item active" aria-current="page">common.f90</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#mods-0"
+         aria-expanded="false" aria-controls="mods-0">
+         <h4 class="card-header bg-primary text-white">Modules</h4>
+      </a>
+      <div id="mods-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/hypersis_program_common_mod.html">hyperSIS_program_common_mod</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../sourcefile/common.f90.html#src">common.f90</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    <div class="col-md-9" id='text'>
+      
+      <br>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">This file depends on</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 13.1.1 (0)
+ -->
+<!-- Title: sourcefile~~common.f90~~EfferentGraph Pages: 1 -->
+<svg id="sourcefilecommonf90EfferentGraph" width="641pt" height="171pt"
+ viewBox="0.00 0.00 641.00 171.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~common.f90~~EfferentGraph" class="graph" transform="scale(0.766389 0.766389) rotate(0) translate(4 219.17)">
+<title>sourcefile~~common.f90~~EfferentGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-219.17 832.39,-219.17 832.39,4 -4,4"/>
+<!-- sourcefile~common.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_node1" class="node">
+<title>sourcefile~common.f90</title>
+<polygon fill="none" stroke="black" points="828.39,-143.29 757.62,-143.29 757.62,-119.77 828.39,-119.77 828.39,-143.29"/>
+<text xml:space="preserve" text-anchor="middle" x="793" y="-127.55" font-family="Helvetica,sans-Serif" font-size="10.50">common.f90</text>
+</g>
+<!-- sourcefile~dynamics.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_node2" class="node">
+<title>sourcefile~dynamics.f90</title>
+<g id="a_sourcefile~~common.f90~~EfferentGraph_node2"><a xlink:href="../sourcefile/dynamics.f90.html" xlink:title="dynamics.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="721.62,-85.29 647.1,-85.29 647.1,-61.77 721.62,-61.77 721.62,-85.29"/>
+<text xml:space="preserve" text-anchor="middle" x="684.36" y="-69.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dynamics.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~common.f90&#45;&gt;sourcefile~dynamics.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_edge1" class="edge">
+<title>sourcefile~common.f90&#45;&gt;sourcefile~dynamics.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M769.65,-119.37C754.58,-111.17 734.45,-100.23 717.65,-91.09"/>
+<polygon fill="#000000" stroke="#000000" points="719.47,-88.1 709.02,-86.39 716.13,-94.25 719.47,-88.1"/>
+</g>
+<!-- sourcefile~kinds.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_node3" class="node">
+<title>sourcefile~kinds.f90</title>
+<g id="a_sourcefile~~common.f90~~EfferentGraph_node3"><a xlink:href="../sourcefile/kinds.f90.html" xlink:title="kinds.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="54.27,-103.29 0,-103.29 0,-79.77 54.27,-79.77 54.27,-103.29"/>
+<text xml:space="preserve" text-anchor="middle" x="27.13" y="-87.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">kinds.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~common.f90&#45;&gt;sourcefile~kinds.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_edge2" class="edge">
+<title>sourcefile~common.f90&#45;&gt;sourcefile~kinds.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M394.07,-189.53C349.98,-191.03 340.92,-205.83 297.06,-210.53 251.2,-215.43 238.9,-217.36 193.29,-210.53 161.79,-205.81 154.76,-200.27 124.78,-189.53"/>
+</g>
+<!-- sourcefile~network.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_node4" class="node">
+<title>sourcefile~network.f90</title>
+<g id="a_sourcefile~~common.f90~~EfferentGraph_node4"><a xlink:href="../sourcefile/network.f90.html" xlink:title="network.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="157.29,-103.29 90.27,-103.29 90.27,-79.77 157.29,-79.77 157.29,-103.29"/>
+<text xml:space="preserve" text-anchor="middle" x="123.78" y="-87.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">network.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~common.f90&#45;&gt;sourcefile~network.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_edge3" class="edge">
+<title>sourcefile~common.f90&#45;&gt;sourcefile~network.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M757.3,-140.09C688.73,-156.22 530.85,-189.53 396.07,-189.53"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M394.07,-189.53C347.28,-191.35 236.7,-143.1 193.29,-125.53 181.35,-120.7 168.62,-114.64 157.42,-108.99"/>
+<polygon fill="#000000" stroke="#000000" points="159.06,-105.9 148.57,-104.44 155.86,-112.12 159.06,-105.9"/>
+</g>
+<!-- sourcefile~network_io.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_node5" class="node">
+<title>sourcefile~network_io.f90</title>
+<g id="a_sourcefile~~common.f90~~EfferentGraph_node5"><a xlink:href="../sourcefile/network_io.f90.html" xlink:title="network_io.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="285.81,-201.29 204.54,-201.29 204.54,-177.77 285.81,-177.77 285.81,-201.29"/>
+<text xml:space="preserve" text-anchor="middle" x="245.18" y="-185.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">network_io.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~common.f90&#45;&gt;sourcefile~network_io.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_edge4" class="edge">
+<title>sourcefile~common.f90&#45;&gt;sourcefile~network_io.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M394.07,-189.53C361.91,-189.53 325.82,-189.53 297.34,-189.53"/>
+<polygon fill="#000000" stroke="#000000" points="297.55,-186.03 287.55,-189.53 297.55,-193.03 297.55,-186.03"/>
+</g>
+<!-- sourcefile~dynamics_base.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_node6" class="node">
+<title>sourcefile~dynamics_base.f90</title>
+<g id="a_sourcefile~~common.f90~~EfferentGraph_node6"><a xlink:href="../sourcefile/dynamics_base.f90.html" xlink:title="dynamics_base.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="297.06,-83.29 193.29,-83.29 193.29,-59.77 297.06,-59.77 297.06,-83.29"/>
+<text xml:space="preserve" text-anchor="middle" x="245.18" y="-67.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dynamics_base.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~dynamics.f90&#45;&gt;sourcefile~dynamics_base.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_edge5" class="edge">
+<title>sourcefile~dynamics.f90&#45;&gt;sourcefile~dynamics_base.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M647.04,-72.21C592.5,-70.53 486.2,-68.41 396.07,-73.53"/>
+</g>
+<!-- sourcefile~dynamics_chooser.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_node7" class="node">
+<title>sourcefile~dynamics_chooser.f90</title>
+<g id="a_sourcefile~~common.f90~~EfferentGraph_node7"><a xlink:href="../sourcefile/dynamics_chooser.f90.html" xlink:title="dynamics_chooser.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="611.1,-45.29 493.08,-45.29 493.08,-21.77 611.1,-21.77 611.1,-45.29"/>
+<text xml:space="preserve" text-anchor="middle" x="552.09" y="-29.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dynamics_chooser.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~dynamics.f90&#45;&gt;sourcefile~dynamics_chooser.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_edge6" class="edge">
+<title>sourcefile~dynamics.f90&#45;&gt;sourcefile~dynamics_chooser.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M646.73,-62.28C633.29,-58.15 617.85,-53.41 603.42,-48.98"/>
+<polygon fill="#000000" stroke="#000000" points="604.67,-45.71 594.09,-46.12 602.62,-52.4 604.67,-45.71"/>
+</g>
+<!-- sourcefile~network.f90&#45;&gt;sourcefile~kinds.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_edge7" class="edge">
+<title>sourcefile~network.f90&#45;&gt;sourcefile~kinds.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M89.94,-91.53C82.2,-91.53 73.87,-91.53 65.93,-91.53"/>
+<polygon fill="#000000" stroke="#000000" points="66.17,-88.03 56.17,-91.53 66.17,-95.03 66.17,-88.03"/>
+</g>
+<!-- sourcefile~network_io.f90&#45;&gt;sourcefile~kinds.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_edge8" class="edge">
+<title>sourcefile~network_io.f90&#45;&gt;sourcefile~kinds.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M204.31,-196.14C180.54,-198.48 150.15,-198.62 124.78,-189.53"/>
+</g>
+<!-- sourcefile~network_io.f90&#45;&gt;sourcefile~network.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_edge9" class="edge">
+<title>sourcefile~network_io.f90&#45;&gt;sourcefile~network.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M216.23,-177.38C208.48,-173.45 200.29,-168.75 193.29,-163.53 173.48,-148.74 154.39,-127.95 141.41,-112.51"/>
+<polygon fill="#000000" stroke="#000000" points="144.18,-110.37 135.13,-104.86 138.77,-114.81 144.18,-110.37"/>
+</g>
+<!-- sourcefile~dynamics_base.f90&#45;&gt;sourcefile~kinds.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_edge10" class="edge">
+<title>sourcefile~dynamics_base.f90&#45;&gt;sourcefile~kinds.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M218.86,-59.31C189.45,-45.78 142.66,-26.48 124.78,-31.53"/>
+</g>
+<!-- sourcefile~dynamics_base.f90&#45;&gt;sourcefile~network.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_edge11" class="edge">
+<title>sourcefile~dynamics_base.f90&#45;&gt;sourcefile~network.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M192.85,-80.13C184.86,-81.46 176.68,-82.83 168.87,-84.14"/>
+<polygon fill="#000000" stroke="#000000" points="168.56,-80.65 159.27,-85.75 169.71,-87.55 168.56,-80.65"/>
+</g>
+<!-- sourcefile~dynamics_chooser.f90&#45;&gt;sourcefile~kinds.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_edge15" class="edge">
+<title>sourcefile~dynamics_chooser.f90&#45;&gt;sourcefile~kinds.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M506,-21.35C490.61,-17.75 473.2,-14.31 457.08,-12.53 310.04,3.69 267.15,8.65 124.78,-31.53"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M122.78,-31.53C95.06,-38.79 67.9,-57.57 49.83,-72.2"/>
+<polygon fill="#000000" stroke="#000000" points="47.83,-69.31 42.42,-78.41 52.33,-74.67 47.83,-69.31"/>
+</g>
+<!-- sourcefile~dynamics_chooser.f90&#45;&gt;sourcefile~dynamics_base.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_edge12" class="edge">
+<title>sourcefile~dynamics_chooser.f90&#45;&gt;sourcefile~dynamics_base.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M519.02,-45.74C488.07,-56.57 439.64,-71.06 396.07,-73.53"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M394.07,-73.53C366.15,-75.11 335.23,-74.99 308.91,-74.32"/>
+<polygon fill="#000000" stroke="#000000" points="309.16,-70.83 299.06,-74.03 308.95,-77.82 309.16,-70.83"/>
+</g>
+<!-- sourcefile~dynamics_hb_oga.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_node8" class="node">
+<title>sourcefile~dynamics_hb_oga.f90</title>
+<g id="a_sourcefile~~common.f90~~EfferentGraph_node8"><a xlink:href="../sourcefile/dynamics_hb_oga.f90.html" xlink:title="dynamics_HB_OGA.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="457.08,-125.29 333.06,-125.29 333.06,-101.77 457.08,-101.77 457.08,-125.29"/>
+<text xml:space="preserve" text-anchor="middle" x="395.07" y="-109.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dynamics_HB_OGA.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~dynamics_chooser.f90&#45;&gt;sourcefile~dynamics_hb_oga.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_edge13" class="edge">
+<title>sourcefile~dynamics_chooser.f90&#45;&gt;sourcefile~dynamics_hb_oga.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M531.65,-45.6C512.9,-57.03 483.53,-74.35 457.08,-87.53 450.65,-90.73 443.74,-93.91 436.96,-96.9"/>
+<polygon fill="#000000" stroke="#000000" points="435.69,-93.63 427.88,-100.8 438.45,-100.06 435.69,-93.63"/>
+</g>
+<!-- sourcefile~dynamics_nb_oga.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_node9" class="node">
+<title>sourcefile~dynamics_nb_oga.f90</title>
+<g id="a_sourcefile~~common.f90~~EfferentGraph_node9"><a xlink:href="../sourcefile/dynamics_nb_oga.f90.html" xlink:title="dynamics_NB_OGA.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="457.08,-45.29 333.06,-45.29 333.06,-21.77 457.08,-21.77 457.08,-45.29"/>
+<text xml:space="preserve" text-anchor="middle" x="395.07" y="-29.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dynamics_NB_OGA.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~dynamics_chooser.f90&#45;&gt;sourcefile~dynamics_nb_oga.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_edge14" class="edge">
+<title>sourcefile~dynamics_chooser.f90&#45;&gt;sourcefile~dynamics_nb_oga.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M492.93,-33.53C485.04,-33.53 476.87,-33.53 468.78,-33.53"/>
+<polygon fill="#000000" stroke="#000000" points="468.92,-30.03 458.92,-33.53 468.92,-37.03 468.92,-30.03"/>
+</g>
+<!-- sourcefile~dynamics_hb_oga.f90&#45;&gt;sourcefile~kinds.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_edge17" class="edge">
+<title>sourcefile~dynamics_hb_oga.f90&#45;&gt;sourcefile~kinds.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M244.18,-111.53C181.18,-118.52 184.45,-210.92 124.78,-189.53"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M122.78,-189.53C85.18,-176.05 56,-137.71 40.49,-113.17"/>
+<polygon fill="#000000" stroke="#000000" points="43.66,-111.65 35.49,-104.91 37.68,-115.27 43.66,-111.65"/>
+</g>
+<!-- sourcefile~dynamics_hb_oga.f90&#45;&gt;sourcefile~network.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_edge18" class="edge">
+<title>sourcefile~dynamics_hb_oga.f90&#45;&gt;sourcefile~network.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M332.74,-109.3C306.07,-108.34 274.5,-108.38 246.18,-111.53"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M244.18,-111.53C218.98,-114.33 191.02,-110.05 168.5,-104.74"/>
+<polygon fill="#000000" stroke="#000000" points="169.6,-101.41 159.05,-102.36 167.89,-108.2 169.6,-101.41"/>
+</g>
+<!-- sourcefile~dynamics_hb_oga.f90&#45;&gt;sourcefile~dynamics_base.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_edge16" class="edge">
+<title>sourcefile~dynamics_hb_oga.f90&#45;&gt;sourcefile~dynamics_base.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M351.29,-101.38C335.27,-96.83 316.85,-91.6 299.95,-86.8"/>
+<polygon fill="#000000" stroke="#000000" points="301.14,-83.5 290.57,-84.13 299.23,-90.23 301.14,-83.5"/>
+</g>
+<!-- sourcefile~dynamics_nb_oga.f90&#45;&gt;sourcefile~kinds.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_edge20" class="edge">
+<title>sourcefile~dynamics_nb_oga.f90&#45;&gt;sourcefile~kinds.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M332.73,-29.2C306.06,-28.22 274.49,-28.27 246.18,-31.53"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M244.18,-31.53C191.46,-37.59 175.85,-17.12 124.78,-31.53"/>
+</g>
+<!-- sourcefile~dynamics_nb_oga.f90&#45;&gt;sourcefile~network.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_edge21" class="edge">
+<title>sourcefile~dynamics_nb_oga.f90&#45;&gt;sourcefile~network.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M244.18,-31.53C208.44,-35.64 172.19,-56.78 149.16,-72.81"/>
+<polygon fill="#000000" stroke="#000000" points="147.15,-69.95 141.08,-78.64 151.24,-75.63 147.15,-69.95"/>
+</g>
+<!-- sourcefile~dynamics_nb_oga.f90&#45;&gt;sourcefile~dynamics_base.f90 -->
+<g id="sourcefile~~common.f90~~EfferentGraph_edge19" class="edge">
+<title>sourcefile~dynamics_nb_oga.f90&#45;&gt;sourcefile~dynamics_base.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M346.46,-45.76C333.13,-49.18 318.5,-52.95 304.62,-56.51"/>
+<polygon fill="#000000" stroke="#000000" points="303.98,-53.06 295.16,-58.94 305.72,-59.84 303.98,-53.06"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var pansourcefilecommonf90EfferentGraph = svgPanZoom('#sourcefilecommonf90EfferentGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#EfferentGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="EfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 13.1.1 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="188pt" height="32pt"
+ viewBox="0.00 0.00 188.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 27.52)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-27.52 183.89,-27.52 183.89,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="65.52,-23.52 0,-23.52 0,0 65.52,0 65.52,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="32.76" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="179.89,-23.52 83.62,-23.52 83.62,0 179.89,0 179.89,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="131.76" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+<br>
+      <section>
+        <h2><span class="anchor" id="src"></span>Source Code</h2>
+        <div class="hl codehilite"><pre><span></span><a id="ln-1" name="ln-1" href="#ln-1"></a><span class="k">module </span><span class="n">hyperSIS_program_common_mod</span>
+<a id="ln-2" name="ln-2" href="#ln-2"></a><span class="w">    </span><span class="k">use </span><span class="n">hyperSIS_kinds_mod</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">dp</span><span class="p">,</span><span class="w"> </span><span class="n">i4</span>
+<a id="ln-3" name="ln-3" href="#ln-3"></a><span class="w">    </span><span class="k">use </span><span class="n">hyperSIS_network_mod</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">network_t</span>
+<a id="ln-4" name="ln-4" href="#ln-4"></a><span class="w">    </span><span class="k">use </span><span class="n">hyperSIS_network_io_mod</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">network_import</span>
+<a id="ln-5" name="ln-5" href="#ln-5"></a><span class="w">    </span><span class="k">use </span><span class="n">hyperSIS_dynamics_mod</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">dyn_parameters_t</span><span class="p">,</span><span class="w"> </span><span class="n">net_state_base_t</span>
+<a id="ln-6" name="ln-6" href="#ln-6"></a>
+<a id="ln-7" name="ln-7" href="#ln-7"></a><span class="w">    </span><span class="k">use </span><span class="n">rndgen_mod</span>
+<a id="ln-8" name="ln-8" href="#ln-8"></a><span class="w">    </span><span class="k">implicit none</span>
+<a id="ln-9" name="ln-9" href="#ln-9"></a><span class="k">    private</span>
+<a id="ln-10" name="ln-10" href="#ln-10"></a>
+<a id="ln-11" name="ln-11" href="#ln-11"></a><span class="k">    interface</span>
+<a id="ln-12" name="ln-12" href="#ln-12"></a><span class="k">        subroutine </span><span class="n">proc_net_state_gen</span><span class="p">(</span><span class="n">net</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">gen</span><span class="p">)</span>
+<a id="ln-13" name="ln-13" href="#ln-13"></a><span class="w">            </span><span class="k">import</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">net_state_base_t</span><span class="p">,</span><span class="w"> </span><span class="n">rndgen</span><span class="p">,</span><span class="w"> </span><span class="n">network_t</span>
+<a id="ln-14" name="ln-14" href="#ln-14"></a><span class="w">            </span><span class="k">class</span><span class="p">(</span><span class="n">network_t</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">net</span>
+<a id="ln-15" name="ln-15" href="#ln-15"></a><span class="w">            </span><span class="k">class</span><span class="p">(</span><span class="n">net_state_base_t</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">state</span>
+<a id="ln-16" name="ln-16" href="#ln-16"></a><span class="w">            </span><span class="k">class</span><span class="p">(</span><span class="n">rndgen</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">gen</span>
+<a id="ln-17" name="ln-17" href="#ln-17"></a><span class="w">        </span><span class="k">end subroutine </span><span class="n">proc_net_state_gen</span>
+<a id="ln-18" name="ln-18" href="#ln-18"></a><span class="w">        </span><span class="k">subroutine </span><span class="n">proc_export_states</span><span class="p">(</span><span class="n">net</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">nodes_filename</span><span class="p">,</span><span class="w"> </span><span class="n">edges_filename</span><span class="p">)</span>
+<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="w">            </span><span class="k">import</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">net_state_base_t</span><span class="p">,</span><span class="w"> </span><span class="n">rndgen</span><span class="p">,</span><span class="w"> </span><span class="n">network_t</span>
+<a id="ln-20" name="ln-20" href="#ln-20"></a><span class="w">            </span><span class="k">class</span><span class="p">(</span><span class="n">network_t</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">net</span>
+<a id="ln-21" name="ln-21" href="#ln-21"></a><span class="w">            </span><span class="k">class</span><span class="p">(</span><span class="n">net_state_base_t</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">state</span>
+<a id="ln-22" name="ln-22" href="#ln-22"></a><span class="w">            </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nodes_filename</span><span class="p">,</span><span class="w"> </span><span class="n">edges_filename</span>
+<a id="ln-23" name="ln-23" href="#ln-23"></a><span class="w">        </span><span class="k">end subroutine </span><span class="n">proc_export_states</span>
+<a id="ln-24" name="ln-24" href="#ln-24"></a><span class="w">    </span><span class="k">end interface</span>
+<a id="ln-25" name="ln-25" href="#ln-25"></a>
+<a id="ln-26" name="ln-26" href="#ln-26"></a><span class="k">    public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">proc_net_state_gen</span><span class="p">,</span><span class="w"> </span><span class="n">proc_export_states</span>
+<a id="ln-27" name="ln-27" href="#ln-27"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">check_qs_method</span>
+<a id="ln-28" name="ln-28" href="#ln-28"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">read_network</span>
+<a id="ln-29" name="ln-29" href="#ln-29"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">set_dyn_params</span>
+<a id="ln-30" name="ln-30" href="#ln-30"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">set_initial_number_of_infected_nodes</span>
+<a id="ln-31" name="ln-31" href="#ln-31"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">get_path_prefix</span>
+<a id="ln-32" name="ln-32" href="#ln-32"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">check_export_nodes_and_edges_state</span>
+<a id="ln-33" name="ln-33" href="#ln-33"></a>
+<a id="ln-34" name="ln-34" href="#ln-34"></a><span class="k">contains</span>
+<a id="ln-35" name="ln-35" href="#ln-35"></a>
+<a id="ln-36" name="ln-36" href="#ln-36"></a><span class="k">    subroutine </span><span class="n">export_nodes_and_edges_state</span><span class="p">(</span><span class="n">net</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">nodes_filename</span><span class="p">,</span><span class="w"> </span><span class="n">edges_filename</span><span class="p">)</span>
+<a id="ln-37" name="ln-37" href="#ln-37"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">network_t</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">net</span>
+<a id="ln-38" name="ln-38" href="#ln-38"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">net_state_base_t</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">state</span>
+<a id="ln-39" name="ln-39" href="#ln-39"></a><span class="w">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nodes_filename</span><span class="p">,</span><span class="w"> </span><span class="n">edges_filename</span>
+<a id="ln-40" name="ln-40" href="#ln-40"></a>
+<a id="ln-41" name="ln-41" href="#ln-41"></a><span class="w">        </span><span class="k">call </span><span class="n">state</span><span class="p">%</span><span class="n">export_nodes_states</span><span class="p">(</span><span class="n">net</span><span class="p">,</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">nodes_filename</span><span class="p">)))</span>
+<a id="ln-42" name="ln-42" href="#ln-42"></a><span class="w">        </span><span class="k">call </span><span class="n">state</span><span class="p">%</span><span class="n">export_edges_states</span><span class="p">(</span><span class="n">net</span><span class="p">,</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">edges_filename</span><span class="p">)))</span>
+<a id="ln-43" name="ln-43" href="#ln-43"></a>
+<a id="ln-44" name="ln-44" href="#ln-44"></a><span class="w">    </span><span class="k">end subroutine</span>
+<a id="ln-45" name="ln-45" href="#ln-45"></a>
+<a id="ln-46" name="ln-46" href="#ln-46"></a><span class="k">    subroutine </span><span class="n">do_not_export_nodes_and_edges_state</span><span class="p">(</span><span class="n">net</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">nodes_filename</span><span class="p">,</span><span class="w"> </span><span class="n">edges_filename</span><span class="p">)</span>
+<a id="ln-47" name="ln-47" href="#ln-47"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">network_t</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">net</span>
+<a id="ln-48" name="ln-48" href="#ln-48"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">net_state_base_t</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">state</span>
+<a id="ln-49" name="ln-49" href="#ln-49"></a><span class="w">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nodes_filename</span><span class="p">,</span><span class="w"> </span><span class="n">edges_filename</span>
+<a id="ln-50" name="ln-50" href="#ln-50"></a>
+<a id="ln-51" name="ln-51" href="#ln-51"></a><span class="w">    </span><span class="k">end subroutine</span>
+<a id="ln-52" name="ln-52" href="#ln-52"></a>
+<a id="ln-53" name="ln-53" href="#ln-53"></a><span class="k">    subroutine </span><span class="n">check_export_nodes_and_edges_state</span><span class="p">(</span><span class="n">export_states</span><span class="p">,</span><span class="w"> </span><span class="n">input_export_states</span><span class="p">)</span>
+<a id="ln-54" name="ln-54" href="#ln-54"></a><span class="w">        </span><span class="k">procedure</span><span class="p">(</span><span class="n">proc_export_states</span><span class="p">),</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">export_states</span>
+<a id="ln-55" name="ln-55" href="#ln-55"></a><span class="w">        </span><span class="kt">logical</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">input_export_states</span>
+<a id="ln-56" name="ln-56" href="#ln-56"></a>
+<a id="ln-57" name="ln-57" href="#ln-57"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_export_states</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-58" name="ln-58" href="#ln-58"></a><span class="k">            </span><span class="n">export_states</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">export_nodes_and_edges_state</span>
+<a id="ln-59" name="ln-59" href="#ln-59"></a><span class="w">        </span><span class="k">else</span>
+<a id="ln-60" name="ln-60" href="#ln-60"></a><span class="k">            </span><span class="n">export_states</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">do_not_export_nodes_and_edges_state</span>
+<a id="ln-61" name="ln-61" href="#ln-61"></a><span class="w">        </span><span class="k">end if</span>
+<a id="ln-62" name="ln-62" href="#ln-62"></a><span class="k">    end subroutine </span><span class="n">check_export_nodes_and_edges_state</span>
+<a id="ln-63" name="ln-63" href="#ln-63"></a>
+<a id="ln-64" name="ln-64" href="#ln-64"></a><span class="w">    </span><span class="c">!&gt; QS reactivation (randomly chosen node)</span>
+<a id="ln-65" name="ln-65" href="#ln-65"></a><span class="w">    </span><span class="k">subroutine </span><span class="n">reactivate_random_node</span><span class="p">(</span><span class="n">net</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">gen</span><span class="p">)</span>
+<a id="ln-66" name="ln-66" href="#ln-66"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">network_t</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">net</span>
+<a id="ln-67" name="ln-67" href="#ln-67"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">net_state_base_t</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">state</span>
+<a id="ln-68" name="ln-68" href="#ln-68"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">rndgen</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">gen</span>
+<a id="ln-69" name="ln-69" href="#ln-69"></a>
+<a id="ln-70" name="ln-70" href="#ln-70"></a><span class="w">        </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">i4</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">node_id</span>
+<a id="ln-71" name="ln-71" href="#ln-71"></a>
+<a id="ln-72" name="ln-72" href="#ln-72"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="p">%</span><span class="n">get_num_infected</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-73" name="ln-73" href="#ln-73"></a><span class="k">            </span><span class="n">node_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gen</span><span class="p">%</span><span class="nb">int</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">net</span><span class="p">%</span><span class="n">num_nodes</span><span class="p">)</span>
+<a id="ln-74" name="ln-74" href="#ln-74"></a><span class="w">            </span><span class="k">call </span><span class="n">state</span><span class="p">%</span><span class="n">add_infected</span><span class="p">(</span><span class="n">net</span><span class="p">,</span><span class="w"> </span><span class="n">node_id</span><span class="p">)</span>
+<a id="ln-75" name="ln-75" href="#ln-75"></a><span class="w">        </span><span class="k">end if</span>
+<a id="ln-76" name="ln-76" href="#ln-76"></a><span class="k">    end subroutine </span><span class="n">reactivate_random_node</span>
+<a id="ln-77" name="ln-77" href="#ln-77"></a>
+<a id="ln-78" name="ln-78" href="#ln-78"></a><span class="w">    </span><span class="c">!&gt; Do nothing after</span>
+<a id="ln-79" name="ln-79" href="#ln-79"></a><span class="w">    </span><span class="k">subroutine </span><span class="n">do_nothing</span><span class="p">(</span><span class="n">net</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">gen</span><span class="p">)</span>
+<a id="ln-80" name="ln-80" href="#ln-80"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">network_t</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">net</span>
+<a id="ln-81" name="ln-81" href="#ln-81"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">net_state_base_t</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">state</span>
+<a id="ln-82" name="ln-82" href="#ln-82"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">rndgen</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">gen</span>
+<a id="ln-83" name="ln-83" href="#ln-83"></a><span class="w">    </span><span class="k">end subroutine </span><span class="n">do_nothing</span>
+<a id="ln-84" name="ln-84" href="#ln-84"></a>
+<a id="ln-85" name="ln-85" href="#ln-85"></a><span class="w">    </span><span class="c">!&gt; Check which method to use after dynamics step</span>
+<a id="ln-86" name="ln-86" href="#ln-86"></a><span class="w">    </span><span class="k">subroutine </span><span class="n">check_qs_method</span><span class="p">(</span><span class="n">after_dynamics_step</span><span class="p">,</span><span class="w"> </span><span class="n">input_use_qs</span><span class="p">)</span>
+<a id="ln-87" name="ln-87" href="#ln-87"></a><span class="w">        </span><span class="k">procedure</span><span class="p">(</span><span class="n">proc_net_state_gen</span><span class="p">),</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">after_dynamics_step</span>
+<a id="ln-88" name="ln-88" href="#ln-88"></a><span class="w">        </span><span class="kt">logical</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">input_use_qs</span>
+<a id="ln-89" name="ln-89" href="#ln-89"></a>
+<a id="ln-90" name="ln-90" href="#ln-90"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_use_qs</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-91" name="ln-91" href="#ln-91"></a><span class="k">            </span><span class="n">after_dynamics_step</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">reactivate_random_node</span>
+<a id="ln-92" name="ln-92" href="#ln-92"></a><span class="w">        </span><span class="k">else</span>
+<a id="ln-93" name="ln-93" href="#ln-93"></a><span class="k">            </span><span class="n">after_dynamics_step</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">do_nothing</span>
+<a id="ln-94" name="ln-94" href="#ln-94"></a><span class="w">        </span><span class="k">end if</span>
+<a id="ln-95" name="ln-95" href="#ln-95"></a><span class="k">    end subroutine</span>
+<a id="ln-96" name="ln-96" href="#ln-96"></a>
+<a id="ln-97" name="ln-97" href="#ln-97"></a><span class="k">    subroutine </span><span class="n">set_dyn_params</span><span class="p">(</span><span class="n">net</span><span class="p">,</span><span class="w"> </span><span class="n">dyn_params</span><span class="p">,</span><span class="w"> </span><span class="n">par_b</span><span class="p">,</span><span class="w"> </span><span class="n">par_theta</span><span class="p">)</span>
+<a id="ln-98" name="ln-98" href="#ln-98"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">network_t</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">net</span>
+<a id="ln-99" name="ln-99" href="#ln-99"></a><span class="w">        </span><span class="k">type</span><span class="p">(</span><span class="n">dyn_parameters_t</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dyn_params</span>
+<a id="ln-100" name="ln-100" href="#ln-100"></a><span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">par_b</span><span class="p">,</span><span class="w"> </span><span class="n">par_theta</span>
+<a id="ln-101" name="ln-101" href="#ln-101"></a>
+<a id="ln-102" name="ln-102" href="#ln-102"></a><span class="w">        </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">i4</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">edge_order</span>
+<a id="ln-103" name="ln-103" href="#ln-103"></a>
+<a id="ln-104" name="ln-104" href="#ln-104"></a><span class="w">        </span><span class="c">! Set parameters</span>
+<a id="ln-105" name="ln-105" href="#ln-105"></a><span class="w">        </span><span class="k">call </span><span class="n">dyn_params</span><span class="p">%</span><span class="n">init</span><span class="p">(</span><span class="n">net</span><span class="p">)</span>
+<a id="ln-106" name="ln-106" href="#ln-106"></a>
+<a id="ln-107" name="ln-107" href="#ln-107"></a><span class="w">        </span><span class="c">! Fill the beta and theta parameters</span>
+<a id="ln-108" name="ln-108" href="#ln-108"></a><span class="w">        </span><span class="k">do </span><span class="n">edge_order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">net</span><span class="p">%</span><span class="n">max_order</span>
+<a id="ln-109" name="ln-109" href="#ln-109"></a><span class="w">            </span><span class="n">dyn_params</span><span class="p">%</span><span class="n">beta</span><span class="p">(</span><span class="n">edge_order</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0_dp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">par_b</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">edge_order</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<a id="ln-110" name="ln-110" href="#ln-110"></a><span class="w">            </span><span class="n">dyn_params</span><span class="p">%</span><span class="n">theta</span><span class="p">(</span><span class="n">edge_order</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">ceiling</span><span class="p">(</span><span class="mf">1.0_dp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">edge_order</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">par_theta</span><span class="p">)</span>
+<a id="ln-111" name="ln-111" href="#ln-111"></a><span class="w">        </span><span class="k">end do</span>
+<a id="ln-112" name="ln-112" href="#ln-112"></a>
+<a id="ln-113" name="ln-113" href="#ln-113"></a><span class="k">    end subroutine </span><span class="n">set_dyn_params</span>
+<a id="ln-114" name="ln-114" href="#ln-114"></a>
+<a id="ln-115" name="ln-115" href="#ln-115"></a><span class="w">    </span><span class="k">subroutine </span><span class="n">read_network</span><span class="p">(</span><span class="n">net</span><span class="p">,</span><span class="w"> </span><span class="n">edges_filename</span><span class="p">)</span>
+<a id="ln-116" name="ln-116" href="#ln-116"></a><span class="w">        </span><span class="k">type</span><span class="p">(</span><span class="n">network_t</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">net</span>
+<a id="ln-117" name="ln-117" href="#ln-117"></a><span class="w">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">edges_filename</span>
+<a id="ln-118" name="ln-118" href="#ln-118"></a>
+<a id="ln-119" name="ln-119" href="#ln-119"></a><span class="w">        </span><span class="k">call </span><span class="n">network_import</span><span class="p">(</span><span class="n">net</span><span class="p">,</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">edges_filename</span><span class="p">)))</span>
+<a id="ln-120" name="ln-120" href="#ln-120"></a>
+<a id="ln-121" name="ln-121" href="#ln-121"></a><span class="w">    </span><span class="k">end subroutine </span><span class="n">read_network</span>
+<a id="ln-122" name="ln-122" href="#ln-122"></a>
+<a id="ln-123" name="ln-123" href="#ln-123"></a><span class="w">    </span><span class="k">subroutine </span><span class="n">set_initial_number_of_infected_nodes</span><span class="p">(</span><span class="n">net</span><span class="p">,</span><span class="w"> </span><span class="n">inf_fraction</span><span class="p">,</span><span class="w"> </span><span class="n">initial_number</span><span class="p">)</span>
+<a id="ln-124" name="ln-124" href="#ln-124"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">network_t</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">net</span>
+<a id="ln-125" name="ln-125" href="#ln-125"></a><span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">inf_fraction</span>
+<a id="ln-126" name="ln-126" href="#ln-126"></a><span class="w">        </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">i4</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">initial_number</span>
+<a id="ln-127" name="ln-127" href="#ln-127"></a>
+<a id="ln-128" name="ln-128" href="#ln-128"></a><span class="w">        </span><span class="c">! Check initial number of infected nodes</span>
+<a id="ln-129" name="ln-129" href="#ln-129"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">initial_number</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-130" name="ln-130" href="#ln-130"></a><span class="k">            </span><span class="n">inf_fraction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">real</span><span class="p">(</span><span class="n">initial_number</span><span class="p">,</span><span class="n">dp</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="kt">real</span><span class="p">(</span><span class="n">net</span><span class="p">%</span><span class="n">num_nodes</span><span class="p">,</span><span class="n">dp</span><span class="p">)</span>
+<a id="ln-131" name="ln-131" href="#ln-131"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inf_fraction</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.0_dp</span><span class="w"> </span><span class="p">.</span><span class="nb">or</span><span class="p">.</span><span class="w"> </span><span class="n">inf_fraction</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">1.0_dp</span><span class="p">)</span><span class="w"> </span><span class="k">error stop</span><span class="w"> </span><span class="s1">&#39;Initial number of infected nodes must be between 0 and network size&#39;</span>
+<a id="ln-132" name="ln-132" href="#ln-132"></a><span class="w">        </span><span class="k">end if</span>
+<a id="ln-133" name="ln-133" href="#ln-133"></a>
+<a id="ln-134" name="ln-134" href="#ln-134"></a><span class="k">    end subroutine </span><span class="n">set_initial_number_of_infected_nodes</span>
+<a id="ln-135" name="ln-135" href="#ln-135"></a>
+<a id="ln-136" name="ln-136" href="#ln-136"></a><span class="w">    </span><span class="c">!&gt; Build the prefix and remove old files</span>
+<a id="ln-137" name="ln-137" href="#ln-137"></a><span class="w">    </span><span class="k">function </span><span class="n">get_path_prefix</span><span class="p">(</span><span class="n">tmp_prefix</span><span class="p">,</span><span class="w"> </span><span class="n">remove_files</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span>
+<a id="ln-138" name="ln-138" href="#ln-138"></a><span class="w">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tmp_prefix</span>
+<a id="ln-139" name="ln-139" href="#ln-139"></a><span class="w">        </span><span class="kt">logical</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">remove_files</span>
+<a id="ln-140" name="ln-140" href="#ln-140"></a><span class="w">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">prefix</span>
+<a id="ln-141" name="ln-141" href="#ln-141"></a>
+<a id="ln-142" name="ln-142" href="#ln-142"></a><span class="w">        </span><span class="n">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">tmp_prefix</span><span class="p">))</span>
+<a id="ln-143" name="ln-143" href="#ln-143"></a>
+<a id="ln-144" name="ln-144" href="#ln-144"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">prefix</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span><span class="nb">len</span><span class="p">(</span><span class="n">prefix</span><span class="p">))</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-145" name="ln-145" href="#ln-145"></a><span class="w">            </span><span class="c">! Append a trailing underscore if it is not a directory</span>
+<a id="ln-146" name="ln-146" href="#ln-146"></a><span class="w">            </span><span class="n">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prefix</span><span class="o">//</span><span class="s1">&#39;_&#39;</span>
+<a id="ln-147" name="ln-147" href="#ln-147"></a><span class="w">        </span><span class="k">end if</span>
+<a id="ln-148" name="ln-148" href="#ln-148"></a>
+<a id="ln-149" name="ln-149" href="#ln-149"></a><span class="w">        </span><span class="c">! Remove old files with the same prefix</span>
+<a id="ln-150" name="ln-150" href="#ln-150"></a><span class="w">        </span><span class="k">call </span><span class="nb">system</span><span class="p">(</span><span class="s1">&#39;mkdir -pv &#39;</span><span class="o">//</span><span class="n">prefix</span><span class="o">//</span><span class="s1">&#39;basedir/&#39;</span><span class="p">)</span>
+<a id="ln-151" name="ln-151" href="#ln-151"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">remove_files</span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="nb">system</span><span class="p">(</span><span class="s1">&#39;rm -vf &#39;</span><span class="o">//</span><span class="n">prefix</span><span class="o">//</span><span class="s1">&#39;*time*.dat&#39;</span><span class="p">)</span>
+<a id="ln-152" name="ln-152" href="#ln-152"></a><span class="w">    </span><span class="k">end function </span><span class="n">get_path_prefix</span>
+<a id="ln-153" name="ln-153" href="#ln-153"></a>
+<a id="ln-154" name="ln-154" href="#ln-154"></a><span class="k">end module </span><span class="n">hyperSIS_program_common_mod</span>
+</pre></div>
+
+      </section>
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              HyperSIS
+ was developed by Wesley Cota <https://wcota.me/><br>              &copy; 2025 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

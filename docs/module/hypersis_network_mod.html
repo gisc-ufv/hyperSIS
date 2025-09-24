@@ -1,0 +1,1219 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Documentation for HyperSIS">
+    <meta name="author" content="Wesley Cota <https://wcota.me/>" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>hyperSIS_network_mod &ndash; HyperSIS</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">HyperSIS </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>hyperSIS_network_mod
+      <small>Module</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title="25.5% of total for modules and submodules.">340 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/network.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/network.f90.html'>network.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">hyperSIS_network_mod</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#inters-0"
+         aria-expanded="false" aria-controls="inters-0">
+         <h4 class="card-header bg-primary text-white">Interfaces</h4>
+      </a>
+      <div id="inters-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/hypersis_network_mod.html#interface-network">network</a>
+            <a class="list-group-item" href="../module/hypersis_network_mod.html#interface-hyperedge">hyperedge</a>
+        </div>
+      </div>
+    </div>
+
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#types-0"
+         aria-expanded="false" aria-controls="types-0">
+         <h4 class="card-header bg-primary text-white">Derived Types</h4>
+      </a>
+      <div id="types-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/hypersis_network_mod.html#type-hyperedge_t">hyperedge_t</a>
+            <a class="list-group-item" href="../module/hypersis_network_mod.html#type-node_t">node_t</a>
+            <a class="list-group-item" href="../module/hypersis_network_mod.html#type-network_t">network_t</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+
+    <div class="col-md-9" id='text'>
+      
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item">datastructs_mod</li>
+                  <li class="list-inline-item"><a href='hypersis_kinds_mod.html'>hyperSIS_kinds_mod</a></li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 13.1.1 (0)
+ -->
+<!-- Title: module~~hypersis_network_mod~~UsesGraph Pages: 1 -->
+<svg id="modulehypersis_network_modUsesGraph" width="404pt" height="74pt"
+ viewBox="0.00 0.00 404.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~hypersis_network_mod~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 69.52)">
+<title>module~~hypersis_network_mod~~UsesGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-69.52 400.06,-69.52 400.06,4 -4,4"/>
+<!-- module~hypersis_network_mod -->
+<g id="module~~hypersis_network_mod~~UsesGraph_node1" class="node">
+<title>module~hypersis_network_mod</title>
+<polygon fill="none" stroke="black" points="396.06,-44.52 270.54,-44.52 270.54,-21 396.06,-21 396.06,-44.52"/>
+<text xml:space="preserve" text-anchor="middle" x="333.3" y="-28.78" font-family="Helvetica,sans-Serif" font-size="10.50">hyperSIS_network_mod</text>
+</g>
+<!-- datastructs_mod -->
+<g id="module~~hypersis_network_mod~~UsesGraph_node2" class="node">
+<title>datastructs_mod</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="223.66,-65.52 132.64,-65.52 132.64,-42 223.66,-42 223.66,-65.52"/>
+<text xml:space="preserve" text-anchor="middle" x="178.15" y="-49.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">datastructs_mod</text>
+</g>
+<!-- module~hypersis_network_mod&#45;&gt;datastructs_mod -->
+<g id="module~~hypersis_network_mod~~UsesGraph_edge1" class="edge">
+<title>module~hypersis_network_mod&#45;&gt;datastructs_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M270.45,-41.24C258.75,-42.85 246.56,-44.52 235.06,-46.09"/>
+<polygon fill="#000000" stroke="#000000" points="234.75,-42.6 225.31,-47.43 235.7,-49.54 234.75,-42.6"/>
+</g>
+<!-- module~hypersis_kinds_mod -->
+<g id="module~~hypersis_network_mod~~UsesGraph_node3" class="node">
+<title>module~hypersis_kinds_mod</title>
+<g id="a_module~~hypersis_network_mod~~UsesGraph_node3"><a xlink:href="../module/hypersis_kinds_mod.html" xlink:title="hyperSIS_kinds_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="234.54,-23.52 121.77,-23.52 121.77,0 234.54,0 234.54,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="178.15" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hyperSIS_kinds_mod</text>
+</a>
+</g>
+</g>
+<!-- module~hypersis_network_mod&#45;&gt;module~hypersis_kinds_mod -->
+<g id="module~~hypersis_network_mod~~UsesGraph_edge2" class="edge">
+<title>module~hypersis_network_mod&#45;&gt;module~hypersis_kinds_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M270.45,-24.28C262.44,-23.18 254.2,-22.05 246.11,-20.94"/>
+<polygon fill="#000000" stroke="#000000" points="246.69,-17.49 236.31,-19.6 245.74,-24.42 246.69,-17.49"/>
+</g>
+<!-- iso_fortran_env -->
+<g id="module~~hypersis_network_mod~~UsesGraph_node4" class="node">
+<title>iso_fortran_env</title>
+<g id="a_module~~hypersis_network_mod~~UsesGraph_node4"><a xlink:href="http://fortranwiki.org/fortran/show/iso_fortran_env" xlink:title="iso_fortran_env">
+<polygon fill="#337ab7" stroke="#337ab7" points="85.77,-23.52 0,-23.52 0,0 85.77,0 85.77,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="42.88" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_fortran_env</text>
+</a>
+</g>
+</g>
+<!-- module~hypersis_kinds_mod&#45;&gt;iso_fortran_env -->
+<g id="module~~hypersis_network_mod~~UsesGraph_edge3" class="edge">
+<title>module~hypersis_kinds_mod&#45;&gt;iso_fortran_env</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M121.41,-11.76C113.45,-11.76 105.29,-11.76 97.37,-11.76"/>
+<polygon fill="#000000" stroke="#000000" points="97.54,-8.26 87.54,-11.76 97.54,-15.26 97.54,-8.26"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 13.1.1 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="485pt" height="32pt"
+ viewBox="0.00 0.00 485.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 27.52)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-27.52 481.13,-27.52 481.13,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-23.52 0,-23.52 0,0 54,0 54,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="27" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="137.76,-23.52 72.24,-23.52 72.24,0 137.76,0 137.76,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="105" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="218.63,-23.52 155.37,-23.52 155.37,0 218.63,0 218.63,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="187" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="291,-23.52 237,-23.52 237,0 291,0 291,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="264" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="363,-23.52 309,-23.52 309,0 363,0 363,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="336" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="477.13,-23.52 380.87,-23.52 380.87,0 477.13,0 477.13,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="429" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+          <div class="card">
+      <h3 class="card-header card-title bg-light">Used by</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 13.1.1 (0)
+ -->
+<!-- Title: module~~hypersis_network_mod~~UsedByGraph Pages: 1 -->
+<svg id="modulehypersis_network_modUsedByGraph" width="641pt" height="161pt"
+ viewBox="0.00 0.00 641.00 161.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~hypersis_network_mod~~UsedByGraph" class="graph" transform="scale(0.688433 0.688433) rotate(0) translate(4 229.52)">
+<title>module~~hypersis_network_mod~~UsedByGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-229.52 927.1,-229.52 927.1,4 -4,4"/>
+<!-- module~hypersis_network_mod -->
+<g id="module~~hypersis_network_mod~~UsedByGraph_node1" class="node">
+<title>module~hypersis_network_mod</title>
+<polygon fill="none" stroke="black" points="125.52,-103.52 0,-103.52 0,-80 125.52,-80 125.52,-103.52"/>
+<text xml:space="preserve" text-anchor="middle" x="62.76" y="-87.79" font-family="Helvetica,sans-Serif" font-size="10.50">hyperSIS_network_mod</text>
+</g>
+<!-- module~hypersis_dynamics_base_mod -->
+<g id="module~~hypersis_network_mod~~UsedByGraph_node2" class="node">
+<title>module~hypersis_dynamics_base_mod</title>
+<g id="a_module~~hypersis_network_mod~~UsedByGraph_node2"><a xlink:href="../module/hypersis_dynamics_base_mod.html" xlink:title="hyperSIS_dynamics_base_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="323.79,-143.52 161.52,-143.52 161.52,-120 323.79,-120 323.79,-143.52"/>
+<text xml:space="preserve" text-anchor="middle" x="242.65" y="-127.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hyperSIS_dynamics_base_mod</text>
+</a>
+</g>
+</g>
+<!-- module~hypersis_dynamics_base_mod&#45;&gt;module~hypersis_network_mod -->
+<g id="module~~hypersis_network_mod~~UsedByGraph_edge1" class="edge">
+<title>module~hypersis_dynamics_base_mod&#45;&gt;module~hypersis_network_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M187.31,-119.54C168.95,-115.41 148.25,-110.76 129.13,-106.46"/>
+<polygon fill="#000000" stroke="#000000" points="130.08,-103.08 119.55,-104.3 128.54,-109.91 130.08,-103.08"/>
+</g>
+<!-- module~hypersis_dynamics_hb_oga_mod -->
+<g id="module~~hypersis_network_mod~~UsedByGraph_node3" class="node">
+<title>module~hypersis_dynamics_hb_oga_mod</title>
+<g id="a_module~~hypersis_network_mod~~UsedByGraph_node3"><a xlink:href="../module/hypersis_dynamics_hb_oga_mod.html" xlink:title="hyperSIS_dynamics_HB_OGA_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="542.31,-225.52 359.79,-225.52 359.79,-202 542.31,-202 542.31,-225.52"/>
+<text xml:space="preserve" text-anchor="middle" x="451.05" y="-209.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hyperSIS_dynamics_HB_OGA_mod</text>
+</a>
+</g>
+</g>
+<!-- module~hypersis_dynamics_hb_oga_mod&#45;&gt;module~hypersis_network_mod -->
+<g id="module~~hypersis_network_mod~~UsedByGraph_edge2" class="edge">
+<title>module~hypersis_dynamics_hb_oga_mod&#45;&gt;module~hypersis_network_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M359.32,-210.59C322.92,-207.75 280.85,-202.49 243.65,-192.76"/>
+</g>
+<!-- module~hypersis_dynamics_hb_oga_mod&#45;&gt;module~hypersis_dynamics_base_mod -->
+<g id="module~~hypersis_network_mod~~UsedByGraph_edge7" class="edge">
+<title>module~hypersis_dynamics_hb_oga_mod&#45;&gt;module~hypersis_dynamics_base_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M388.25,-201.6C378.6,-199.07 368.84,-196.13 359.79,-192.76 328.88,-181.26 295.77,-163.25 272.85,-149.78"/>
+<polygon fill="#000000" stroke="#000000" points="274.76,-146.84 264.38,-144.72 271.17,-152.85 274.76,-146.84"/>
+</g>
+<!-- module~hypersis_dynamics_nb_oga_mod -->
+<g id="module~~hypersis_network_mod~~UsedByGraph_node4" class="node">
+<title>module~hypersis_dynamics_nb_oga_mod</title>
+<g id="a_module~~hypersis_network_mod~~UsedByGraph_node4"><a xlink:href="../module/hypersis_dynamics_nb_oga_mod.html" xlink:title="hyperSIS_dynamics_NB_OGA_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="542.31,-183.52 359.79,-183.52 359.79,-160 542.31,-160 542.31,-183.52"/>
+<text xml:space="preserve" text-anchor="middle" x="451.05" y="-167.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hyperSIS_dynamics_NB_OGA_mod</text>
+</a>
+</g>
+</g>
+<!-- module~hypersis_dynamics_nb_oga_mod&#45;&gt;module~hypersis_network_mod -->
+<g id="module~~hypersis_network_mod~~UsedByGraph_edge3" class="edge">
+<title>module~hypersis_dynamics_nb_oga_mod&#45;&gt;module~hypersis_network_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M381.02,-183.99C331.34,-191.8 268.83,-199.34 243.65,-192.76"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M241.65,-192.76C181.3,-176.98 120.01,-135.3 87.49,-110.69"/>
+<polygon fill="#000000" stroke="#000000" points="89.99,-108.2 79.93,-104.87 85.72,-113.75 89.99,-108.2"/>
+</g>
+<!-- module~hypersis_dynamics_nb_oga_mod&#45;&gt;module~hypersis_dynamics_base_mod -->
+<g id="module~~hypersis_network_mod~~UsedByGraph_edge9" class="edge">
+<title>module~hypersis_dynamics_nb_oga_mod&#45;&gt;module~hypersis_dynamics_base_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M387,-159.54C365.2,-155.32 340.56,-150.54 317.94,-146.16"/>
+<polygon fill="#000000" stroke="#000000" points="318.64,-142.73 308.16,-144.26 317.31,-149.6 318.64,-142.73"/>
+</g>
+<!-- module~hypersis_network_io_mod -->
+<g id="module~~hypersis_network_mod~~UsedByGraph_node5" class="node">
+<title>module~hypersis_network_io_mod</title>
+<g id="a_module~~hypersis_network_mod~~UsedByGraph_node5"><a xlink:href="../module/hypersis_network_io_mod.html" xlink:title="hyperSIS_network_io_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="312.54,-23.52 172.77,-23.52 172.77,0 312.54,0 312.54,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="242.65" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hyperSIS_network_io_mod</text>
+</a>
+</g>
+</g>
+<!-- module~hypersis_network_io_mod&#45;&gt;module~hypersis_network_mod -->
+<g id="module~~hypersis_network_mod~~UsedByGraph_edge4" class="edge">
+<title>module~hypersis_network_io_mod&#45;&gt;module~hypersis_network_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M199.09,-23.91C186.79,-27.86 173.46,-32.58 161.52,-37.76 137.66,-48.11 111.96,-62.44 92.9,-73.74"/>
+<polygon fill="#000000" stroke="#000000" points="91.11,-70.73 84.35,-78.88 94.72,-76.73 91.11,-70.73"/>
+</g>
+<!-- module~hypersis_program_common_mod -->
+<g id="module~~hypersis_network_mod~~UsedByGraph_node6" class="node">
+<title>module~hypersis_program_common_mod</title>
+<g id="a_module~~hypersis_network_mod~~UsedByGraph_node6"><a xlink:href="../module/hypersis_program_common_mod.html" xlink:title="hyperSIS_program_common_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="923.1,-83.52 747.33,-83.52 747.33,-60 923.1,-60 923.1,-83.52"/>
+<text xml:space="preserve" text-anchor="middle" x="835.21" y="-67.79" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hyperSIS_program_common_mod</text>
+</a>
+</g>
+</g>
+<!-- module~hypersis_program_common_mod&#45;&gt;module~hypersis_network_mod -->
+<g id="module~~hypersis_network_mod~~UsedByGraph_edge5" class="edge">
+<title>module~hypersis_program_common_mod&#45;&gt;module~hypersis_network_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M450.05,-51.76C338.21,-43.53 208.64,-62.88 131.59,-77.44"/>
+<polygon fill="#000000" stroke="#000000" points="131.26,-73.94 122.1,-79.27 132.58,-80.82 131.26,-73.94"/>
+</g>
+<!-- module~hypersis_program_common_mod&#45;&gt;module~hypersis_network_io_mod -->
+<g id="module~~hypersis_network_mod~~UsedByGraph_edge12" class="edge">
+<title>module~hypersis_program_common_mod&#45;&gt;module~hypersis_network_io_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M746.95,-66.97C669.5,-62.78 553.25,-56.61 452.05,-51.76"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M450.05,-51.76C399.14,-48.01 342.26,-36.42 301.12,-26.68"/>
+<polygon fill="#000000" stroke="#000000" points="301.97,-23.28 291.43,-24.34 300.33,-30.09 301.97,-23.28"/>
+</g>
+<!-- module~hypersis_dynamics_mod -->
+<g id="module~~hypersis_network_mod~~UsedByGraph_node8" class="node">
+<title>module~hypersis_dynamics_mod</title>
+<g id="a_module~~hypersis_network_mod~~UsedByGraph_node8"><a xlink:href="../module/hypersis_dynamics_mod.html" xlink:title="hyperSIS_dynamics_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="711.33,-103.52 578.31,-103.52 578.31,-80 711.33,-80 711.33,-103.52"/>
+<text xml:space="preserve" text-anchor="middle" x="644.82" y="-87.79" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hyperSIS_dynamics_mod</text>
+</a>
+</g>
+</g>
+<!-- module~hypersis_program_common_mod&#45;&gt;module~hypersis_dynamics_mod -->
+<g id="module~~hypersis_network_mod~~UsedByGraph_edge14" class="edge">
+<title>module~hypersis_program_common_mod&#45;&gt;module~hypersis_dynamics_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M746.91,-81.03C738.96,-81.87 730.94,-82.72 723.08,-83.56"/>
+<polygon fill="#000000" stroke="#000000" points="722.79,-80.07 713.21,-84.61 723.53,-87.03 722.79,-80.07"/>
+</g>
+<!-- module~hypersis_dynamics_chooser_mod -->
+<g id="module~~hypersis_network_mod~~UsedByGraph_node7" class="node">
+<title>module~hypersis_dynamics_chooser_mod</title>
+<g id="a_module~~hypersis_network_mod~~UsedByGraph_node7"><a xlink:href="../module/hypersis_dynamics_chooser_mod.html" xlink:title="hyperSIS_dynamics_chooser_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="539.68,-103.52 362.41,-103.52 362.41,-80 539.68,-80 539.68,-103.52"/>
+<text xml:space="preserve" text-anchor="middle" x="451.05" y="-87.79" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hyperSIS_dynamics_chooser_mod</text>
+</a>
+</g>
+</g>
+<!-- module~hypersis_dynamics_chooser_mod&#45;&gt;module~hypersis_dynamics_base_mod -->
+<g id="module~~hypersis_network_mod~~UsedByGraph_edge6" class="edge">
+<title>module~hypersis_dynamics_chooser_mod&#45;&gt;module~hypersis_dynamics_base_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M387,-103.98C365.2,-108.2 340.56,-112.98 317.94,-117.36"/>
+<polygon fill="#000000" stroke="#000000" points="317.31,-113.92 308.16,-119.26 318.64,-120.79 317.31,-113.92"/>
+</g>
+<!-- module~hypersis_dynamics_mod&#45;&gt;module~hypersis_dynamics_base_mod -->
+<g id="module~~hypersis_network_mod~~UsedByGraph_edge8" class="edge">
+<title>module~hypersis_dynamics_mod&#45;&gt;module~hypersis_dynamics_base_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M591.64,-104.02C575.87,-107.33 558.45,-110.59 542.31,-112.76 473.26,-122.05 394.59,-126.82 335.34,-129.26"/>
+<polygon fill="#000000" stroke="#000000" points="335.5,-125.75 325.64,-129.64 335.77,-132.74 335.5,-125.75"/>
+</g>
+<!-- module~hypersis_dynamics_mod&#45;&gt;module~hypersis_dynamics_chooser_mod -->
+<g id="module~~hypersis_network_mod~~UsedByGraph_edge13" class="edge">
+<title>module~hypersis_dynamics_mod&#45;&gt;module~hypersis_dynamics_chooser_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M577.82,-91.76C569.29,-91.76 560.41,-91.76 551.48,-91.76"/>
+<polygon fill="#000000" stroke="#000000" points="551.7,-88.26 541.7,-91.76 551.7,-95.26 551.7,-88.26"/>
+</g>
+<!-- proc~net_state_choose -->
+<g id="module~~hypersis_network_mod~~UsedByGraph_node9" class="node">
+<title>proc~net_state_choose</title>
+<g id="a_module~~hypersis_network_mod~~UsedByGraph_node9"><a xlink:href="../proc/net_state_choose.html" xlink:title="net_state_choose">
+<polygon fill="#d9534f" stroke="#d9534f" points="692.95,-204.52 596.68,-204.52 596.68,-181 692.95,-181 692.95,-204.52"/>
+<text xml:space="preserve" text-anchor="middle" x="644.82" y="-188.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">net_state_choose</text>
+</a>
+</g>
+</g>
+<!-- proc~net_state_choose&#45;&gt;module~hypersis_dynamics_hb_oga_mod -->
+<g id="module~~hypersis_network_mod~~UsedByGraph_edge10" class="edge">
+<title>proc~net_state_choose&#45;&gt;module~hypersis_dynamics_hb_oga_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M596.42,-197.95C583.42,-199.37 568.82,-200.97 554.02,-202.59"/>
+<polygon fill="#000000" stroke="#000000" points="553.75,-199.1 544.19,-203.67 554.52,-206.06 553.75,-199.1"/>
+</g>
+<!-- proc~net_state_choose&#45;&gt;module~hypersis_dynamics_nb_oga_mod -->
+<g id="module~~hypersis_network_mod~~UsedByGraph_edge11" class="edge">
+<title>proc~net_state_choose&#45;&gt;module~hypersis_dynamics_nb_oga_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M596.42,-187.57C583.42,-186.15 568.82,-184.55 554.02,-182.93"/>
+<polygon fill="#000000" stroke="#000000" points="554.52,-179.46 544.19,-181.85 553.75,-186.42 554.52,-179.46"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panmodulehypersis_network_modUsedByGraph = svgPanZoom('#modulehypersis_network_modUsedByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsedByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 13.1.1 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="485pt" height="32pt"
+ viewBox="0.00 0.00 485.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 27.52)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-27.52 481.13,-27.52 481.13,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-23.52 0,-23.52 0,0 54,0 54,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="27" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="137.76,-23.52 72.24,-23.52 72.24,0 137.76,0 137.76,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="105" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="218.63,-23.52 155.37,-23.52 155.37,0 218.63,0 218.63,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="187" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="291,-23.52 237,-23.52 237,0 291,0 291,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="264" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="363,-23.52 309,-23.52 309,0 363,0 363,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="336" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="477.13,-23.52 380.87,-23.52 380.87,0 477.13,0 477.13,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="429" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+      <br>
+
+
+
+
+        <section>
+          <h2>Interfaces</h2>
+              <div class="card">
+    <div class="card-header bg-light codesum">
+      <span class="anchor" id="interface-network"></span>
+      <h3>public        interface <a href='../interface/network.html'>network</a> 
+      </h3>
+    </div>
+      <div class="card-body">
+        <p>Interface for the constructor of the network type.</p>
+      </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private  function network_new(num_nodes, num_edges) result(net)  
+
+    </h3>
+  <p>Constructor for the network type.
+It initializes the number of nodes and edges, and allocates memory for the nodes and edges arrays.
+@param net The network object to be initialized.
+@param num_nodes The number of nodes in the network.
+@param num_edges The number of edges in the network.</p>
+<div class="alert alert-info">
+<p class="alert-title h4">Note</p>
+<p>This subroutine allocates memory for the nodes and edges arrays based on the provided sizes.</p>
+<div class="alert alert-info">
+<p class="alert-title h4">Note</p>
+</div>
+<p>The arrays are allocated with the sizes specified by num_nodes and num_edges.</p>
+</div>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-num_nodes~4"></span>
+              integer(kind=i4),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>num_nodes</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-num_edges~3"></span>
+              integer(kind=i4),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>num_edges</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/network_t.html'>network_t</a>)</small>
+    </h4>
+    
+
+          </li>
+    </ul>
+  </div>
+
+              <div class="card">
+    <div class="card-header bg-light codesum">
+      <span class="anchor" id="interface-hyperedge"></span>
+      <h3>public        interface <a href='../interface/hyperedge.html'>hyperedge</a> 
+      </h3>
+    </div>
+      <div class="card-body">
+        <p>Interface for the constructor of the hyperedge type.
+It receives the order OR a list of nodes and returns a new hyperedge object.</p>
+      </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private elemental function hyperedge_new(order) result(edge)  
+
+    </h3>
+  <p>Constructor for the hyperedge type.
+It initializes the ID and order of the hyperedge, and allocates memory for the nodes array.
+@param order The order of the hyperedge.</p>
+<div class="alert alert-info">
+<p class="alert-title h4">Note</p>
+<p>This subroutine allocates memory for the nodes array based on the provided size.</p>
+</div>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-order~2"></span>
+              integer(kind=i4),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>order</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/hyperedge_t.html'>hyperedge_t</a>)</small>
+    </h4>
+    
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private  function hyperedge_new_from_nodes_list(nodes) result(edge)  
+
+    </h3>
+  <p>Constructor for the hyperedge type from a list of nodes.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodes~5"></span>
+              integer(kind=i4),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nodes</strong>(:)</td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/hyperedge_t.html'>hyperedge_t</a>)</small>
+    </h4>
+    
+
+          </li>
+    </ul>
+  </div>
+
+        </section>
+        <br>
+
+
+        <section>
+          <h2>Derived Types</h2>
+              <div class="card">
+    <div class="card-header codesum">
+      <span class="anchor" id="type-hyperedge_t"></span>
+      <h3>
+        type, public&nbsp;::&nbsp;
+        <a href='../type/hyperedge_t.html'>hyperedge_t</a>
+        
+      </h3>
+    </div>
+    <div class="card-body">
+      <p>Hyperedge object to represent a hyperedge in the network.
+It contains an ID, order m, and list of m + 1 nodes belonging to the hyperedge.</p>
+
+        <h4>Components</h4>
+          <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-order"></span>
+              integer(kind=i4),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>order</strong></td>
+<td> =</td>
+                <td>-1</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodes~3"></span>
+              integer(kind=i4),
+            </td>
+              <td>public,</td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>nodes</strong>(:)</td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-dual_edges"></span>
+              integer(kind=i4),
+            </td>
+              <td>public,</td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>dual_edges</strong>(:)</td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum">
+      <span class="anchor" id="type-node_t"></span>
+      <h3>
+        type, public&nbsp;::&nbsp;
+        <a href='../type/node_t.html'>node_t</a>
+        
+      </h3>
+    </div>
+    <div class="card-body">
+      <p>Node object to represent a node in the network.
+It contains an ID, degree, and list of hyperedges that the node belongs to.</p>
+
+        <h4>Components</h4>
+          <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-degree"></span>
+              integer(kind=i4),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>degree</strong></td>
+<td> =</td>
+                <td>0</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-edges"></span>
+              integer(kind=i4),
+            </td>
+              <td>public,</td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>edges</strong>(:)</td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-dual_nodes"></span>
+              integer(kind=i4),
+            </td>
+              <td>public,</td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>dual_nodes</strong>(:)</td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum">
+      <span class="anchor" id="type-network_t"></span>
+      <h3>
+        type, public&nbsp;::&nbsp;
+        <a href='../type/network_t.html'>network_t</a>
+        
+      </h3>
+    </div>
+    <div class="card-body">
+      <p>Network object to represent the entire hypergraph.
+It contains the number of nodes, number of edges, and arrays of nodes and edges objects.</p>
+
+        <h4>Components</h4>
+          <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-num_nodes~2"></span>
+              integer(kind=i4),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>num_nodes</strong></td>
+<td> =</td>
+                <td>0</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-num_edges"></span>
+              integer(kind=i4),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>num_edges</strong></td>
+<td> =</td>
+                <td>0</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-max_order"></span>
+              integer(kind=i4),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>max_order</strong></td>
+<td> =</td>
+                <td>0</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodes~4"></span>
+              type(<a href='../type/node_t.html'>node_t</a>),
+            </td>
+              <td>public,</td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>nodes</strong>(:)</td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-edges~2"></span>
+              type(<a href='../type/hyperedge_t.html'>hyperedge_t</a>),
+            </td>
+              <td>public,</td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>edges</strong>(:)</td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-props"></span>
+              type(network_props_t),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>props</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodes_per_degree"></span>
+              type(fixed_list_t),
+            </td>
+              <td>public,</td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>nodes_per_degree</strong>(:)</td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-edges_per_order"></span>
+              type(fixed_list_t),
+            </td>
+              <td>public,</td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>edges_per_order</strong>(:)</td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+        <h4>Finalizations Procedures</h4>
+        <table class="table table-striped varlist">
+          <tbody>
+              <tr>
+                <td>final :: <strong>network_finalizer</strong></td>
+                <td></td>
+              </tr>
+          </tbody>
+        </table>
+
+        <h4>Type-Bound Procedures</h4>
+        <table class="table table-striped varlist">
+          <tbody>
+              <tr>
+                <td>  procedure, public ::
+  <strong><a href='../type/network_t.html#boundprocedure-init~5'>init</a></strong> => network_init</td>
+                  <td></td>
+              </tr>
+              <tr>
+                <td>  procedure, public ::
+  <strong><a href='../type/network_t.html#boundprocedure-build_edges_from_nodes'>build_edges_from_nodes</a></strong> => network_build_edges_from_nodes</td>
+                  <td></td>
+              </tr>
+              <tr>
+                <td>  procedure, public ::
+  <strong><a href='../type/network_t.html#boundprocedure-build_nodes_from_edges'>build_nodes_from_edges</a></strong> => network_build_nodes_from_edges</td>
+                  <td></td>
+              </tr>
+              <tr>
+                <td>  procedure, public ::
+  <strong><a href='../type/network_t.html#boundprocedure-print_nodes_and_edges'>print_nodes_and_edges</a></strong> => network_print_nodes_and_edges</td>
+                  <td></td>
+              </tr>
+              <tr>
+                <td>  procedure, public ::
+  <strong><a href='../type/network_t.html#boundprocedure-clear_null_edges'>clear_null_edges</a></strong> => network_clear_null_edges</td>
+                  <td></td>
+              </tr>
+              <tr>
+                <td>  procedure, public ::
+  <strong><a href='../type/network_t.html#boundprocedure-check_topology_consistency'>check_topology_consistency</a></strong> => network_check_topology_consistency</td>
+                  <td></td>
+              </tr>
+              <tr>
+                <td>  procedure, public ::
+  <strong><a href='../type/network_t.html#boundprocedure-remove_invalid_nodes_and_edges'>remove_invalid_nodes_and_edges</a></strong> => network_remove_invalid_nodes_and_edges</td>
+                  <td></td>
+              </tr>
+              <tr>
+                <td>  procedure, public ::
+  <strong><a href='../type/network_t.html#boundprocedure-clear_and_check_all'>clear_and_check_all</a></strong> => network_clear_and_check_all</td>
+                  <td></td>
+              </tr>
+              <tr>
+                <td>  procedure, public ::
+  <strong><a href='../type/network_t.html#boundprocedure-reset_props'>reset_props</a></strong> => network_reset_props</td>
+                  <td></td>
+              </tr>
+              <tr>
+                <td>  procedure, public ::
+  <strong><a href='../type/network_t.html#boundprocedure-destroy'>destroy</a></strong> => network_destroy</td>
+                  <td></td>
+              </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+
+
+
+
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              HyperSIS
+ was developed by Wesley Cota <https://wcota.me/><br>              &copy; 2025 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

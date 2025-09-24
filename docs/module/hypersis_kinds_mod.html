@@ -1,0 +1,877 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Documentation for HyperSIS">
+    <meta name="author" content="Wesley Cota <https://wcota.me/>" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>hyperSIS_kinds_mod &ndash; HyperSIS</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">HyperSIS </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>hyperSIS_kinds_mod
+      <small>Module</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 3.7% of total for modules and submodules.">49 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/kinds.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/kinds.f90.html'>kinds.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">hyperSIS_kinds_mod</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#vars-0"
+         aria-expanded="false" aria-controls="vars-0">
+         <h4 class="card-header bg-primary text-white">Variables</h4>
+      </a>
+      <div id="vars-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/hypersis_kinds_mod.html#variable-fmt_general">fmt_general</a>
+            <a class="list-group-item" href="../module/hypersis_kinds_mod.html#variable-fmt_comma">fmt_comma</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#inters-0"
+         aria-expanded="false" aria-controls="inters-0">
+         <h4 class="card-header bg-primary text-white">Interfaces</h4>
+      </a>
+      <div id="inters-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/hypersis_kinds_mod.html#interface-swap">swap</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#funcs-0"
+         aria-expanded="false" aria-controls="funcs-0">
+         <h4 class="card-header bg-primary text-white">Functions</h4>
+      </a>
+      <div id="funcs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/hypersis_kinds_mod.html#proc-count_integers_from_string">count_integers_from_string</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+
+    <div class="col-md-9" id='text'>
+      
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_fortran_env'>iso_fortran_env</a></li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 13.1.1 (0)
+ -->
+<!-- Title: module~~hypersis_kinds_mod~~UsesGraph Pages: 1 -->
+<svg id="modulehypersis_kinds_modUsesGraph" width="243pt" height="32pt"
+ viewBox="0.00 0.00 243.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~hypersis_kinds_mod~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 27.52)">
+<title>module~~hypersis_kinds_mod~~UsesGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-27.52 238.54,-27.52 238.54,4 -4,4"/>
+<!-- module~hypersis_kinds_mod -->
+<g id="module~~hypersis_kinds_mod~~UsesGraph_node1" class="node">
+<title>module~hypersis_kinds_mod</title>
+<polygon fill="none" stroke="black" points="234.54,-23.52 121.77,-23.52 121.77,0 234.54,0 234.54,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="178.15" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50">hyperSIS_kinds_mod</text>
+</g>
+<!-- iso_fortran_env -->
+<g id="module~~hypersis_kinds_mod~~UsesGraph_node2" class="node">
+<title>iso_fortran_env</title>
+<g id="a_module~~hypersis_kinds_mod~~UsesGraph_node2"><a xlink:href="http://fortranwiki.org/fortran/show/iso_fortran_env" xlink:title="iso_fortran_env">
+<polygon fill="#337ab7" stroke="#337ab7" points="85.77,-23.52 0,-23.52 0,0 85.77,0 85.77,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="42.88" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_fortran_env</text>
+</a>
+</g>
+</g>
+<!-- module~hypersis_kinds_mod&#45;&gt;iso_fortran_env -->
+<g id="module~~hypersis_kinds_mod~~UsesGraph_edge1" class="edge">
+<title>module~hypersis_kinds_mod&#45;&gt;iso_fortran_env</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M121.41,-11.76C113.45,-11.76 105.29,-11.76 97.37,-11.76"/>
+<polygon fill="#000000" stroke="#000000" points="97.54,-8.26 87.54,-11.76 97.54,-15.26 97.54,-8.26"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 13.1.1 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="485pt" height="32pt"
+ viewBox="0.00 0.00 485.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 27.52)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-27.52 481.13,-27.52 481.13,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-23.52 0,-23.52 0,0 54,0 54,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="27" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="137.76,-23.52 72.24,-23.52 72.24,0 137.76,0 137.76,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="105" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="218.63,-23.52 155.37,-23.52 155.37,0 218.63,0 218.63,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="187" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="291,-23.52 237,-23.52 237,0 291,0 291,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="264" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="363,-23.52 309,-23.52 309,0 363,0 363,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="336" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="477.13,-23.52 380.87,-23.52 380.87,0 477.13,0 477.13,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="429" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+          <div class="card">
+      <h3 class="card-header card-title bg-light">Used by</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 13.1.1 (0)
+ -->
+<!-- Title: module~~hypersis_kinds_mod~~UsedByGraph Pages: 1 -->
+<svg id="modulehypersis_kinds_modUsedByGraph" width="641pt" height="162pt"
+ viewBox="0.00 0.00 641.00 162.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~hypersis_kinds_mod~~UsedByGraph" class="graph" transform="scale(0.59359 0.59359) rotate(0) translate(4 268.33)">
+<title>module~~hypersis_kinds_mod~~UsedByGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-268.33 1075.87,-268.33 1075.87,4 -4,4"/>
+<!-- module~hypersis_kinds_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_node1" class="node">
+<title>module~hypersis_kinds_mod</title>
+<polygon fill="none" stroke="black" points="112.77,-143.52 0,-143.52 0,-120 112.77,-120 112.77,-143.52"/>
+<text xml:space="preserve" text-anchor="middle" x="56.38" y="-127.78" font-family="Helvetica,sans-Serif" font-size="10.50">hyperSIS_kinds_mod</text>
+</g>
+<!-- module~hypersis_dynamics_base_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_node2" class="node">
+<title>module~hypersis_dynamics_base_mod</title>
+<g id="a_module~~hypersis_kinds_mod~~UsedByGraph_node2"><a xlink:href="../module/hypersis_dynamics_base_mod.html" xlink:title="hyperSIS_dynamics_base_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="472.56,-185.52 310.29,-185.52 310.29,-162 472.56,-162 472.56,-185.52"/>
+<text xml:space="preserve" text-anchor="middle" x="391.42" y="-169.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hyperSIS_dynamics_base_mod</text>
+</a>
+</g>
+</g>
+<!-- module~hypersis_dynamics_base_mod&#45;&gt;module~hypersis_kinds_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_edge1" class="edge">
+<title>module~hypersis_dynamics_base_mod&#45;&gt;module~hypersis_kinds_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M309.8,-179.49C279.15,-180.17 244.04,-179.14 212.53,-173.76"/>
+</g>
+<!-- module~hypersis_network_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_node7" class="node">
+<title>module~hypersis_network_mod</title>
+<g id="a_module~~hypersis_kinds_mod~~UsedByGraph_node7"><a xlink:href="../module/hypersis_network_mod.html" xlink:title="hyperSIS_network_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="274.29,-143.52 148.77,-143.52 148.77,-120 274.29,-120 274.29,-143.52"/>
+<text xml:space="preserve" text-anchor="middle" x="211.53" y="-127.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hyperSIS_network_mod</text>
+</a>
+</g>
+</g>
+<!-- module~hypersis_dynamics_base_mod&#45;&gt;module~hypersis_network_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_edge16" class="edge">
+<title>module~hypersis_dynamics_base_mod&#45;&gt;module~hypersis_network_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M338.97,-161.61C319.05,-156.91 296.06,-151.48 275.19,-146.55"/>
+<polygon fill="#000000" stroke="#000000" points="276.19,-143.19 265.65,-144.3 274.58,-150.01 276.19,-143.19"/>
+</g>
+<!-- module~hypersis_dynamics_chooser_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_node3" class="node">
+<title>module~hypersis_dynamics_chooser_mod</title>
+<g id="a_module~~hypersis_kinds_mod~~UsedByGraph_node3"><a xlink:href="../module/hypersis_dynamics_chooser_mod.html" xlink:title="hyperSIS_dynamics_chooser_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="688.45,-225.52 511.18,-225.52 511.18,-202 688.45,-202 688.45,-225.52"/>
+<text xml:space="preserve" text-anchor="middle" x="599.82" y="-209.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hyperSIS_dynamics_chooser_mod</text>
+</a>
+</g>
+</g>
+<!-- module~hypersis_dynamics_chooser_mod&#45;&gt;module~hypersis_kinds_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_edge2" class="edge">
+<title>module~hypersis_dynamics_chooser_mod&#45;&gt;module~hypersis_kinds_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M554.96,-225.96C504.01,-239.47 423.05,-258.75 392.42,-253.76"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M390.42,-253.76C304.86,-239.83 297.98,-188.36 212.53,-173.76"/>
+</g>
+<!-- module~hypersis_dynamics_chooser_mod&#45;&gt;module~hypersis_dynamics_base_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_edge8" class="edge">
+<title>module~hypersis_dynamics_chooser_mod&#45;&gt;module~hypersis_dynamics_base_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M535.77,-201.54C513.97,-197.32 489.33,-192.54 466.71,-188.16"/>
+<polygon fill="#000000" stroke="#000000" points="467.41,-184.73 456.93,-186.26 466.08,-191.6 467.41,-184.73"/>
+</g>
+<!-- module~hypersis_dynamics_hb_oga_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_node4" class="node">
+<title>module~hypersis_dynamics_hb_oga_mod</title>
+<g id="a_module~~hypersis_kinds_mod~~UsedByGraph_node4"><a xlink:href="../module/hypersis_dynamics_hb_oga_mod.html" xlink:title="hyperSIS_dynamics_HB_OGA_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="691.08,-103.52 508.56,-103.52 508.56,-80 691.08,-80 691.08,-103.52"/>
+<text xml:space="preserve" text-anchor="middle" x="599.82" y="-87.79" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hyperSIS_dynamics_HB_OGA_mod</text>
+</a>
+</g>
+</g>
+<!-- module~hypersis_dynamics_hb_oga_mod&#45;&gt;module~hypersis_kinds_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_edge3" class="edge">
+<title>module~hypersis_dynamics_hb_oga_mod&#45;&gt;module~hypersis_kinds_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M508.08,-89.59C472.06,-89.3 430.26,-89.66 392.42,-91.76"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M390.42,-91.76C311.48,-96.13 289.41,-73.31 212.53,-91.76"/>
+</g>
+<!-- module~hypersis_dynamics_hb_oga_mod&#45;&gt;module~hypersis_dynamics_base_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_edge9" class="edge">
+<title>module~hypersis_dynamics_hb_oga_mod&#45;&gt;module~hypersis_dynamics_base_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M528.9,-103.97C521.82,-106.39 514.91,-109.29 508.56,-112.76 488.98,-123.46 491.67,-136.24 472.56,-147.76 466.25,-151.57 459.32,-154.88 452.25,-157.75"/>
+<polygon fill="#000000" stroke="#000000" points="451.42,-154.32 443.28,-161.11 453.88,-160.88 451.42,-154.32"/>
+</g>
+<!-- module~hypersis_dynamics_hb_oga_mod&#45;&gt;module~hypersis_network_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_edge17" class="edge">
+<title>module~hypersis_dynamics_hb_oga_mod&#45;&gt;module~hypersis_network_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M390.42,-91.76C345.79,-94.23 296.27,-106.15 260.83,-116.34"/>
+<polygon fill="#000000" stroke="#000000" points="259.9,-112.96 251.3,-119.14 261.88,-119.68 259.9,-112.96"/>
+</g>
+<!-- module~hypersis_dynamics_nb_oga_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_node5" class="node">
+<title>module~hypersis_dynamics_nb_oga_mod</title>
+<g id="a_module~~hypersis_kinds_mod~~UsedByGraph_node5"><a xlink:href="../module/hypersis_dynamics_nb_oga_mod.html" xlink:title="hyperSIS_dynamics_NB_OGA_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="691.08,-145.52 508.56,-145.52 508.56,-122 691.08,-122 691.08,-145.52"/>
+<text xml:space="preserve" text-anchor="middle" x="599.82" y="-129.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hyperSIS_dynamics_NB_OGA_mod</text>
+</a>
+</g>
+</g>
+<!-- module~hypersis_dynamics_nb_oga_mod&#45;&gt;module~hypersis_kinds_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_edge4" class="edge">
+<title>module~hypersis_dynamics_nb_oga_mod&#45;&gt;module~hypersis_kinds_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M390.42,-133.76C380.31,-134.29 222.52,-175.47 212.53,-173.76"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M210.53,-173.76C174.63,-167.63 134.99,-156.64 105.04,-147.44"/>
+<polygon fill="#000000" stroke="#000000" points="106.09,-144.1 95.51,-144.46 104.01,-150.78 106.09,-144.1"/>
+</g>
+<!-- module~hypersis_dynamics_nb_oga_mod&#45;&gt;module~hypersis_dynamics_base_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_edge11" class="edge">
+<title>module~hypersis_dynamics_nb_oga_mod&#45;&gt;module~hypersis_dynamics_base_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M535.77,-145.98C513.97,-150.2 489.33,-154.98 466.71,-159.36"/>
+<polygon fill="#000000" stroke="#000000" points="466.08,-155.92 456.93,-161.26 467.41,-162.79 466.08,-155.92"/>
+</g>
+<!-- module~hypersis_dynamics_nb_oga_mod&#45;&gt;module~hypersis_network_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_edge18" class="edge">
+<title>module~hypersis_dynamics_nb_oga_mod&#45;&gt;module~hypersis_network_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M508.09,-131.7C472.06,-131.42 430.27,-131.77 392.42,-133.76"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M390.42,-133.76C356.07,-135.57 317.94,-135.43 285.82,-134.69"/>
+<polygon fill="#000000" stroke="#000000" points="286.33,-131.2 276.24,-134.44 286.15,-138.2 286.33,-131.2"/>
+</g>
+<!-- module~hypersis_network_io_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_node6" class="node">
+<title>module~hypersis_network_io_mod</title>
+<g id="a_module~~hypersis_kinds_mod~~UsedByGraph_node6"><a xlink:href="../module/hypersis_network_io_mod.html" xlink:title="hyperSIS_network_io_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="461.31,-23.52 321.54,-23.52 321.54,0 461.31,0 461.31,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="391.42" y="-7.79" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hyperSIS_network_io_mod</text>
+</a>
+</g>
+</g>
+<!-- module~hypersis_network_io_mod&#45;&gt;module~hypersis_kinds_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_edge5" class="edge">
+<title>module~hypersis_network_io_mod&#45;&gt;module~hypersis_kinds_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M347.86,-23.91C335.56,-27.86 322.23,-32.58 310.29,-37.76 264.75,-57.51 260.8,-80.18 212.53,-91.76"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M210.53,-91.76C178.07,-99.55 141.93,-108.96 112.91,-116.69"/>
+<polygon fill="#000000" stroke="#000000" points="112.38,-113.21 103.63,-119.17 114.19,-119.97 112.38,-113.21"/>
+</g>
+<!-- module~hypersis_network_io_mod&#45;&gt;module~hypersis_network_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_edge19" class="edge">
+<title>module~hypersis_network_io_mod&#45;&gt;module~hypersis_network_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M334.08,-23.87C325.51,-27.39 317.23,-31.93 310.29,-37.76 284.11,-59.76 299.52,-82.67 274.29,-105.76 270.81,-108.94 266.89,-111.77 262.75,-114.27"/>
+<polygon fill="#000000" stroke="#000000" points="261.34,-111.06 254.14,-118.83 264.62,-117.24 261.34,-111.06"/>
+</g>
+<!-- module~hypersis_network_mod&#45;&gt;module~hypersis_kinds_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_edge6" class="edge">
+<title>module~hypersis_network_mod&#45;&gt;module~hypersis_kinds_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M148.68,-131.76C140.67,-131.76 132.43,-131.76 124.34,-131.76"/>
+<polygon fill="#000000" stroke="#000000" points="124.55,-128.26 114.55,-131.76 124.55,-135.26 124.55,-128.26"/>
+</g>
+<!-- module~hypersis_program_common_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_node8" class="node">
+<title>module~hypersis_program_common_mod</title>
+<g id="a_module~~hypersis_kinds_mod~~UsedByGraph_node8"><a xlink:href="../module/hypersis_program_common_mod.html" xlink:title="hyperSIS_program_common_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="1071.87,-205.52 896.1,-205.52 896.1,-182 1071.87,-182 1071.87,-205.52"/>
+<text xml:space="preserve" text-anchor="middle" x="983.98" y="-189.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hyperSIS_program_common_mod</text>
+</a>
+</g>
+</g>
+<!-- module~hypersis_program_common_mod&#45;&gt;module~hypersis_kinds_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_edge7" class="edge">
+<title>module~hypersis_program_common_mod&#45;&gt;module~hypersis_kinds_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M939.41,-205.97C841.26,-231.77 595.6,-286.84 392.42,-253.76"/>
+</g>
+<!-- module~hypersis_program_common_mod&#45;&gt;module~hypersis_network_io_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_edge15" class="edge">
+<title>module~hypersis_program_common_mod&#45;&gt;module~hypersis_network_io_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M972.58,-181.58C953.03,-159.58 908.39,-113.5 860.1,-91.76 753.77,-43.9 717.29,-57.34 600.82,-51.76"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M598.82,-51.76C549.54,-46.61 494.5,-35.68 453.65,-26.54"/>
+<polygon fill="#000000" stroke="#000000" points="454.53,-23.15 444,-24.35 452.98,-29.98 454.53,-23.15"/>
+</g>
+<!-- module~hypersis_program_common_mod&#45;&gt;module~hypersis_network_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_edge20" class="edge">
+<title>module~hypersis_program_common_mod&#45;&gt;module~hypersis_network_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M598.82,-51.76C470.76,-38.38 430.08,-30.55 310.29,-77.76 291.43,-85.19 291.78,-95.52 274.29,-105.76 268.63,-109.07 262.47,-112.19 256.3,-115.03"/>
+<polygon fill="#000000" stroke="#000000" points="255.14,-111.72 247.39,-118.94 257.95,-118.13 255.14,-111.72"/>
+</g>
+<!-- module~hypersis_dynamics_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_node9" class="node">
+<title>module~hypersis_dynamics_mod</title>
+<g id="a_module~~hypersis_kinds_mod~~UsedByGraph_node9"><a xlink:href="../module/hypersis_dynamics_mod.html" xlink:title="hyperSIS_dynamics_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="860.1,-205.52 727.08,-205.52 727.08,-182 860.1,-182 860.1,-205.52"/>
+<text xml:space="preserve" text-anchor="middle" x="793.59" y="-189.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hyperSIS_dynamics_mod</text>
+</a>
+</g>
+</g>
+<!-- module~hypersis_program_common_mod&#45;&gt;module~hypersis_dynamics_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_edge21" class="edge">
+<title>module~hypersis_program_common_mod&#45;&gt;module~hypersis_dynamics_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M895.68,-193.76C887.73,-193.76 879.71,-193.76 871.85,-193.76"/>
+<polygon fill="#000000" stroke="#000000" points="871.99,-190.26 861.99,-193.76 871.99,-197.26 871.99,-190.26"/>
+</g>
+<!-- module~hypersis_dynamics_mod&#45;&gt;module~hypersis_dynamics_base_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_edge10" class="edge">
+<title>module~hypersis_dynamics_mod&#45;&gt;module~hypersis_dynamics_base_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M726.96,-190.48C660.84,-187.18 558.26,-182.05 484.12,-178.34"/>
+<polygon fill="#000000" stroke="#000000" points="484.61,-174.86 474.45,-177.86 484.26,-181.85 484.61,-174.86"/>
+</g>
+<!-- module~hypersis_dynamics_mod&#45;&gt;module~hypersis_dynamics_chooser_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_edge12" class="edge">
+<title>module~hypersis_dynamics_mod&#45;&gt;module~hypersis_dynamics_chooser_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M726.59,-200.64C718.06,-201.53 709.18,-202.46 700.25,-203.39"/>
+<polygon fill="#000000" stroke="#000000" points="700.04,-199.89 690.46,-204.41 700.77,-206.86 700.04,-199.89"/>
+</g>
+<!-- proc~net_state_choose -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_node10" class="node">
+<title>proc~net_state_choose</title>
+<g id="a_module~~hypersis_kinds_mod~~UsedByGraph_node10"><a xlink:href="../proc/net_state_choose.html" xlink:title="net_state_choose">
+<polygon fill="#d9534f" stroke="#d9534f" points="841.72,-124.52 745.45,-124.52 745.45,-101 841.72,-101 841.72,-124.52"/>
+<text xml:space="preserve" text-anchor="middle" x="793.59" y="-108.79" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">net_state_choose</text>
+</a>
+</g>
+</g>
+<!-- proc~net_state_choose&#45;&gt;module~hypersis_dynamics_hb_oga_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_edge13" class="edge">
+<title>proc~net_state_choose&#45;&gt;module~hypersis_dynamics_hb_oga_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M745.19,-107.57C732.19,-106.15 717.59,-104.55 702.79,-102.93"/>
+<polygon fill="#000000" stroke="#000000" points="703.29,-99.46 692.96,-101.85 702.52,-106.42 703.29,-99.46"/>
+</g>
+<!-- proc~net_state_choose&#45;&gt;module~hypersis_dynamics_nb_oga_mod -->
+<g id="module~~hypersis_kinds_mod~~UsedByGraph_edge14" class="edge">
+<title>proc~net_state_choose&#45;&gt;module~hypersis_dynamics_nb_oga_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M745.19,-117.95C732.19,-119.37 717.59,-120.97 702.79,-122.59"/>
+<polygon fill="#000000" stroke="#000000" points="702.52,-119.1 692.96,-123.67 703.29,-126.06 702.52,-119.1"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panmodulehypersis_kinds_modUsedByGraph = svgPanZoom('#modulehypersis_kinds_modUsedByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsedByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 13.1.1 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="485pt" height="32pt"
+ viewBox="0.00 0.00 485.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 27.52)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-27.52 481.13,-27.52 481.13,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-23.52 0,-23.52 0,0 54,0 54,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="27" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="137.76,-23.52 72.24,-23.52 72.24,0 137.76,0 137.76,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="105" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="218.63,-23.52 155.37,-23.52 155.37,0 218.63,0 218.63,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="187" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="291,-23.52 237,-23.52 237,0 291,0 291,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="264" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="363,-23.52 309,-23.52 309,0 363,0 363,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="336" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="477.13,-23.52 380.87,-23.52 380.87,0 477.13,0 477.13,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="429" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+      <br>
+
+
+        <section>
+          <h2>Variables</h2>
+            <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fmt_general"></span>
+              character(len=*),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>fmt_general</strong></td>
+<td> =</td>
+                <td>&#39;(*(g0,x))&#39;</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fmt_comma"></span>
+              character(len=*),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>fmt_comma</strong></td>
+<td> =</td>
+                <td>&#39;(*(g0,&#34;,&#34;))&#39;</td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+        </section>
+        <br>
+
+
+        <section>
+          <h2>Interfaces</h2>
+              <div class="card">
+    <div class="card-header bg-light codesum">
+      <span class="anchor" id="interface-swap"></span>
+      <h3>public        interface <a href='../interface/swap.html'>swap</a> 
+      </h3>
+    </div>
+      <div class="card-body">
+        <p>Interface for the swap subroutine.</p>
+      </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private  subroutine swap_int(a, b)  
+
+    </h3>
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-a"></span>
+              integer(kind=i4),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>a</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-b"></span>
+              integer(kind=i4),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>b</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private  subroutine swap_real(a, b)  
+
+    </h3>
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-a~2"></span>
+              real(kind=dp),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>a</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-b~2"></span>
+              real(kind=dp),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>b</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+    </ul>
+  </div>
+
+        </section>
+        <br>
+
+
+
+        <section>
+          <h2>Functions</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-count_integers_from_string"></span> <h3>public  function <a href='../proc/count_integers_from_string.html'>count_integers_from_string</a>(str) result(count)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-str"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>str</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>integer(kind=i4)</small>
+    </h4>
+    
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+
+
+
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              HyperSIS
+ was developed by Wesley Cota <https://wcota.me/><br>              &copy; 2025 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

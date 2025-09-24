@@ -1,0 +1,483 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Documentation for HyperSIS">
+    <meta name="author" content="Wesley Cota <https://wcota.me/>" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>state_compartment_base_t &ndash; HyperSIS </title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">HyperSIS </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>state_compartment_base_t
+      <small>Derived Type</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title="<p> 5.0% of total for derived types.</p>Including implementation: 5 statements,  0.6% of total for derived types.">5 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/dynamics_base.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/dynamics_base.f90.html'>dynamics_base.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/hypersis_dynamics_base_mod.html'>hyperSIS_dynamics_base_mod</a></li>
+            <li class="breadcrumb-item active" aria-current="page">state_compartment_base_t</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#vars-0"
+         aria-expanded="false" aria-controls="vars-0">
+         <h4 class="card-header bg-primary text-white">Variables</h4>
+      </a>
+      <div id="vars-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../type/state_compartment_base_t.html#variable-num_nodes">num_nodes</a>
+            <a class="list-group-item" href="../type/state_compartment_base_t.html#variable-nodes">nodes</a>
+            <a class="list-group-item" href="../type/state_compartment_base_t.html#variable-is_edge_active">is_edge_active</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+      <h2 id="type-def-statement">
+        type, public, abstract :: state_compartment_base_t</h2>
+    
+<br>      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Inherits</h3>
+        </div>
+        <div class="card-body">
+          <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 13.1.1 (0)
+ -->
+<!-- Title: type~~state_compartment_base_t~~InheritsGraph Pages: 1 -->
+<svg id="typestate_compartment_base_tInheritsGraph" width="299pt" height="32pt"
+ viewBox="0.00 0.00 299.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="type~~state_compartment_base_t~~InheritsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 27.52)">
+<title>type~~state_compartment_base_t~~InheritsGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-27.52 294.79,-27.52 294.79,4 -4,4"/>
+<!-- type~state_compartment_base_t -->
+<g id="type~~state_compartment_base_t~~InheritsGraph_node1" class="node">
+<title>type~state_compartment_base_t</title>
+<polygon fill="none" stroke="black" points="290.79,-23.52 148.77,-23.52 148.77,0 290.79,0 290.79,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="219.78" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50">state_compartment_base_t</text>
+</g>
+<!-- dynamical_list_t -->
+<g id="type~~state_compartment_base_t~~InheritsGraph_node2" class="node">
+<title>dynamical_list_t</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="87.27,-23.52 0,-23.52 0,0 87.27,0 87.27,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="43.63" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dynamical_list_t</text>
+</g>
+<!-- type~state_compartment_base_t&#45;&gt;dynamical_list_t -->
+<g id="type~~state_compartment_base_t~~InheritsGraph_edge1" class="edge">
+<title>type~state_compartment_base_t&#45;&gt;dynamical_list_t</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M148.45,-11.76C131.89,-11.76 114.49,-11.76 98.77,-11.76"/>
+<polygon fill="#000000" stroke="#000000" points="99.17,-8.26 89.17,-11.76 99.17,-15.26 99.17,-8.26"/>
+<text xml:space="preserve" text-anchor="middle" x="118.02" y="-13.98" font-family="Helvetica,sans-Serif" font-size="9.50">nodes</text>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#InheritsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="InheritsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 13.1.1 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="176pt" height="32pt"
+ viewBox="0.00 0.00 176.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 27.52)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-27.52 172.13,-27.52 172.13,4 -4,4"/>
+<!-- Type -->
+<g id="node1" class="node">
+<title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="54,-23.52 0,-23.52 0,0 54,0 54,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="27" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="168.13,-23.52 71.87,-23.52 71.87,0 168.13,0 168.13,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="120" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a derived type to the parent type which it
+extends. Dashed arrows point from a derived type to the other
+types it contains as a components, with a label listing the name(s) of
+said component(s).
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Inherited by</h3>
+        </div>
+        <div class="card-body">
+          <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 13.1.1 (0)
+ -->
+<!-- Title: type~~state_compartment_base_t~~InheritedByGraph Pages: 1 -->
+<svg id="typestate_compartment_base_tInheritedByGraph" width="434pt" height="74pt"
+ viewBox="0.00 0.00 434.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="type~~state_compartment_base_t~~InheritedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 69.52)">
+<title>type~~state_compartment_base_t~~InheritedByGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-69.52 430.31,-69.52 430.31,4 -4,4"/>
+<!-- type~state_compartment_base_t -->
+<g id="type~~state_compartment_base_t~~InheritedByGraph_node1" class="node">
+<title>type~state_compartment_base_t</title>
+<polygon fill="none" stroke="black" points="142.02,-65.52 0,-65.52 0,-42 142.02,-42 142.02,-65.52"/>
+<text xml:space="preserve" text-anchor="middle" x="71.01" y="-49.78" font-family="Helvetica,sans-Serif" font-size="10.50">state_compartment_base_t</text>
+</g>
+<!-- type~state_compartment_t -->
+<g id="type~~state_compartment_base_t~~InheritedByGraph_node2" class="node">
+<title>type~state_compartment_t</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="291.79,-65.52 179.02,-65.52 179.02,-42 291.79,-42 291.79,-65.52"/>
+<text xml:space="preserve" text-anchor="middle" x="235.41" y="-49.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">state_compartment_t</text>
+</g>
+<!-- type~state_compartment_t&#45;&gt;type~state_compartment_base_t -->
+<g id="type~~state_compartment_base_t~~InheritedByGraph_edge1" class="edge">
+<title>type~state_compartment_t&#45;&gt;type~state_compartment_base_t</title>
+<path fill="none" stroke="#000000" d="M178.6,-52.17C172.65,-52.47 166.7,-52.98 161.02,-53.76"/>
+</g>
+<!-- type~state_compartment_t~2 -->
+<g id="type~~state_compartment_base_t~~InheritedByGraph_node3" class="node">
+<title>type~state_compartment_t~2</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="291.79,-23.52 179.02,-23.52 179.02,0 291.79,0 291.79,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="235.41" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">state_compartment_t</text>
+</g>
+<!-- type~state_compartment_t~2&#45;&gt;type~state_compartment_base_t -->
+<g id="type~~state_compartment_base_t~~InheritedByGraph_edge2" class="edge">
+<title>type~state_compartment_t~2&#45;&gt;type~state_compartment_base_t</title>
+<path fill="none" stroke="#000000" d="M194.73,-23.99C189.22,-26.48 183.82,-29.39 179.02,-32.76 168.96,-39.83 173.2,-52.08 161.02,-53.76"/>
+<path fill="none" stroke="#000000" d="M160.02,-53.76C157.95,-54.04 155.86,-54.3 153.74,-54.52"/>
+<polygon fill="#000000" stroke="#000000" points="153.45,-51.04 143.77,-55.36 154.03,-58.01 153.45,-51.04"/>
+</g>
+<!-- type~net_state_t -->
+<g id="type~~state_compartment_base_t~~InheritedByGraph_node4" class="node">
+<title>type~net_state_t</title>
+<g id="a_type~~state_compartment_base_t~~InheritedByGraph_node4"><a xlink:href="../type/net_state_t.html" xlink:title="net_state_t">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="426.31,-65.52 361.54,-65.52 361.54,-42 426.31,-42 426.31,-65.52"/>
+<text xml:space="preserve" text-anchor="middle" x="393.92" y="-49.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">net_state_t</text>
+</a>
+</g>
+</g>
+<!-- type~net_state_t&#45;&gt;type~state_compartment_t -->
+<g id="type~~state_compartment_base_t~~InheritedByGraph_edge3" class="edge">
+<title>type~net_state_t&#45;&gt;type~state_compartment_t</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M361.25,-53.76C344.6,-53.76 323.52,-53.76 303.44,-53.76"/>
+<polygon fill="#000000" stroke="#000000" points="303.62,-50.26 293.62,-53.76 303.62,-57.26 303.62,-50.26"/>
+<text xml:space="preserve" text-anchor="middle" x="326.66" y="-55.98" font-family="Helvetica,sans-Serif" font-size="9.50">infected</text>
+</g>
+<!-- type~net_state_t~2 -->
+<g id="type~~state_compartment_base_t~~InheritedByGraph_node5" class="node">
+<title>type~net_state_t~2</title>
+<g id="a_type~~state_compartment_base_t~~InheritedByGraph_node5"><a xlink:href="../type/net_state_t~2.html" xlink:title="net_state_t">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="426.31,-23.52 361.54,-23.52 361.54,0 426.31,0 426.31,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="393.92" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">net_state_t</text>
+</a>
+</g>
+</g>
+<!-- type~net_state_t~2&#45;&gt;type~state_compartment_t~2 -->
+<g id="type~~state_compartment_base_t~~InheritedByGraph_edge4" class="edge">
+<title>type~net_state_t~2&#45;&gt;type~state_compartment_t~2</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M361.25,-11.76C344.6,-11.76 323.52,-11.76 303.44,-11.76"/>
+<polygon fill="#000000" stroke="#000000" points="303.62,-8.26 293.62,-11.76 303.62,-15.26 303.62,-8.26"/>
+<text xml:space="preserve" text-anchor="middle" x="326.66" y="-13.98" font-family="Helvetica,sans-Serif" font-size="9.50">infected</text>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#InheritedByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="InheritedByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 13.1.1 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="176pt" height="32pt"
+ viewBox="0.00 0.00 176.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 27.52)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-27.52 172.13,-27.52 172.13,4 -4,4"/>
+<!-- Type -->
+<g id="node1" class="node">
+<title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="54,-23.52 0,-23.52 0,0 54,0 54,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="27" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="168.13,-23.52 71.87,-23.52 71.87,0 168.13,0 168.13,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="120" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a derived type to the parent type which it
+extends. Dashed arrows point from a derived type to the other
+types it contains as a components, with a label listing the name(s) of
+said component(s).
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    <br>
+
+    <section>
+    <h2>Components</h2>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-num_nodes"></span>
+              integer(kind=i4),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>num_nodes</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodes"></span>
+              type(dynamical_list_t),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nodes</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-is_edge_active"></span>
+              logical,
+            </td>
+              <td>public,</td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>is_edge_active</strong>(:)</td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    </section>
+    <br>
+    
+
+
+
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              HyperSIS
+ was developed by Wesley Cota <https://wcota.me/><br>              &copy; 2025 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

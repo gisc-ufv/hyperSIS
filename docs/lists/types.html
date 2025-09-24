@@ -1,0 +1,413 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Documentation for HyperSIS">
+    <meta name="author" content="Wesley Cota <https://wcota.me/>" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>All Types &ndash; HyperSIS
+</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">HyperSIS </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12" id='text'>
+			 <h1>Derived Types</h1>
+			 <table class="table table-striped nostretched">
+			 <thead>
+			 <tr><th>Type</th><th>Location</th><th>Extends</th><th>Description</th></tr>
+			 </thead><tbody>
+			   <tr>
+                 <td><a href='../type/dyn_parameters_t.html'>dyn_parameters_t</a></td>
+                 <td><a href='../module/hypersis_dynamics_base_mod.html'>hyperSIS_dynamics_base_mod</a></td>
+                 <td>None</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/hyperedge_t.html'>hyperedge_t</a></td>
+                 <td><a href='../module/hypersis_network_mod.html'>hyperSIS_network_mod</a></td>
+                 <td>None</td>
+                 <td><p>Hyperedge object to represent a hyperedge in the network.
+It contains an ID, order m, and list of m + 1 nodes belonging to the hyperedge.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/net_state_base_t.html'>net_state_base_t</a></td>
+                 <td><a href='../module/hypersis_dynamics_base_mod.html'>hyperSIS_dynamics_base_mod</a></td>
+                 <td>None</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/net_state_t~2.html'>net_state_t</a></td>
+                 <td><a href='../module/hypersis_dynamics_nb_oga_mod.html'>hyperSIS_dynamics_NB_OGA_mod</a></td>
+                 <td><a href='../type/net_state_base_t.html'>net_state_base_t</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/net_state_t.html'>net_state_t</a></td>
+                 <td><a href='../module/hypersis_dynamics_hb_oga_mod.html'>hyperSIS_dynamics_HB_OGA_mod</a></td>
+                 <td><a href='../type/net_state_base_t.html'>net_state_base_t</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/network_t.html'>network_t</a></td>
+                 <td><a href='../module/hypersis_network_mod.html'>hyperSIS_network_mod</a></td>
+                 <td>None</td>
+                 <td><p>Network object to represent the entire hypergraph.
+It contains the number of nodes, number of edges, and arrays of nodes and edges objects.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/node_t.html'>node_t</a></td>
+                 <td><a href='../module/hypersis_network_mod.html'>hyperSIS_network_mod</a></td>
+                 <td>None</td>
+                 <td><p>Node object to represent a node in the network.
+It contains an ID, degree, and list of hyperedges that the node belongs to.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/state_compartment_base_t.html'>state_compartment_base_t</a></td>
+                 <td><a href='../module/hypersis_dynamics_base_mod.html'>hyperSIS_dynamics_base_mod</a></td>
+                 <td>None</td>
+                 <td></td>
+               </tr>
+			 </tbody></table>
+             <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 13.1.1 (0)
+ -->
+<!-- Title: type~~graph~~TypeGraph Pages: 1 -->
+<svg id="typegraphTypeGraph" width="621pt" height="394pt"
+ viewBox="0.00 0.00 621.00 394.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="type~~graph~~TypeGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 389.52)">
+<title>type~~graph~~TypeGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-389.52 616.81,-389.52 616.81,4 -4,4"/>
+<!-- type~dyn_parameters_t -->
+<g id="type~~graph~~TypeGraph_node1" class="node">
+<title>type~dyn_parameters_t</title>
+<g id="a_type~~graph~~TypeGraph_node1"><a xlink:href="../type/dyn_parameters_t.html" xlink:title="dyn_parameters_t">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="98.52,-127.52 0,-127.52 0,-104 98.52,-104 98.52,-127.52"/>
+<text xml:space="preserve" text-anchor="middle" x="49.26" y="-111.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dyn_parameters_t</text>
+</a>
+</g>
+</g>
+<!-- type~hyperedge_t -->
+<g id="type~~graph~~TypeGraph_node2" class="node">
+<title>type~hyperedge_t</title>
+<g id="a_type~~graph~~TypeGraph_node2"><a xlink:href="../type/hyperedge_t.html" xlink:title="hyperedge_t">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="258.16,-343.52 186.64,-343.52 186.64,-320 258.16,-320 258.16,-343.52"/>
+<text xml:space="preserve" text-anchor="middle" x="222.4" y="-327.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hyperedge_t</text>
+</a>
+</g>
+</g>
+<!-- type~net_state_base_t -->
+<g id="type~~graph~~TypeGraph_node3" class="node">
+<title>type~net_state_base_t</title>
+<g id="a_type~~graph~~TypeGraph_node3"><a xlink:href="../type/net_state_base_t.html" xlink:title="net_state_base_t">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="269.41,-127.52 175.39,-127.52 175.39,-104 269.41,-104 269.41,-127.52"/>
+<text xml:space="preserve" text-anchor="middle" x="222.4" y="-111.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">net_state_base_t</text>
+</a>
+</g>
+</g>
+<!-- type~net_state_base_t&#45;&gt;type~dyn_parameters_t -->
+<g id="type~~graph~~TypeGraph_edge1" class="edge">
+<title>type~net_state_base_t&#45;&gt;type~dyn_parameters_t</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M175.09,-115.76C155.21,-115.76 131.72,-115.76 110.51,-115.76"/>
+<polygon fill="#000000" stroke="#000000" points="110.52,-112.26 100.52,-115.76 110.52,-119.26 110.52,-112.26"/>
+<text xml:space="preserve" text-anchor="middle" x="132.27" y="-117.98" font-family="Helvetica,sans-Serif" font-size="9.50">params</text>
+</g>
+<!-- type~net_state_t -->
+<g id="type~~graph~~TypeGraph_node4" class="node">
+<title>type~net_state_t</title>
+<g id="a_type~~graph~~TypeGraph_node4"><a xlink:href="../type/net_state_t.html" xlink:title="net_state_t">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="574.18,-142.52 509.41,-142.52 509.41,-119 574.18,-119 574.18,-142.52"/>
+<text xml:space="preserve" text-anchor="middle" x="541.8" y="-126.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">net_state_t</text>
+</a>
+</g>
+</g>
+<!-- type~net_state_t&#45;&gt;type~net_state_base_t -->
+<g id="type~~graph~~TypeGraph_edge4" class="edge">
+<title>type~net_state_t&#45;&gt;type~net_state_base_t</title>
+<path fill="none" stroke="#000000" d="M509.21,-129.27C456.07,-126.76 348.06,-121.65 281.1,-118.49"/>
+<polygon fill="#000000" stroke="#000000" points="281.58,-115.01 271.42,-118.03 281.25,-122 281.58,-115.01"/>
+</g>
+<!-- sampler_base_t -->
+<g id="type~~graph~~TypeGraph_node11" class="node">
+<title>sampler_base_t</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="266.41,-72.52 178.39,-72.52 178.39,-49 266.41,-49 266.41,-72.52"/>
+<text xml:space="preserve" text-anchor="middle" x="222.4" y="-56.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">sampler_base_t</text>
+</g>
+<!-- type~net_state_t&#45;&gt;sampler_base_t -->
+<g id="type~~graph~~TypeGraph_edge3" class="edge">
+<title>type~net_state_t&#45;&gt;sampler_base_t</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M509.24,-120.5C492.56,-115.3 471.69,-109.12 452.79,-104.51 393.48,-90.05 324.58,-77.46 277.89,-69.55"/>
+<polygon fill="#000000" stroke="#000000" points="278.74,-66.14 268.3,-67.94 277.58,-73.05 278.74,-66.14"/>
+<text xml:space="preserve" text-anchor="middle" x="374.79" y="-106.73" font-family="Helvetica,sans-Serif" font-size="9.50">infection_attempts_sampler</text>
+</g>
+<!-- type~state_compartment_t -->
+<g id="type~~graph~~TypeGraph_node13" class="node">
+<title>type~state_compartment_t</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="278.79,-175.52 166.02,-175.52 166.02,-152 278.79,-152 278.79,-175.52"/>
+<text xml:space="preserve" text-anchor="middle" x="222.4" y="-159.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">state_compartment_t</text>
+</g>
+<!-- type~net_state_t&#45;&gt;type~state_compartment_t -->
+<g id="type~~graph~~TypeGraph_edge2" class="edge">
+<title>type~net_state_t&#45;&gt;type~state_compartment_t</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M509.21,-134.04C458.51,-139.32 357.89,-149.78 290.6,-156.77"/>
+<polygon fill="#000000" stroke="#000000" points="290.36,-153.28 280.78,-157.8 291.08,-160.24 290.36,-153.28"/>
+<text xml:space="preserve" text-anchor="middle" x="374.79" y="-158.01" font-family="Helvetica,sans-Serif" font-size="9.50">infected</text>
+</g>
+<!-- type~net_state_t~2 -->
+<g id="type~~graph~~TypeGraph_node5" class="node">
+<title>type~net_state_t~2</title>
+<g id="a_type~~graph~~TypeGraph_node5"><a xlink:href="../type/net_state_t~2.html" xlink:title="net_state_t">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="574.18,-57.52 509.41,-57.52 509.41,-34 574.18,-34 574.18,-57.52"/>
+<text xml:space="preserve" text-anchor="middle" x="541.8" y="-41.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">net_state_t</text>
+</a>
+</g>
+</g>
+<!-- type~net_state_t~2&#45;&gt;type~net_state_base_t -->
+<g id="type~~graph~~TypeGraph_edge7" class="edge">
+<title>type~net_state_t~2&#45;&gt;type~net_state_base_t</title>
+<path fill="none" stroke="#000000" d="M509.23,-50.03C452.65,-57.84 336.24,-74.62 296.79,-85.76 284.32,-89.28 271.09,-94.27 259.35,-99.18"/>
+<polygon fill="#000000" stroke="#000000" points="258.25,-95.84 250.44,-103.01 261.01,-102.27 258.25,-95.84"/>
+</g>
+<!-- type~net_state_t~2&#45;&gt;sampler_base_t -->
+<g id="type~~graph~~TypeGraph_edge6" class="edge">
+<title>type~net_state_t~2&#45;&gt;sampler_base_t</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M509.12,-43.96C462.49,-41.73 372.68,-39.09 296.79,-46.51 290.65,-47.11 284.27,-47.98 277.94,-48.99"/>
+<polygon fill="#000000" stroke="#000000" points="277.41,-45.53 268.16,-50.7 278.61,-52.43 277.41,-45.53"/>
+<text xml:space="preserve" text-anchor="middle" x="374.79" y="-48.73" font-family="Helvetica,sans-Serif" font-size="9.50">possibly_quiescent_nodes_sampler</text>
+</g>
+<!-- type~state_compartment_t~2 -->
+<g id="type~~graph~~TypeGraph_node14" class="node">
+<title>type~state_compartment_t~2</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="278.79,-23.52 166.02,-23.52 166.02,0 278.79,0 278.79,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="222.4" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">state_compartment_t</text>
+</g>
+<!-- type~net_state_t~2&#45;&gt;type~state_compartment_t~2 -->
+<g id="type~~graph~~TypeGraph_edge5" class="edge">
+<title>type~net_state_t~2&#45;&gt;type~state_compartment_t~2</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M509.23,-37.64C492.56,-33.66 471.69,-29.17 452.79,-26.51 398.51,-18.87 336.44,-15.19 290.57,-13.41"/>
+<polygon fill="#000000" stroke="#000000" points="290.9,-9.92 280.78,-13.05 290.65,-16.91 290.9,-9.92"/>
+<text xml:space="preserve" text-anchor="middle" x="374.79" y="-28.73" font-family="Helvetica,sans-Serif" font-size="9.50">infected</text>
+</g>
+<!-- type~network_t -->
+<g id="type~~graph~~TypeGraph_node6" class="node">
+<title>type~network_t</title>
+<g id="a_type~~graph~~TypeGraph_node6"><a xlink:href="../type/network_t.html" xlink:title="network_t">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="570.81,-280.52 512.79,-280.52 512.79,-257 570.81,-257 570.81,-280.52"/>
+<text xml:space="preserve" text-anchor="middle" x="541.8" y="-264.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">network_t</text>
+</a>
+</g>
+</g>
+<!-- type~network_t&#45;&gt;type~hyperedge_t -->
+<g id="type~~graph~~TypeGraph_edge9" class="edge">
+<title>type~network_t&#45;&gt;type~hyperedge_t</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M512.3,-280.43C495.28,-286.99 473.1,-294.82 452.79,-299.76 390.3,-314.96 316.35,-323.66 269.66,-328.05"/>
+<polygon fill="#000000" stroke="#000000" points="269.55,-324.54 259.91,-328.93 270.18,-331.51 269.55,-324.54"/>
+<text xml:space="preserve" text-anchor="middle" x="374.79" y="-327.11" font-family="Helvetica,sans-Serif" font-size="9.50">edges</text>
+</g>
+<!-- type~node_t -->
+<g id="type~~graph~~TypeGraph_node7" class="node">
+<title>type~node_t</title>
+<g id="a_type~~graph~~TypeGraph_node7"><a xlink:href="../type/node_t.html" xlink:title="node_t">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="249.4,-301.52 195.4,-301.52 195.4,-278 249.4,-278 249.4,-301.52"/>
+<text xml:space="preserve" text-anchor="middle" x="222.4" y="-285.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">node_t</text>
+</a>
+</g>
+</g>
+<!-- type~network_t&#45;&gt;type~node_t -->
+<g id="type~~graph~~TypeGraph_edge8" class="edge">
+<title>type~network_t&#45;&gt;type~node_t</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M512.35,-270.64C454.91,-274.44 325.1,-283.03 260.86,-287.28"/>
+<polygon fill="#000000" stroke="#000000" points="260.91,-283.77 251.17,-287.92 261.38,-290.76 260.91,-283.77"/>
+<text xml:space="preserve" text-anchor="middle" x="374.79" y="-286.91" font-family="Helvetica,sans-Serif" font-size="9.50">nodes</text>
+</g>
+<!-- fixed_list_t -->
+<g id="type~~graph~~TypeGraph_node10" class="node">
+<title>fixed_list_t</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="253.29,-259.52 191.52,-259.52 191.52,-236 253.29,-236 253.29,-259.52"/>
+<text xml:space="preserve" text-anchor="middle" x="222.4" y="-243.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">fixed_list_t</text>
+</g>
+<!-- type~network_t&#45;&gt;fixed_list_t -->
+<g id="type~~graph~~TypeGraph_edge11" class="edge">
+<title>type~network_t&#45;&gt;fixed_list_t</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M512.3,-265.37C495.09,-263.43 472.7,-261.07 452.79,-259.51 387.14,-254.38 310.75,-250.98 264.78,-249.21"/>
+<polygon fill="#000000" stroke="#000000" points="265.13,-245.72 255.01,-248.84 264.87,-252.72 265.13,-245.72"/>
+<text xml:space="preserve" text-anchor="middle" x="374.79" y="-261.74" font-family="Helvetica,sans-Serif" font-size="9.50">nodes_per_degree, edges_per_order</text>
+</g>
+<!-- type~network_props_t -->
+<g id="type~~graph~~TypeGraph_node12" class="node">
+<title>type~network_props_t</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="267.91,-217.52 176.89,-217.52 176.89,-194 267.91,-194 267.91,-217.52"/>
+<text xml:space="preserve" text-anchor="middle" x="222.4" y="-201.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">network_props_t</text>
+</g>
+<!-- type~network_t&#45;&gt;type~network_props_t -->
+<g id="type~~graph~~TypeGraph_edge10" class="edge">
+<title>type~network_t&#45;&gt;type~network_props_t</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M513.58,-256.6C496.45,-249.42 473.71,-240.74 452.79,-235.51 394.79,-221 326.67,-213.31 279.81,-209.41"/>
+<polygon fill="#000000" stroke="#000000" points="280.14,-205.92 269.89,-208.62 279.58,-212.9 280.14,-205.92"/>
+<text xml:space="preserve" text-anchor="middle" x="374.79" y="-237.73" font-family="Helvetica,sans-Serif" font-size="9.50">props</text>
+</g>
+<!-- type~state_compartment_base_t -->
+<g id="type~~graph~~TypeGraph_node8" class="node">
+<title>type~state_compartment_base_t</title>
+<g id="a_type~~graph~~TypeGraph_node8"><a xlink:href="../type/state_compartment_base_t.html" xlink:title="state_compartment_base_t">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="612.81,-385.52 470.79,-385.52 470.79,-362 612.81,-362 612.81,-385.52"/>
+<text xml:space="preserve" text-anchor="middle" x="541.8" y="-369.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">state_compartment_base_t</text>
+</a>
+</g>
+</g>
+<!-- dynamical_list_t -->
+<g id="type~~graph~~TypeGraph_node9" class="node">
+<title>dynamical_list_t</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="266.04,-385.52 178.77,-385.52 178.77,-362 266.04,-362 266.04,-385.52"/>
+<text xml:space="preserve" text-anchor="middle" x="222.4" y="-369.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dynamical_list_t</text>
+</g>
+<!-- type~state_compartment_base_t&#45;&gt;dynamical_list_t -->
+<g id="type~~graph~~TypeGraph_edge12" class="edge">
+<title>type~state_compartment_base_t&#45;&gt;dynamical_list_t</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M470.36,-373.76C412.17,-373.76 330.77,-373.76 277.58,-373.76"/>
+<polygon fill="#000000" stroke="#000000" points="277.86,-370.26 267.86,-373.76 277.86,-377.26 277.86,-370.26"/>
+<text xml:space="preserve" text-anchor="middle" x="374.79" y="-375.99" font-family="Helvetica,sans-Serif" font-size="9.50">nodes</text>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#TypeGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="TypeGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 13.1.1 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="176pt" height="32pt"
+ viewBox="0.00 0.00 176.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 27.52)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-27.52 172.13,-27.52 172.13,4 -4,4"/>
+<!-- Type -->
+<g id="node1" class="node">
+<title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="54,-23.52 0,-23.52 0,0 54,0 54,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="27" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="168.13,-23.52 71.87,-23.52 71.87,0 168.13,0 168.13,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="120" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a derived type to the parent type which it
+extends. Dashed arrows point from a derived type to the other
+types it contains as a components, with a label listing the name(s) of
+said component(s).
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              HyperSIS
+ was developed by Wesley Cota <https://wcota.me/><br>              &copy; 2025 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

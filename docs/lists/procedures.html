@@ -1,0 +1,595 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Documentation for HyperSIS">
+    <meta name="author" content="Wesley Cota <https://wcota.me/>" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>All Procedures &ndash; HyperSIS
+</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">HyperSIS </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12" id='text'>
+			 <h1>Procedures</h1>
+			 <table class="table table-striped">
+			 <thead><tr><th>Procedure</th><th>Location</th><th>Procedure Type</th><th>Description</th></tr></thead>
+			 <tbody>
+			   <tr>
+                 <td><a href='../proc/check_export_nodes_and_edges_state.html'>check_export_nodes_and_edges_state</a></td>
+                 <td><a href='../module/hypersis_program_common_mod.html'>hyperSIS_program_common_mod</a></td>
+                 <td>Subroutine</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/check_qs_method.html'>check_qs_method</a></td>
+                 <td><a href='../module/hypersis_program_common_mod.html'>hyperSIS_program_common_mod</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Check which method to use after dynamics step</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/count_integers_from_string.html'>count_integers_from_string</a></td>
+                 <td><a href='../module/hypersis_kinds_mod.html'>hyperSIS_kinds_mod</a></td>
+                 <td>Function</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/get_path_prefix.html'>get_path_prefix</a></td>
+                 <td><a href='../module/hypersis_program_common_mod.html'>hyperSIS_program_common_mod</a></td>
+                 <td>Function</td>
+                 <td><p>Build the prefix and remove old files</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../interface/hyperedge.html'>hyperedge</a></td>
+                 <td><a href='../module/hypersis_network_mod.html'>hyperSIS_network_mod</a></td>
+                 <td>Interface</td>
+                 <td><p>Interface for the constructor of the hyperedge type.
+It receives the order OR a list of nodes and returns a new hyperedge object.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/net_state_choose.html'>net_state_choose</a></td>
+                 <td><a href='../module/hypersis_dynamics_chooser_mod.html'>hyperSIS_dynamics_chooser_mod</a></td>
+                 <td>Subroutine</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../interface/network.html'>network</a></td>
+                 <td><a href='../module/hypersis_network_mod.html'>hyperSIS_network_mod</a></td>
+                 <td>Interface</td>
+                 <td><p>Interface for the constructor of the network type.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/network_export.html'>network_export</a></td>
+                 <td><a href='../module/hypersis_network_io_mod.html'>hyperSIS_network_io_mod</a></td>
+                 <td>Subroutine</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/network_import.html'>network_import</a></td>
+                 <td><a href='../module/hypersis_network_io_mod.html'>hyperSIS_network_io_mod</a></td>
+                 <td>Subroutine</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../interface/proc_export_states.html'>proc_export_states</a></td>
+                 <td><a href='../module/hypersis_program_common_mod.html'>hyperSIS_program_common_mod</a></td>
+                 <td>Interface</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../interface/proc_net_state_gen.html'>proc_net_state_gen</a></td>
+                 <td><a href='../module/hypersis_program_common_mod.html'>hyperSIS_program_common_mod</a></td>
+                 <td>Interface</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/read_network.html'>read_network</a></td>
+                 <td><a href='../module/hypersis_program_common_mod.html'>hyperSIS_program_common_mod</a></td>
+                 <td>Subroutine</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/set_dyn_params.html'>set_dyn_params</a></td>
+                 <td><a href='../module/hypersis_program_common_mod.html'>hyperSIS_program_common_mod</a></td>
+                 <td>Subroutine</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/set_initial_number_of_infected_nodes.html'>set_initial_number_of_infected_nodes</a></td>
+                 <td><a href='../module/hypersis_program_common_mod.html'>hyperSIS_program_common_mod</a></td>
+                 <td>Subroutine</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../interface/swap.html'>swap</a></td>
+                 <td><a href='../module/hypersis_kinds_mod.html'>hyperSIS_kinds_mod</a></td>
+                 <td>Interface</td>
+                 <td><p>Interface for the swap subroutine.</p></td>
+               </tr>
+			 </tbody></table>
+             <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 13.1.1 (0)
+ -->
+<!-- Title: call~~graph~~CallGraph Pages: 1 -->
+<svg id="callgraphCallGraph" width="603pt" height="662pt"
+ viewBox="0.00 0.00 603.00 662.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="call~~graph~~CallGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 657.52)">
+<title>call~~graph~~CallGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-657.52 598.81,-657.52 598.81,4 -4,4"/>
+<!-- interface~hyperedge -->
+<g id="call~~graph~~CallGraph_node1" class="node">
+<title>interface~hyperedge</title>
+<g id="a_call~~graph~~CallGraph_node1"><a xlink:href="../interface/hyperedge.html" xlink:title="hyperedge">
+<polygon fill="#a7506f" stroke="#a7506f" points="130.77,-23.52 68.25,-23.52 68.25,0 130.77,0 130.77,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="99.51" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hyperedge</text>
+</a>
+</g>
+</g>
+<!-- interface~network -->
+<g id="call~~graph~~CallGraph_node2" class="node">
+<title>interface~network</title>
+<g id="a_call~~graph~~CallGraph_node2"><a xlink:href="../interface/network.html" xlink:title="network">
+<polygon fill="#a7506f" stroke="#a7506f" points="126.51,-65.52 72.51,-65.52 72.51,-42 126.51,-42 126.51,-65.52"/>
+<text xml:space="preserve" text-anchor="middle" x="99.51" y="-49.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">network</text>
+</a>
+</g>
+</g>
+<!-- interface~proc_export_states -->
+<g id="call~~graph~~CallGraph_node3" class="node">
+<title>interface~proc_export_states</title>
+<g id="a_call~~graph~~CallGraph_node3"><a xlink:href="../interface/proc_export_states.html" xlink:title="proc_export_states">
+<polygon fill="#a7506f" stroke="#a7506f" points="151.02,-107.52 48,-107.52 48,-84 151.02,-84 151.02,-107.52"/>
+<text xml:space="preserve" text-anchor="middle" x="99.51" y="-91.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">proc_export_states</text>
+</a>
+</g>
+</g>
+<!-- interface~proc_net_state_gen -->
+<g id="call~~graph~~CallGraph_node4" class="node">
+<title>interface~proc_net_state_gen</title>
+<g id="a_call~~graph~~CallGraph_node4"><a xlink:href="../interface/proc_net_state_gen.html" xlink:title="proc_net_state_gen">
+<polygon fill="#a7506f" stroke="#a7506f" points="152.89,-149.52 46.12,-149.52 46.12,-126 152.89,-126 152.89,-149.52"/>
+<text xml:space="preserve" text-anchor="middle" x="99.51" y="-133.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">proc_net_state_gen</text>
+</a>
+</g>
+</g>
+<!-- interface~swap -->
+<g id="call~~graph~~CallGraph_node5" class="node">
+<title>interface~swap</title>
+<g id="a_call~~graph~~CallGraph_node5"><a xlink:href="../interface/swap.html" xlink:title="swap">
+<polygon fill="#a7506f" stroke="#a7506f" points="126.51,-191.52 72.51,-191.52 72.51,-168 126.51,-168 126.51,-191.52"/>
+<text xml:space="preserve" text-anchor="middle" x="99.51" y="-175.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">swap</text>
+</a>
+</g>
+</g>
+<!-- none~init_config -->
+<g id="call~~graph~~CallGraph_node6" class="node">
+<title>none~init_config</title>
+<g id="a_call~~graph~~CallGraph_node6"><a xlink:href="../type/net_state_base_t.html#boundprocedure-init_config" xlink:title="net_state_base_t%init_config">
+<polygon fill="#a7506f" stroke="#a7506f" points="175.02,-317.52 24,-317.52 24,-294 175.02,-294 175.02,-317.52"/>
+<text xml:space="preserve" text-anchor="middle" x="99.51" y="-301.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">net_state_base_t%init_config</text>
+</a>
+</g>
+</g>
+<!-- add_infected -->
+<g id="call~~graph~~CallGraph_node19" class="node">
+<title>add_infected</title>
+<polygon fill="#777777" stroke="#777777" points="332.04,-317.52 259.02,-317.52 259.02,-294 332.04,-294 332.04,-317.52"/>
+<text xml:space="preserve" text-anchor="middle" x="295.53" y="-301.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_infected</text>
+</g>
+<!-- none~init_config&#45;&gt;add_infected -->
+<g id="call~~graph~~CallGraph_edge1" class="edge">
+<title>none~init_config&#45;&gt;add_infected</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M175.25,-305.76C199.38,-305.76 225.47,-305.76 247.07,-305.76"/>
+<polygon fill="#000000" stroke="#000000" points="247.06,-309.26 257.06,-305.76 247.06,-302.26 247.06,-309.26"/>
+</g>
+<!-- get_num_infected -->
+<g id="call~~graph~~CallGraph_node20" class="node">
+<title>get_num_infected</title>
+<polygon fill="#777777" stroke="#777777" points="344.04,-275.52 247.02,-275.52 247.02,-252 344.04,-252 344.04,-275.52"/>
+<text xml:space="preserve" text-anchor="middle" x="295.53" y="-259.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">get_num_infected</text>
+</g>
+<!-- none~init_config&#45;&gt;get_num_infected -->
+<g id="call~~graph~~CallGraph_edge2" class="edge">
+<title>none~init_config&#45;&gt;get_num_infected</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M158.08,-293.55C171.52,-290.68 185.77,-287.63 199.02,-284.76 210.96,-282.17 223.74,-279.38 235.94,-276.71"/>
+<polygon fill="#000000" stroke="#000000" points="236.44,-280.18 245.46,-274.61 234.94,-273.34 236.44,-280.18"/>
+</g>
+<!-- init -->
+<g id="call~~graph~~CallGraph_node21" class="node">
+<title>init</title>
+<polygon fill="#777777" stroke="#777777" points="322.53,-233.52 268.53,-233.52 268.53,-210 322.53,-210 322.53,-233.52"/>
+<text xml:space="preserve" text-anchor="middle" x="295.53" y="-217.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">init</text>
+</g>
+<!-- none~init_config&#45;&gt;init -->
+<g id="call~~graph~~CallGraph_edge3" class="edge">
+<title>none~init_config&#45;&gt;init</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M175.38,-295.27C183.66,-292.54 191.73,-289.09 199.02,-284.76 220.16,-272.2 214.74,-256.66 235.02,-242.76 241.78,-238.13 249.66,-234.41 257.44,-231.47"/>
+<polygon fill="#000000" stroke="#000000" points="258.46,-234.82 266.81,-228.3 256.21,-228.19 258.46,-234.82"/>
+</g>
+<!-- none~init_config~2 -->
+<g id="call~~graph~~CallGraph_node7" class="node">
+<title>none~init_config~2</title>
+<g id="a_call~~graph~~CallGraph_node7"><a xlink:href="../type/net_state_t~2.html#boundprocedure-init_config~2" xlink:title="net_state_t%init_config">
+<polygon fill="#a7506f" stroke="#a7506f" points="160.39,-275.52 38.62,-275.52 38.62,-252 160.39,-252 160.39,-275.52"/>
+<text xml:space="preserve" text-anchor="middle" x="99.51" y="-259.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">net_state_t%init_config</text>
+</a>
+</g>
+</g>
+<!-- none~init_config~2&#45;&gt;add_infected -->
+<g id="call~~graph~~CallGraph_edge4" class="edge">
+<title>none~init_config~2&#45;&gt;add_infected</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M158.08,-275.97C171.52,-278.84 185.77,-281.89 199.02,-284.76 214.91,-288.2 232.28,-292.01 247.79,-295.42"/>
+<polygon fill="#000000" stroke="#000000" points="246.71,-298.77 257.23,-297.5 248.22,-291.93 246.71,-298.77"/>
+</g>
+<!-- none~init_config~2&#45;&gt;get_num_infected -->
+<g id="call~~graph~~CallGraph_edge5" class="edge">
+<title>none~init_config~2&#45;&gt;get_num_infected</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M160.84,-263.76C184.54,-263.76 211.68,-263.76 235.28,-263.76"/>
+<polygon fill="#000000" stroke="#000000" points="235.04,-267.26 245.04,-263.76 235.04,-260.26 235.04,-267.26"/>
+</g>
+<!-- none~init_config~2&#45;&gt;init -->
+<g id="call~~graph~~CallGraph_edge6" class="edge">
+<title>none~init_config~2&#45;&gt;init</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M158.08,-251.55C171.52,-248.68 185.77,-245.63 199.02,-242.76 218.21,-238.6 239.56,-233.92 257.2,-230.03"/>
+<polygon fill="#000000" stroke="#000000" points="257.7,-233.5 266.71,-227.93 256.19,-226.66 257.7,-233.5"/>
+</g>
+<!-- none~init_config~3 -->
+<g id="call~~graph~~CallGraph_node8" class="node">
+<title>none~init_config~3</title>
+<g id="a_call~~graph~~CallGraph_node8"><a xlink:href="../type/net_state_t.html#boundprocedure-init_config~3" xlink:title="net_state_t%init_config">
+<polygon fill="#a7506f" stroke="#a7506f" points="160.39,-233.52 38.62,-233.52 38.62,-210 160.39,-210 160.39,-233.52"/>
+<text xml:space="preserve" text-anchor="middle" x="99.51" y="-217.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">net_state_t%init_config</text>
+</a>
+</g>
+</g>
+<!-- none~init_config~3&#45;&gt;add_infected -->
+<g id="call~~graph~~CallGraph_edge7" class="edge">
+<title>none~init_config~3&#45;&gt;add_infected</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M160.67,-228.12C173.92,-231.24 187.44,-235.88 199.02,-242.76 220.16,-255.32 214.74,-270.86 235.02,-284.76 239.15,-287.59 243.7,-290.08 248.39,-292.25"/>
+<polygon fill="#000000" stroke="#000000" points="246.79,-295.38 257.36,-295.96 249.46,-288.91 246.79,-295.38"/>
+</g>
+<!-- none~init_config~3&#45;&gt;get_num_infected -->
+<g id="call~~graph~~CallGraph_edge8" class="edge">
+<title>none~init_config~3&#45;&gt;get_num_infected</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M158.08,-233.97C171.52,-236.84 185.77,-239.89 199.02,-242.76 210.96,-245.35 223.74,-248.14 235.94,-250.81"/>
+<polygon fill="#000000" stroke="#000000" points="234.94,-254.18 245.46,-252.91 236.44,-247.34 234.94,-254.18"/>
+</g>
+<!-- none~init_config~3&#45;&gt;init -->
+<g id="call~~graph~~CallGraph_edge9" class="edge">
+<title>none~init_config~3&#45;&gt;init</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M160.84,-221.76C192.23,-221.76 229.64,-221.76 256.89,-221.76"/>
+<polygon fill="#000000" stroke="#000000" points="256.76,-225.26 266.76,-221.76 256.76,-218.26 256.76,-225.26"/>
+</g>
+<!-- proc~check_export_nodes_and_edges_state -->
+<g id="call~~graph~~CallGraph_node9" class="node">
+<title>proc~check_export_nodes_and_edges_state</title>
+<g id="a_call~~graph~~CallGraph_node9"><a xlink:href="../proc/check_export_nodes_and_edges_state.html" xlink:title="check_export_nodes_and_edges_state">
+<polygon fill="#d9534f" stroke="#d9534f" points="199.02,-359.52 0,-359.52 0,-336 199.02,-336 199.02,-359.52"/>
+<text xml:space="preserve" text-anchor="middle" x="99.51" y="-343.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">check_export_nodes_and_edges_state</text>
+</a>
+</g>
+</g>
+<!-- proc~check_qs_method -->
+<g id="call~~graph~~CallGraph_node10" class="node">
+<title>proc~check_qs_method</title>
+<g id="a_call~~graph~~CallGraph_node10"><a xlink:href="../proc/check_qs_method.html" xlink:title="check_qs_method">
+<polygon fill="#d9534f" stroke="#d9534f" points="148.77,-401.52 50.25,-401.52 50.25,-378 148.77,-378 148.77,-401.52"/>
+<text xml:space="preserve" text-anchor="middle" x="99.51" y="-385.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">check_qs_method</text>
+</a>
+</g>
+</g>
+<!-- proc~count_integers_from_string -->
+<g id="call~~graph~~CallGraph_node11" class="node">
+<title>proc~count_integers_from_string</title>
+<g id="a_call~~graph~~CallGraph_node11"><a xlink:href="../proc/count_integers_from_string.html" xlink:title="count_integers_from_string">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="564.43,-506.52 422.41,-506.52 422.41,-483 564.43,-483 564.43,-506.52"/>
+<text xml:space="preserve" text-anchor="middle" x="493.42" y="-490.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">count_integers_from_string</text>
+</a>
+</g>
+</g>
+<!-- proc~get_path_prefix -->
+<g id="call~~graph~~CallGraph_node12" class="node">
+<title>proc~get_path_prefix</title>
+<g id="a_call~~graph~~CallGraph_node12"><a xlink:href="../proc/get_path_prefix.html" xlink:title="get_path_prefix">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="142.39,-485.52 56.62,-485.52 56.62,-462 142.39,-462 142.39,-485.52"/>
+<text xml:space="preserve" text-anchor="middle" x="99.51" y="-469.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">get_path_prefix</text>
+</a>
+</g>
+</g>
+<!-- proc~net_state_choose -->
+<g id="call~~graph~~CallGraph_node13" class="node">
+<title>proc~net_state_choose</title>
+<g id="a_call~~graph~~CallGraph_node13"><a xlink:href="../proc/net_state_choose.html" xlink:title="net_state_choose">
+<polygon fill="#d9534f" stroke="#d9534f" points="147.64,-527.52 51.37,-527.52 51.37,-504 147.64,-504 147.64,-527.52"/>
+<text xml:space="preserve" text-anchor="middle" x="99.51" y="-511.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">net_state_choose</text>
+</a>
+</g>
+</g>
+<!-- proc~network_export -->
+<g id="call~~graph~~CallGraph_node14" class="node">
+<title>proc~network_export</title>
+<g id="a_call~~graph~~CallGraph_node14"><a xlink:href="../proc/network_export.html" xlink:title="network_export">
+<polygon fill="#d9534f" stroke="#d9534f" points="142.02,-569.52 57,-569.52 57,-546 142.02,-546 142.02,-569.52"/>
+<text xml:space="preserve" text-anchor="middle" x="99.51" y="-553.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">network_export</text>
+</a>
+</g>
+</g>
+<!-- proc~network_import -->
+<g id="call~~graph~~CallGraph_node15" class="node">
+<title>proc~network_import</title>
+<g id="a_call~~graph~~CallGraph_node15"><a xlink:href="../proc/network_import.html" xlink:title="network_import">
+<polygon fill="#d9534f" stroke="#d9534f" points="338.04,-443.52 253.02,-443.52 253.02,-420 338.04,-420 338.04,-443.52"/>
+<text xml:space="preserve" text-anchor="middle" x="295.53" y="-427.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">network_import</text>
+</a>
+</g>
+</g>
+<!-- proc~network_import&#45;&gt;proc~count_integers_from_string -->
+<g id="call~~graph~~CallGraph_edge13" class="edge">
+<title>proc~network_import&#45;&gt;proc~count_integers_from_string</title>
+<path fill="none" stroke="#000000" d="M320.33,-443.89C339.33,-453.16 366.86,-465.69 392.04,-473.76 398.91,-475.96 406.12,-477.99 413.38,-479.85"/>
+<polygon fill="#000000" stroke="#000000" points="412.41,-483.22 422.95,-482.18 414.07,-476.42 412.41,-483.22"/>
+</g>
+<!-- nodes -->
+<g id="call~~graph~~CallGraph_node22" class="node">
+<title>nodes</title>
+<polygon fill="#777777" stroke="#777777" points="520.42,-464.52 466.42,-464.52 466.42,-441 520.42,-441 520.42,-464.52"/>
+<text xml:space="preserve" text-anchor="middle" x="493.42" y="-448.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">nodes</text>
+</g>
+<!-- proc~network_import&#45;&gt;nodes -->
+<g id="call~~graph~~CallGraph_edge10" class="edge">
+<title>proc~network_import&#45;&gt;nodes</title>
+<path fill="none" stroke="#000000" d="M338.07,-436.21C372.63,-439.92 421.41,-445.15 454.82,-448.73"/>
+<polygon fill="#000000" stroke="#000000" points="454.13,-452.18 464.45,-449.76 454.88,-445.22 454.13,-452.18"/>
+</g>
+<!-- none~build_nodes_from_edges -->
+<g id="call~~graph~~CallGraph_node23" class="node">
+<title>none~build_nodes_from_edges</title>
+<g id="a_call~~graph~~CallGraph_node23"><a xlink:href="../type/network_t.html#boundprocedure-build_nodes_from_edges" xlink:title="network_t%build_nodes_from_edges">
+<polygon fill="#a7506f" stroke="#a7506f" points="587.31,-422.52 399.54,-422.52 399.54,-399 587.31,-399 587.31,-422.52"/>
+<text xml:space="preserve" text-anchor="middle" x="493.42" y="-406.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">network_t%build_nodes_from_edges</text>
+</a>
+</g>
+</g>
+<!-- proc~network_import&#45;&gt;none~build_nodes_from_edges -->
+<g id="call~~graph~~CallGraph_edge11" class="edge">
+<title>proc~network_import&#45;&gt;none~build_nodes_from_edges</title>
+<path fill="none" stroke="#000000" d="M338.07,-427.31C352.89,-425.72 370.31,-423.85 388.01,-421.95"/>
+<polygon fill="#000000" stroke="#000000" points="388.28,-425.44 397.85,-420.9 387.53,-418.48 388.28,-425.44"/>
+</g>
+<!-- none~check_topology_consistency -->
+<g id="call~~graph~~CallGraph_node24" class="node">
+<title>none~check_topology_consistency</title>
+<g id="a_call~~graph~~CallGraph_node24"><a xlink:href="../type/network_t.html#boundprocedure-check_topology_consistency" xlink:title="network_t%check_topology_consistency">
+<polygon fill="#a7506f" stroke="#a7506f" points="594.81,-380.52 392.04,-380.52 392.04,-357 594.81,-357 594.81,-380.52"/>
+<text xml:space="preserve" text-anchor="middle" x="493.42" y="-364.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">network_t%check_topology_consistency</text>
+</a>
+</g>
+</g>
+<!-- proc~network_import&#45;&gt;none~check_topology_consistency -->
+<g id="call~~graph~~CallGraph_edge12" class="edge">
+<title>proc~network_import&#45;&gt;none~check_topology_consistency</title>
+<path fill="none" stroke="#000000" d="M320.33,-419.63C339.33,-410.36 366.86,-397.83 392.04,-389.76 398.91,-387.56 406.12,-385.53 413.38,-383.67"/>
+<polygon fill="#000000" stroke="#000000" points="414.07,-387.1 422.95,-381.34 412.41,-380.3 414.07,-387.1"/>
+</g>
+<!-- proc~read_network -->
+<g id="call~~graph~~CallGraph_node16" class="node">
+<title>proc~read_network</title>
+<g id="a_call~~graph~~CallGraph_node16"><a xlink:href="../proc/read_network.html" xlink:title="read_network">
+<polygon fill="#d9534f" stroke="#d9534f" points="137.89,-443.52 61.12,-443.52 61.12,-420 137.89,-420 137.89,-443.52"/>
+<text xml:space="preserve" text-anchor="middle" x="99.51" y="-427.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">read_network</text>
+</a>
+</g>
+</g>
+<!-- proc~read_network&#45;&gt;proc~network_import -->
+<g id="call~~graph~~CallGraph_edge14" class="edge">
+<title>proc~read_network&#45;&gt;proc~network_import</title>
+<path fill="none" stroke="#000000" d="M138.38,-431.76C167.78,-431.76 208.89,-431.76 241.55,-431.76"/>
+<polygon fill="#000000" stroke="#000000" points="241.21,-435.26 251.21,-431.76 241.21,-428.26 241.21,-435.26"/>
+</g>
+<!-- proc~set_dyn_params -->
+<g id="call~~graph~~CallGraph_node17" class="node">
+<title>proc~set_dyn_params</title>
+<g id="a_call~~graph~~CallGraph_node17"><a xlink:href="../proc/set_dyn_params.html" xlink:title="set_dyn_params">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.02,-611.52 54,-611.52 54,-588 145.02,-588 145.02,-611.52"/>
+<text xml:space="preserve" text-anchor="middle" x="99.51" y="-595.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">set_dyn_params</text>
+</a>
+</g>
+</g>
+<!-- none~init -->
+<g id="call~~graph~~CallGraph_node25" class="node">
+<title>none~init</title>
+<g id="a_call~~graph~~CallGraph_node25"><a xlink:href="../type/dyn_parameters_t.html#boundprocedure-init" xlink:title="dyn_parameters_t%init">
+<polygon fill="#a7506f" stroke="#a7506f" points="356.04,-611.52 235.02,-611.52 235.02,-588 356.04,-588 356.04,-611.52"/>
+<text xml:space="preserve" text-anchor="middle" x="295.53" y="-595.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dyn_parameters_t%init</text>
+</a>
+</g>
+</g>
+<!-- proc~set_dyn_params&#45;&gt;none~init -->
+<g id="call~~graph~~CallGraph_edge15" class="edge">
+<title>proc~set_dyn_params&#45;&gt;none~init</title>
+<path fill="none" stroke="#000000" d="M145.51,-599.76C168.62,-599.76 197.32,-599.76 223.35,-599.76"/>
+<polygon fill="#000000" stroke="#000000" points="223.19,-603.26 233.19,-599.76 223.19,-596.26 223.19,-603.26"/>
+</g>
+<!-- proc~set_initial_number_of_infected_nodes -->
+<g id="call~~graph~~CallGraph_node18" class="node">
+<title>proc~set_initial_number_of_infected_nodes</title>
+<g id="a_call~~graph~~CallGraph_node18"><a xlink:href="../proc/set_initial_number_of_infected_nodes.html" xlink:title="set_initial_number_of_infected_nodes">
+<polygon fill="#d9534f" stroke="#d9534f" points="195.64,-653.52 3.37,-653.52 3.37,-630 195.64,-630 195.64,-653.52"/>
+<text xml:space="preserve" text-anchor="middle" x="99.51" y="-637.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">set_initial_number_of_infected_nodes</text>
+</a>
+</g>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 13.1.1 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="29pt"
+ viewBox="0.00 0.00 641.00 29.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.923937 0.923937) rotate(0) translate(4 27.52)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-27.52 689.77,-27.52 689.77,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="63.27,-23.52 0,-23.52 0,0 63.27,0 63.27,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="31.64" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="135.63,-23.52 81.64,-23.52 81.64,0 135.63,0 135.63,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="108.64" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="207.63,-23.52 153.63,-23.52 153.63,0 207.63,0 207.63,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="180.63" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="347.14,-23.52 226.12,-23.52 226.12,0 347.14,0 347.14,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="286.63" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="499.89,-23.52 365.38,-23.52 365.38,0 499.89,0 499.89,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="432.63" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="571.63,-23.52 517.63,-23.52 517.63,0 571.63,0 571.63,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="544.63" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="685.77,-23.52 589.5,-23.52 589.5,0 685.77,0 685.77,-23.52"/>
+<text xml:space="preserve" text-anchor="middle" x="637.63" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              HyperSIS
+ was developed by Wesley Cota <https://wcota.me/><br>              &copy; 2025 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>
