@@ -49,9 +49,8 @@ def run_simulation(beta1: float, args: SimulationArgs) -> SimulationResult:
             initial_arg = f"--initial-fraction {value}"
 
         # Builds the command string
-        # TODO: #3 allow different compilers via args
         inner_cmd = (
-            f"fpm run hyperSIS_sampling --flag='-ffree-line-length-512' -- "
+            f"fpm run hyperSIS_sampling --compiler='{args.COMPILER}' --flag='{args.COMPILER_FLAGS}' -- "
             f"--output {tmpdir}/ "
             f"--remove-files {args.remove_files} "
             f"--edges-file {network_file_fortran} "

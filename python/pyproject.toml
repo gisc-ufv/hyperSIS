@@ -12,6 +12,7 @@ authors = [
 dependencies = [
   "numpy>=1.26",
   "xgi>=0.10",
+  "fpm>=0.12.0"
 ]
 
 [tool.setuptools.packages.find]
