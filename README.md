@@ -1,4 +1,4 @@
-# Hyper-SIS
+# Efficient Gillespie algorithms for spreading phenomena in large and heterogeneous higher-order networks
 
 Code implemented using the [Fortran Package Manager](https://fpm.fortran-lang.org/).
 
@@ -18,12 +18,24 @@ Key points:
 
 See the main paper for full details.
 
-## Installation
+## Using it as a dependency
 
-Before installing, make sure the following dependencies are available:
+Add this package as a dependency using the [Fortran Package Manager](https://fpm.fortran-lang.org/) (fpm):
 
-1. **GNU Fortran** (`gfortran`) installed and available in your PATH. See [Installing GFortran](https://fortran-lang.org/learn/os_setup/install_gfortran/) for help.
-2. **[Fortran Package Manager (fpm)](https://fpm.fortran-lang.org/)** version ≥ 0.12.0.
+```toml
+[dependencies]
+hyperSIS.git = "https://github.com/gisc-ufv/hyperSIS"
+```
+
+See the [documentation](http://pages.giscbr.org/hyperSIS/) and main program for details.
+
+## Python package Installation
+
+The easiest way to use this project is through its Python interface.
+
+This package will be published on PyPI in the future. Until then, you need to clone the repository manually.
+
+Before installing, make sure that at least one Fortran compiler is available. By default, the package assumes **GNU Fortran** (`gfortran`) installed and available in your PATH. See [Installing GFortran](https://fortran-lang.org/learn/os_setup/install_gfortran/) for help.
 
 Steps:
 
@@ -46,13 +58,13 @@ Steps:
     conda activate hyperSIS
     ```
 
-3. Install the Python package in editable mode:
+3. Install the Python package:
 
     ```sh
-    %pip install ./python
+    pip install ./python
     ```
 
-4. Verify that `gfortran` and `fpm` are accessible:
+4. Verify if `gfortran` and `fpm` are accessible:
 
     ```sh
     gfortran --version
