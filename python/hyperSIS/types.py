@@ -132,7 +132,7 @@ class SimulationArgs:
 
     # Algorithm
     algorithm: Literal["HB_OGA", "NB_OGA"] = "HB_OGA"
-    sampler: Literal["rejection_maxheap", "btree"] = "rejection_maxheap"
+    sampler: Literal["rejection_maxheap", "btree"] = "btree"
 
     # Dynamics
     tmax: int = 100
