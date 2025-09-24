@@ -59,7 +59,7 @@ Steps:
     fpm --version
     ```
 
-5. (Optional) A Google Colab notebook demonstrating all installation and usage steps is available at: [link-to-colab].
+5. (Optional) A Google Colab notebook demonstrating all installation and usage steps is available [here](https://colab.research.google.com/drive/1KZanZNdr1M6bEEfw0vdAGBpkHyVrV9XH?usp=sharing).
 
 ## Usage
 
