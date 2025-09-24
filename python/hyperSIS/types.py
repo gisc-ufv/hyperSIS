@@ -35,6 +35,13 @@ NetworkFormatHIF = Tuple[
 ]
 # ("hif", path, cache)
 
+NetworkFormatPL = Tuple[
+    Literal["PL"],
+    Literal[2.5, 3.0, 6.0],
+    Literal[100, 1000, 10000, 100000, 1000000],
+    Optional[Literal[1, 2, 3, 4, 5]]
+]
+# ("PL", gamma, N, sample)
 
 NetworkFormat = Union[
     NetworkFormatEdgelist,
@@ -43,6 +50,7 @@ NetworkFormat = Union[
     NetworkFormatXGI,
     NetworkFormatJSON,
     NetworkFormatHIF,
+    NetworkFormatPL
 ]
 
 @dataclass
@@ -81,6 +89,7 @@ class SimulationArgs:
         ("xgi", name_or_object, [cache])
         ("xgi_json", path, [cache])
         ("hif", path, [cache])
+        ("PL", gamma, N, [sample])
     output_dir : Optional[str]
         Directory to store simulation output. If None, uses temporary folder.
     algorithm : str

@@ -92,6 +92,26 @@ def prepare_network_file(spec: NetworkFormat) -> NetworkFileResult:
         if not file_path.exists():
             raise FileNotFoundError(f"HIF network file not found: {file}")
         return prepare_hif(file, cache)
+    elif kind == "PL":
+        _, gamma, N, *rest = spec
+        sample = rest[0] if len(rest) > 0 else 1
+        if gamma not in [2.5, 3.0, 6.0]:
+            raise ValueError(f"Unsupported gamma value: {gamma}. Supported values are 2.5, 3.0, and 6.0.")
+        if N not in [100, 1000, 10000, 100000, 1000000]:
+            raise ValueError(f"Unsupported N value: {N}. Supported values are 100, 1000, 10000, 100000, and 1000000.")
+        if sample not in [1, 2, 3, 4, 5]:
+            raise ValueError(f"Unsupported sample value: {sample}. Supported values are 1, 2, 3, 4, and 5.")
+        base_url = 'https://zenodo.org/records/17187745/files/'
+        file_name = f"network_PL_N{N}_gamma{gamma}_sample{sample}.edgelist"
+        url = base_url + file_name
+        import requests
+        response = requests.get(url)
+        if response.status_code != 200:
+            raise ValueError(f"Failed to download the PL network file from {url}")
+        temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".edgelist")
+        with open(temp_file.name, 'wb') as f:
+            f.write(response.content)
+        return prepare_fortran_edgelist(temp_file.name)
 
     else:
         raise ValueError(f"Unknown network format: {kind}")
