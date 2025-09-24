@@ -19,5 +19,5 @@ source-form = "free"
 stdlib = "*"
 datastructs-fortran = {git="https://github.com/wcota/datastructs-fortran", tag="v0.4.2"}
 rndgen-fortran = {git="https://github.com/wcota/rndgen-fortran", tag="v1.0.5"}
-FLAP = {git="https://github.com/szaghi/FLAP", rev="ead6384"}
-PENF = {git="https://github.com/szaghi/PENF", rev="33e673c"}
+FLAP = {git="https://github.com/szaghi/FLAP", rev="ead6384ecdb120321df75a2dd14a0031091df05c"}
+PENF = {git="https://github.com/szaghi/PENF", rev="33e673cb523e63af4737d9daf4500435fbfca134"}
