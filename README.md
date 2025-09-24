@@ -18,9 +18,48 @@ Key points:
 
 See the main paper for full details.
 
-## Install
+## Installation
 
+Before installing, make sure the following dependencies are available:
 
+1. **GNU Fortran** (`gfortran`) installed and available in your PATH. See [Installing GFortran](https://fortran-lang.org/learn/os_setup/install_gfortran/) for help.
+2. **[Fortran Package Manager (fpm)](https://fpm.fortran-lang.org/)** version ≥ 0.12.0.
+
+Steps:
+
+1. Clone the repository:
+
+    ```sh
+    git clone https://github.com/gisc-ufv/hyperSIS.git
+    cd hyperSIS
+    ```
+
+2. Activate your preferred Python environment (e.g., `venv`, `conda`, etc.):
+
+    ```sh
+    # Example with venv
+    python -m venv venv
+    source venv/bin/activate
+
+    # Example with conda
+    conda create -n hyperSIS python=3.11
+    conda activate hyperSIS
+    ```
+
+3. Install the Python package in editable mode:
+
+    ```sh
+    %pip install ./python
+    ```
+
+4. Verify that `gfortran` and `fpm` are accessible:
+
+    ```sh
+    gfortran --version
+    fpm --version
+    ```
+
+5. (Optional) A Google Colab notebook demonstrating all installation and usage steps is available at: [link-to-colab].
 
 ## Usage
 
