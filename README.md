@@ -4,6 +4,8 @@ Code implemented using the [Fortran Package Manager](https://fpm.fortran-lang.or
 
 Main paper: *Efficient Gillespie algorithms for spreading phenomena in large and heterogeneous higher-order networks*, by Hugo P. Maia, Wesley Cota, Yamir Moreno, and Silvio C. Ferreira.
 
+Reference: [arxiv:2509.20174](https://arxiv.org/abs/2509.20174) [DOI:10.48550/arXiv.2509.20174](https://arxiv.org/abs/2509.20174)
+
 ## Hyper-SIS Dynamical Model
 
 This code simulates SIS dynamics on hypergraphs (Hyper-SIS). Each of the $N$ agents can be either susceptible ($\sigma_i = 0$) or infected ($\sigma_i = 1$). Infections occur via hyperedges, which are active if a critical mass of members is infected, while infected nodes recover spontaneously.
@@ -202,6 +204,18 @@ When using this package, please cite the following paper:
 
 *Efficient Gillespie algorithms for spreading phenomena in large and heterogeneous higher-order networks*, by Hugo P. Maia, Wesley Cota, Yamir Moreno, and Silvio C. Ferreira (2025)
 
+Reference: [arxiv:2509.20174](https://arxiv.org/abs/2509.20174) [DOI:10.48550/arXiv.2509.20174](https://arxiv.org/abs/2509.20174)
+
 The BibTeX entry is:
 
-[to be defined]
+```bib
+@misc{maia2025hoga,
+      title={Efficient Gillespie algorithms for spreading phenomena in large and heterogeneous higher-order networks},
+      author={Hugo P. Maia and Wesley Cota and Yamir Moreno and Silvio C. Ferreira},
+      year={2025},
+      eprint={2509.20174},
+      archivePrefix={arXiv},
+      primaryClass={physics.soc-ph},
+      url={https://arxiv.org/abs/2509.20174},
+}
+```
