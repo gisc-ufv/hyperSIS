@@ -65,6 +65,8 @@ class SimulationResult:
     network: NetworkFormat
     node_map: dict
     temporal: TemporalResult
+    active_states: Optional[dict] = None  # {sample_id: {time: {"nodes": [...], "edges": [...]}}}
+    xgi_hypergraph: Optional[xgi.core.hypergraph.Hypergraph] = None
 
 @dataclass
 class SimulationArgs:
@@ -147,6 +149,7 @@ class SimulationArgs:
 
     # IO export
     export_states: bool = False
+    build_xgi_hypergraph: bool = False
 
     # Epidemic
     par_b: float = 0.5

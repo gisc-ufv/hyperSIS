@@ -41,6 +41,13 @@ def run_simulation(beta1: float, args: SimulationArgs) -> SimulationResult:
             args.network
         )
 
+        xgi_hypergraph = None
+        if (args.build_xgi_hypergraph):
+            # based on the network_file_fortran, build the xgi hypergraph and store it in the result
+            # use xgi to read edgelist and assume node_type as int
+            import xgi
+            xgi_hypergraph = xgi.read_edgelist(network_file_fortran, nodetype=int)
+
         # Chooses initial_fraction or initial_number
         kind, value = args.initial_condition
         if kind == "number":
@@ -79,7 +86,7 @@ def run_simulation(beta1: float, args: SimulationArgs) -> SimulationResult:
             )
 
         # Processes the results and returns numpy arrays
-        times, rho_mean, rho_var, n_samples = process_results(tmpdir)
+        times, rho_mean, rho_var, n_samples, active_states = process_results(tmpdir, args.export_states)
 
         # Create TemporalResult dataclass instance
         temporal = TemporalResult(
@@ -93,7 +100,9 @@ def run_simulation(beta1: float, args: SimulationArgs) -> SimulationResult:
         result = SimulationResult(
             network=args.network, # original network specification
             node_map=map_nodes, # mapping from original node IDs to Fortran node IDs
-            temporal=temporal
+            temporal=temporal,
+            active_states=active_states,  # full state trajectories if export_states is True
+            xgi_hypergraph=xgi_hypergraph  # XGI hypergraph representation if built
         )
 
         # Return the structured result object
