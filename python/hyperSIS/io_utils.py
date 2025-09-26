@@ -317,8 +317,8 @@ def prepare_output_files(input_file: str, prefix: str = "", cache: bool = False)
     dirname = input_path.parent
     basename = input_path.name
 
-    file_fortran = dirname / f"{prefix}.{basename}_edges.hyperSIS"
-    map_file = dirname / f"{prefix}.{basename}_map_nodes.hyperSIS"
+    file_fortran = dirname / Path(f"{prefix}.{basename}_edges.hyperSIS")
+    map_file = dirname / Path(f"{prefix}.{basename}_map_nodes.hyperSIS")
 
     # Check if both files already exist, but is False if not cache
     if file_fortran.exists() and map_file.exists():
@@ -326,15 +326,15 @@ def prepare_output_files(input_file: str, prefix: str = "", cache: bool = False)
 
     # Test if we can write to the directory
     try:
-        test_file = dirname / ".write_test"
+        test_file = dirname / Path("write_test")
         with open(test_file, "w") as f:
             f.write("test")
         test_file.unlink()
     except Exception:
         # Fallback to temporary directory
         tmpdir = Path(tempfile.mkdtemp())
-        file_fortran = tmpdir / f"{basename}_edges.hyperSIS"
-        map_file = tmpdir / f"{basename}_map_nodes.hyperSIS"
+        file_fortran = tmpdir / Path(f"{basename}_edges.hyperSIS")
+        map_file = tmpdir / Path(f"{basename}_map_nodes.hyperSIS")
 
     return file_fortran, map_file, False
 
