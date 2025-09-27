@@ -5,15 +5,51 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "hyperSIS"
 version = "1.0.0"
+readme = 'README.md'
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
 description = "Python wrapper for hyperSIS Fortran simulations"
 authors = [
   {name = "Wesley Cota", email = "wesley.cota@ufv.br"}
 ]
+maintainers = [
+  {name = "Wesley Cota", email = "wesley.cota@ufv.br"}
+]
+keywords = [
+    "network science",
+    "simplicial complexes",
+    "higher order networks",
+    "spreading processes",
+    "hypergraphs",
+    "fortran package manager"
+]
+classifiers = [
+    "Programmin g Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3 :: Only",
+    "License :: OSI Approved :: LGPL-3.0-or-later",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Intended Audience :: Science/Research"
+]
 dependencies = [
   "numpy>=1.26",
   "xgi>=0.10",
-  "fpm>=0.12.0"
+  "fpm>=0.12.0",
+  "matplotlib>=3.4"
 ]
+
+[project.urls]
+Documentation = "http://pages.giscbr.org/hyperSIS/"
+"Bug Reports" = "https://github.com/gisc-ufv/hyperSIS/issues"
+Source = "https://github.com/gisc-ufv/hyperSIS"
 
 [tool.setuptools.packages.find]
 where = ["."]
+
+[tool.setuptools.dynamic.version]
+attr = "hyperSIS.__version__"
