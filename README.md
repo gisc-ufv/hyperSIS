@@ -85,7 +85,7 @@ Steps:
 
 ## Usage (Python)
 
-*See [examples.ipynb](https://github.com/gisc-ufv/hyperSIS/blob/main/examples.ipynb) and [Google Colab](https://colab.research.google.com/drive/1KZanZNdr1M6bEEfw0vdAGBpkHyVrV9XH?usp=sharing) for examples.*
+💡 ***See [examples.ipynb](https://github.com/gisc-ufv/hyperSIS/blob/main/examples.ipynb) and [Google Colab](https://colab.research.google.com/drive/1KZanZNdr1M6bEEfw0vdAGBpkHyVrV9XH?usp=sharing) for examples.***
 
 Import the package with
 

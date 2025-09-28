@@ -20,10 +20,27 @@ def run_simulation(beta1: float, args: SimulationArgs) -> SimulationResult:
 
     Returns
     -------
-    times : np.ndarray
-        Array of time points.
-    rho_mean : np.ndarray
-        Mean infection density.
+    SimulationResult(
+        network : NetworkFormat
+            Original network specification.
+        node_map : dict
+            Mapping from original node IDs to Fortran node IDs.
+        temporal : TemporalResult
+            Temporal dynamics with:
+            - t : np.ndarray
+                Mean time per Gillespie tick.
+            - rho_avg : np.ndarray
+                Mean number of infected nodes over all runs.
+            - rho_var : np.ndarray
+                Variance of infected nodes.
+            - n_samples : int
+                Number of runs where infection is non-zero.
+            - active_states : Optional[dict]
+                Detailed active states per sample and time (if requested), formatted as
+                {sample_id: {time: {"nodes": [...], "edges": [...]}}}.
+        xgi_hypergraph : Optional[xgi.core.hypergraph.Hypergraph]
+            Representation of the structure as an `xgi` hypergraph, if generated.
+    )
     """
     # If no output_dir is provided, create a temporary one
     if args.output_dir is None:
