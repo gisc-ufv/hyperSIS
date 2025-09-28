@@ -30,10 +30,22 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Build Python package and compile Fortran
+      - name: Install build tools
         run: |
-          pip install --upgrade pip
+          python -m pip install --upgrade pip
+          python -m pip install build setuptools wheel twine
+
+      - name: Install package (compile Fortran)
+        run: |
           pip install ./python
+
+      - name: Build distributions
+        run: |
+          python -m build ./python --sdist --wheel --outdir dist
+
+      - name: Check distributions
+        run: |
+          twine check dist/*
 
       - name: Upload distributions
         uses: actions/upload-artifact@v4
