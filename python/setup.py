@@ -5,11 +5,29 @@ import sys
 from pathlib import Path
 import os
 
+def run_fpm_command(cmd):
+    try:
+        result = subprocess.run(
+            cmd,
+            check=True,
+            capture_output=True,
+            text=True
+        )
+        print(result.stdout)
+    except subprocess.CalledProcessError as e:
+        # Mostra stdout e stderr do comando que falhou
+        raise RuntimeError(
+            f"Command '{' '.join(cmd)}' failed with return code {e.returncode}\n"
+            f"stdout:\n{e.stdout}\n"
+            f"stderr:\n{e.stderr}"
+        )
+
 class InstallWithFPM(install):
     def run(self):
         # Check if the compiler is installed, via FC environment variable or default to gfortran
         compiler = os.environ.get("FC", "gfortran")
         fflags = os.environ.get("FFLAGS", "-O3 -ffree-line-length-512")
+
         try:
             subprocess.check_call([compiler, "--version"])
         except FileNotFoundError:
@@ -28,8 +46,14 @@ class InstallWithFPM(install):
         bin_dir = Path(sys.prefix) / "bin"
         bin_dir.mkdir(parents=True, exist_ok=True)
 
-        # fpm install --profile release --prefix Path(sys.prefix)
-        subprocess.check_call(["fpm", "install", "--profile", "release"])
+        # fpm install with check output and errors
+        run_fpm_command(["fpm", "clean", "--all"])
+        run_fpm_command([
+            "fpm", "install",
+            "--profile", "release",
+            "--compiler", compiler,
+            "--flag", fflags
+        ])
 
         # It will be installed
         print(f"✅ Executable installed at: {Path(sys.prefix) / 'bin' / 'hyperSIS_*'}")
