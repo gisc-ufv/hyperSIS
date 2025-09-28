@@ -4,6 +4,7 @@ import tempfile
 import numpy as np
 import csv
 import xgi
+import networkx as nx
 
 import gzip
 import bz2
@@ -106,14 +107,17 @@ def prepare_network_file(spec: NetworkFormat) -> NetworkFileResult:
             raise FileNotFoundError(f"Network file not found: {file}")
         return prepare_bipartite(file, delimiter, comment, cache)
 
-    # TODO: #1 add cache creation for xgi, xgi_json and hif
+    # TODO: #1 add cache creation for xgi, xgi_json, hif and networkx
     elif kind == "xgi":
-        _, source = spec
-        return prepare_xgi(source)
+        _, source, *rest = spec
+        cache = rest[0] if len(rest) > 0 else False
+        if cache: print("Warning: caching is not implemented for xgi format. Ignoring cache parameter.")
+        return prepare_xgi(source, cache)
 
     elif kind == "xgi_json":
         _, file, *rest = spec
         cache = rest[0] if len(rest) > 0 else False
+        if cache: print("Warning: caching is not implemented for xgi_json format. Ignoring cache parameter.")
         file_path = Path(file)
         if not file_path.exists():
             raise FileNotFoundError(f"XGI JSON file not found: {file}")
@@ -122,10 +126,18 @@ def prepare_network_file(spec: NetworkFormat) -> NetworkFileResult:
     elif kind == "hif":
         _, file, *rest = spec
         cache = rest[0] if len(rest) > 0 else False
+        if cache: print("Warning: caching is not implemented for hif format. Ignoring cache parameter.")
         file_path = Path(file)
         if not file_path.exists():
             raise FileNotFoundError(f"HIF network file not found: {file}")
         return prepare_hif(file, cache)
+
+    elif kind == "networkx":
+        _, source, *rest = spec
+        cache = rest[0] if len(rest) > 0 else False
+        if cache: print("Warning: caching is not implemented for networkx format. Ignoring cache parameter.")
+        return prepare_nx(source, cache)
+
     elif kind == "PL":
         _, gamma, N, *rest = spec
         sample = rest[0] if len(rest) > 0 else 1
@@ -256,10 +268,10 @@ def prepare_bipartite(file: str, delimiter: str, comment: str, cache: bool) -> N
 
     return file_fortran, node_map
 
-def prepare_xgi_object(H: xgi.core.hypergraph) -> NetworkFileResult:
+def prepare_xgi_object(H: xgi.core.hypergraph.Hypergraph, cache: bool) -> NetworkFileResult:
     # use a temp file name, randomized
     temp_file_name = tempfile.mkstemp()[1]
-    file_fortran, map_file, already_exists = prepare_output_files(temp_file_name, cache=False)
+    file_fortran, map_file, already_exists = prepare_output_files(temp_file_name, cache=cache)
 
     if already_exists:
         node_map = read_map(map_file)
@@ -294,7 +306,44 @@ def prepare_xgi_object(H: xgi.core.hypergraph) -> NetworkFileResult:
 
     return file_fortran, node_map
 
-def prepare_xgi(name_or_object: Union[str, xgi.core.hypergraph.Hypergraph]) -> NetworkFileResult:
+def prepare_nx(graph: nx.Graph, cache: bool) -> NetworkFileResult:
+    # use a temp file name, randomized
+    temp_file_name = tempfile.mkstemp()[1]
+    file_fortran, map_file, already_exists = prepare_output_files(temp_file_name, cache=cache)
+
+    if already_exists:
+        node_map = read_map(map_file)
+        return file_fortran, node_map
+
+    # If not cached, we need to process the graph
+    node_map = {}
+    edges_mapped = []
+    n_nodes = 0
+    max_num_nodes_in_an_edge = 0
+
+    for edge in graph.edges:
+        mapped_edge = []
+        for n in edge:
+            if n not in node_map:
+                n_nodes += 1
+                node_map[n] = n_nodes
+            mapped_edge.append(node_map[n])
+        edges_mapped.append(mapped_edge)
+        if len(mapped_edge) > max_num_nodes_in_an_edge:
+            max_num_nodes_in_an_edge = len(mapped_edge)
+
+    # write edges
+    write_edges(edges_mapped, file_fortran)
+
+    # write node_map
+    write_map(node_map, map_file)
+
+    if max_num_nodes_in_an_edge < 2:
+        raise ValueError("The graph must contain at least one edge with two nodes. Please check your input.")
+
+    return file_fortran, node_map
+
+def prepare_xgi(name_or_object: Union[str, xgi.core.hypergraph.Hypergraph], cache: bool) -> NetworkFileResult:
 
     # check if file is a path or a name of a pre-loaded object
     if isinstance(name_or_object, xgi.core.hypergraph.Hypergraph):
@@ -302,7 +351,7 @@ def prepare_xgi(name_or_object: Union[str, xgi.core.hypergraph.Hypergraph]) -> N
     else:
         H = xgi.readwrite.xgi_data.load_xgi_data(name_or_object)
 
-    return prepare_xgi_object(H)
+    return prepare_xgi_object(H, cache)
 
 def prepare_xgi_json(file: str, cache: bool) -> NetworkFileResult:
     file_fortran, map_file, already_exists = prepare_output_files(file, cache=cache)

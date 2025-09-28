@@ -22,7 +22,7 @@ NetworkFormatBipartite = Tuple[
 # ("bipartite", path, delimiter, comment, cache)
 
 NetworkFormatXGI = Tuple[
-    Literal["xgi"], Union[str, xgi.core.hypergraph.Hypergraph]
+    Literal["xgi"], Union[str, xgi.core.hypergraph.Hypergraph], Optional[bool]
 ]
 # ("xgi", name_or_object)
 
