@@ -109,77 +109,81 @@ The simulation interface revolves around **two main objects**:
 The `SimulationArgs` dataclass contains all configurable parameters for running a hyperSIS simulation.
 
 - `verbose: bool`
-  Enable verbose output.
-  Default: `True`
+  - Enable verbose output.
+  - Default: `True`
 
 - `verbose_level: str`
-  Logging level: `'info'`, `'warning'`, `'error'`, `'debug'`.
-  Default: `warning`
+  - Logging level: `'info'`, `'warning'`, `'error'`, `'debug'`.
+  - Default: `warning`
 
 - `seed: int`
-  Random seed for reproducibility.
-  Default: `42`
+  - Random seed for reproducibility.
+  - Default: `42`
 
 - `remove_files: bool`
-  Remove temporary files after execution.
-  Default: `False`
+  - Remove temporary files after execution.
+  - Default: `False`
 
 - `network: NetworkFormat`
-  Network specification as a tuple. Optional parameters are in brackets:
-  - `("edgelist", path, [delimiter], [comment], [cache])`
-  - `("fortran-edgelist", path, [cache])`
-  - `("bipartite", path, [delimiter], [comment], [cache])`
-  - `("xgi", name_or_object, [cache])`
-  - `("xgi_json", path, [cache])`
-  - `("hif", path, [cache])`
-  - `("PL", gamma, N, [sample])`
-  Default: `("edgelist", "example.edgelist", None, "#", False)`
+  - Network specification as a tuple. Optional parameters are in brackets:
+    - `("edgelist", path, [delimiter], [comment], [cache])`
+    - `("fortran-edgelist", path, [cache])`
+    - `("bipartite", path, [delimiter], [comment], [cache])`
+    - `("xgi", name_or_object, [cache])`
+    - `("xgi_json", path, [cache])`
+    - `("hif", path, [cache])`
+    - `("PL", gamma, N, [sample])`
+  - Default: `("PL", 3.0, 100, 1)`
 
 - `output_dir: Optional[str]`
-  Directory to store simulation output. If `None`, a temporary folder is used.
-  Default: `None`
+  - Directory to store simulation output. If `None`, a temporary folder is used.
+  - Default: `None`
 
 - `algorithm: str`
-  Simulation algorithm: `'HB_OGA'` or `'NB_OGA'`.
-  Default: `HB_OGA`
+  - Simulation algorithm: `'HB_OGA'` or `'NB_OGA'`.
+  - Default: `HB_OGA`
 
 - `sampler: str`
-  Sampling method: `'rejection_maxheap'` or `'btree'`.
-  Default: `btree`
+  - Sampling method: `'rejection_maxheap'` or `'btree'`.
+  - Default: `btree`
 
 - `tmax: int`
-  Maximum simulation time.
-  Default: `100`
+  - Maximum simulation time.
+  - Default: `100`
 
 - `use_qs: bool`
-  Whether to use the quasi-stationary method.
-  Default: `False`
+  - Whether to use the quasi-stationary method.
+  - Default: `False`
 
 - `n_samples: int`
-  Number of samples per simulation.
-  Default: `10`
+  - Number of samples per simulation.
+  - Default: `10`
 
 - `time_scale: str`
-  Temporal scale for output: `'uniform'` or `'powerlaw'`.
-  Default: `uniform`
+  - Temporal scale for output: `'uniform'` or `'powerlaw'`.
+  - Default: `uniform`
 
 - `initial_condition: tuple`
-  Initial state specification:
-  - `('fraction', float)` → fraction of infected nodes
-  - `('number', int)` → exact number of initially infected nodes
-  Default: `("fraction", 1.0)`
+  - Initial state specification:
+    - `('fraction', float)` → fraction of infected nodes
+    - `('number', int)` → exact number of initially infected nodes
+  - Default: `("fraction", 1.0)`
 
 - `export_states: bool`
-  Whether to export the full state trajectory.
-  Default: `False`
+  - Whether to export the full state trajectory.
+  - Default: `False`
+
+- `build_xgi_hypergraph: bool`
+  - Whether to build and return the xgi hypergraph representation of the network.
+  - Default: `False`
 
 - `par_b: float`
-  Epidemic infection rate scale $b$ in $\beta(m) = \beta[1 + b(m-1)]$.
-  Default: `0.5`
+  - Epidemic infection rate scale $b$ in $\beta(m) = \beta[1 + b(m-1)]$.
+  - Default: `0.5`
 
 - `par_theta: float`
-  Epidemic critical mass threshold $\theta_0$ in $\theta(m) = 1 + (m-1)\theta_0$.
-  Default: `0.5`
+  - Epidemic critical mass threshold $\theta_0$ in $\theta(m) = 1 + (m-1)\theta_0$.
+  - Default: `0.5`
 
 ### Function
 
