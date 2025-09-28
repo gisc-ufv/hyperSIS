@@ -116,10 +116,6 @@ class SimulationArgs:
         Epidemic parameter beta.
     par_theta : float
         Epidemic parameter theta.
-    COMPILER : str
-        Fortran compiler to use (e.g., 'gfortran').
-    COMPILER_FLAGS : str
-        Additional flags for the Fortran compiler.
     """
     # General
     verbose: bool = True
@@ -154,7 +150,3 @@ class SimulationArgs:
     # Epidemic
     par_b: float = 0.5
     par_theta: float = 0.5
-
-    # Fortran compilation
-    COMPILER: str = "gfortran"
-    COMPILER_FLAGS: str = "-ffree-line-length-512"
