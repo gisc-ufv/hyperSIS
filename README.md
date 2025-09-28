@@ -33,6 +33,8 @@ See the [documentation](http://pages.giscbr.org/hyperSIS/) and main program for 
 
 ## Python package Installation
 
+💡 ***A Google Colab notebook demonstrating all installation and usage steps is available [here](https://colab.research.google.com/drive/1KZanZNdr1M6bEEfw0vdAGBpkHyVrV9XH?usp=sharing).***
+
 The easiest way to use this project is through its Python interface.
 
 This package will be published on PyPI in the future. Until then, you need to clone the repository manually.
@@ -41,7 +43,7 @@ Before installing, make sure that at least one Fortran compiler is available. By
 
 Steps:
 
-1. Clone the repository:
+1. Clone the repository and enter it:
 
     ```sh
     git clone https://github.com/gisc-ufv/hyperSIS.git
@@ -72,8 +74,6 @@ Steps:
     gfortran --version
     fpm --version
     ```
-
-5. (Optional) A Google Colab notebook demonstrating all installation and usage steps is available [here](https://colab.research.google.com/drive/1KZanZNdr1M6bEEfw0vdAGBpkHyVrV9XH?usp=sharing).
 
 ## Usage
 
