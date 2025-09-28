@@ -127,7 +127,7 @@ class SimulationArgs:
     network: NetworkFormat = ("PL", # default
                               3.0,
                               100,
-                              None
+                              1
                             )
     output_dir: Optional[str] = None
 
