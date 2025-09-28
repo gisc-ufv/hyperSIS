@@ -208,7 +208,7 @@ Runs a Hyper-SIS simulation on the specified network.
 
 ## Fortran executable `hyperSIS_sampling`
 
-Read [hyperSIS_sampling.md](https://github.com/gisc-ufv/tree/main/hyperSIS_sampling.md) for instructions.
+Read [hyperSIS_sampling.md](https://github.com/gisc-ufv/hyperSIS/blob/main/hyperSIS_sampling.md) for instructions.
 
 ## How to Cite
 
