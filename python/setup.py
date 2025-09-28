@@ -52,7 +52,9 @@ class InstallWithFPM(install):
             "fpm", "install",
             "--profile", "release",
             "--compiler", compiler,
-            "--flag", fflags
+            "--flag", fflags,
+            "--prefix",
+            str(Path(sys.prefix))
         ])
 
         # It will be installed
