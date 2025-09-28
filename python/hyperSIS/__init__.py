@@ -1,7 +1,7 @@
 from .core import run_simulation
 from .types import SimulationArgs
 
-__version__ = "1.1.9"
+__version__ = "1.2.0"
 
 __all__ = ["run_simulation", "SimulationArgs"]
 
