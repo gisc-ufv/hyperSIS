@@ -133,6 +133,7 @@ The `SimulationArgs` dataclass contains all configurable parameters for running 
     - `("xgi_json", path, [cache])`
     - `("hif", path, [cache])`
     - `("PL", gamma, N, [sample])`
+    - `("networkx", nx.Graph, [cache])`
   - Default: `("PL", 3.0, 100, 1)`
 
 - `output_dir: Optional[str]`
