@@ -1,10 +1,11 @@
 # Efficient Gillespie algorithms for spreading phenomena in large and heterogeneous higher-order networks
 
-Code implemented using the [Fortran Package Manager](https://fpm.fortran-lang.org/).
-
-Main paper: *Efficient Gillespie algorithms for spreading phenomena in large and heterogeneous higher-order networks*, by Hugo P. Maia, Wesley Cota, Yamir Moreno, and Silvio C. Ferreira.
-
-Reference: [arxiv:2509.20174](https://arxiv.org/abs/2509.20174) [DOI:10.48550/arXiv.2509.20174](https://arxiv.org/abs/2509.20174)
+> [!NOTE]
+> Code implemented using the [Fortran Package Manager](https://fpm.fortran-lang.org/).
+>
+> Main paper: *Efficient Gillespie algorithms for spreading phenomena in large and heterogeneous higher-order networks*, by Hugo P. Maia, Wesley Cota, Yamir Moreno, and Silvio C. Ferreira.
+>
+> Reference: [arxiv:2509.20174](https://arxiv.org/abs/2509.20174) [DOI:10.48550/arXiv.2509.20174](https://arxiv.org/abs/2509.20174)
 
 ## Hyper-SIS Dynamical Model
 
@@ -33,7 +34,8 @@ See the [documentation](http://pages.giscbr.org/hyperSIS/) and main program for 
 
 ## Python package
 
-💡 ***A Google Colab notebook demonstrating all installation and usage steps is available [here](https://colab.research.google.com/drive/1KZanZNdr1M6bEEfw0vdAGBpkHyVrV9XH?usp=sharing).***
+> [!TIP]
+> 💡 ***A Google Colab notebook demonstrating all installation and usage steps is available [here](https://colab.research.google.com/drive/1KZanZNdr1M6bEEfw0vdAGBpkHyVrV9XH?usp=sharing).***
 
 The easiest way to use this project is through its Python interface.
 
@@ -85,7 +87,8 @@ Steps:
 
 ## Usage (Python)
 
-💡 ***See [examples.ipynb](https://github.com/gisc-ufv/hyperSIS/blob/main/examples.ipynb) and [Google Colab](https://colab.research.google.com/drive/1KZanZNdr1M6bEEfw0vdAGBpkHyVrV9XH?usp=sharing) for examples.***
+> [!TIP]
+> 💡 ***See [examples.ipynb](https://github.com/gisc-ufv/hyperSIS/blob/main/examples.ipynb) and [Google Colab](https://colab.research.google.com/drive/1KZanZNdr1M6bEEfw0vdAGBpkHyVrV9XH?usp=sharing) for examples.***
 
 Import the package with
 
@@ -205,6 +208,8 @@ Runs a Hyper-SIS simulation on the specified network.
     - `rho_avg: np.ndarray` – mean number of infected nodes over all runs.
     - `rho_var: np.ndarray` – variance of infected nodes.
     - `n_samples: int` – number of runs where infection is non-zero.
+    - `active_states: Optional[dict]` – detailed active states per sample and time (if requested), formatted as `{sample_id: {time: {"nodes": [...], "edges": [...]}}}`.
+  - `xgi_hypergraph: Optional[xgi.core.hypergraph.Hypergraph]` – representation of the structure as an `xgi` hypergraph, if generated.
 
 ## Fortran executable `hyperSIS_sampling`
 
@@ -212,11 +217,12 @@ Read [hyperSIS_sampling.md](https://github.com/gisc-ufv/hyperSIS/blob/main/hyper
 
 ## How to Cite
 
-When using this package, please cite the following paper:
-
-*Efficient Gillespie algorithms for spreading phenomena in large and heterogeneous higher-order networks*, by Hugo P. Maia, Wesley Cota, Yamir Moreno, and Silvio C. Ferreira (2025)
-
-Reference: [arxiv:2509.20174](https://arxiv.org/abs/2509.20174) [DOI:10.48550/arXiv.2509.20174](https://arxiv.org/abs/2509.20174)
+> [!IMPORTANT]
+> When using this package, please cite the following paper:
+>
+> *Efficient Gillespie algorithms for spreading phenomena in large and heterogeneous higher-order networks*, by Hugo P. Maia, Wesley Cota, Yamir Moreno, and Silvio C. Ferreira (2025)
+>
+> Reference: [arxiv:2509.20174](https://arxiv.org/abs/2509.20174) [DOI:10.48550/arXiv.2509.20174](https://arxiv.org/abs/2509.20174)
 
 The BibTeX entry is:
 
