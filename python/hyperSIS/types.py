@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from typing import Literal, Tuple, Union, Optional, Dict, Any
 import numpy as np
 import xgi
+import networkx as nx
 
 NetworkFileResult = Tuple[str, Dict[Any, int]]
 
@@ -43,6 +44,11 @@ NetworkFormatPL = Tuple[
 ]
 # ("PL", gamma, N, sample)
 
+NetworkFormatNetworkX = Tuple[
+    Literal["networkx"], nx.Graph, Optional[bool]
+]
+# ("networkx", graph, cache)
+
 NetworkFormat = Union[
     NetworkFormatEdgelist,
     NetworkFormatFortranEdgelist,
@@ -50,7 +56,8 @@ NetworkFormat = Union[
     NetworkFormatXGI,
     NetworkFormatJSON,
     NetworkFormatHIF,
-    NetworkFormatPL
+    NetworkFormatPL,
+    NetworkFormatNetworkX
 ]
 
 @dataclass
@@ -92,6 +99,7 @@ class SimulationArgs:
         ("xgi_json", path, [cache])
         ("hif", path, [cache])
         ("PL", gamma, N, [sample])
+        ("networkx", graph, [cache])
     output_dir : Optional[str]
         Directory to store simulation output. If None, uses temporary folder.
     algorithm : str
@@ -112,6 +120,8 @@ class SimulationArgs:
         ('number', int) -> exact number of initially infected nodes
     export_states : bool
         Whether to export the full state trajectory.
+    build_xgi_hypergraph : bool
+        Whether to build and return the xgi hypergraph representation of the network.
     par_b : float
         Epidemic parameter beta.
     par_theta : float
