@@ -38,7 +38,8 @@ classifiers = [
 dependencies = [
   "numpy>=1.26",
   "xgi>=0.10",
-  "matplotlib>=3.4"
+  "matplotlib>=3.4",
+  "networkx>=3.5",
 ]
 
 [project.urls]
