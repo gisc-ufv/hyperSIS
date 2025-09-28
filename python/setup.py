@@ -70,4 +70,5 @@ setup(
     cmdclass={
         "install": InstallWithFPM,
     },
+    scripts=["bin/hyperSIS_sampling"]
 )
