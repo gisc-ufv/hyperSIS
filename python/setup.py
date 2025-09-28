@@ -1,5 +1,6 @@
 from setuptools import setup, find_packages
 from setuptools.command.install import install
+from setuptools.command.build_py import build_py as build_py_orig
 import subprocess
 import sys
 from pathlib import Path
@@ -22,7 +23,7 @@ def run_fpm_command(cmd):
             f"stderr:\n{e.stderr}"
         )
 
-class InstallWithFPM(install):
+class BuildWithFPM(build_py_orig):
     def run(self):
         # Check if the compiler is installed, via FC environment variable or default to gfortran
         compiler = os.environ.get("FC", "gfortran")
@@ -43,7 +44,7 @@ class InstallWithFPM(install):
         print("🔧 Compiling executable with fpm...")
 
         # Directory where pip installs scripts/executables
-        bin_dir = Path(sys.prefix) / "bin"
+        bin_dir = Path("python") / Path("hyperSIS") / "bin"
         bin_dir.mkdir(parents=True, exist_ok=True)
 
         # fpm install with check output and errors
@@ -54,11 +55,11 @@ class InstallWithFPM(install):
             "--compiler", compiler,
             "--flag", fflags,
             "--prefix",
-            str(Path(sys.prefix))
+            str(Path("python") / Path("hyperSIS"))
         ])
 
         # It will be installed
-        print(f"✅ Executable installed at: {Path(sys.prefix) / 'bin' / 'hyperSIS_*'}")
+        print(f"✅ Executable installed at: {Path('python') / Path('hyperSIS') / 'bin' / 'hyperSIS_*'}")
 
         # Continues with the normal installation of the Python package
         super().run()
@@ -66,9 +67,12 @@ class InstallWithFPM(install):
 setup(
     packages=find_packages(),
     python_requires=">=3.10",
-    install_requires=["fpm>=0.12.0"],
-    cmdclass={
-        "install": InstallWithFPM,
+    cmdclass={"build_py": BuildWithFPM},
+    include_package_data=True,
+    package_data={"hyperSIS": ["bin/hyperSIS_sampling"]},
+    entry_points={
+        "console_scripts": [
+            "hyperSIS_sampling=hyperSIS.bin.hyperSIS_sampling:main_stub",
+        ],
     },
-    scripts=["bin/hyperSIS_sampling"]
 )
