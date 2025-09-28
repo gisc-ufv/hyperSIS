@@ -20,7 +20,7 @@ Key points:
 
 See the main paper for full details.
 
-## Using it as a dependency
+## Using it as a Fortran dependency
 
 Add this package as a dependency using the [Fortran Package Manager](https://fpm.fortran-lang.org/) (fpm):
 
@@ -31,13 +31,19 @@ hyperSIS.git = "https://github.com/gisc-ufv/hyperSIS"
 
 See the [documentation](http://pages.giscbr.org/hyperSIS/) and main program for details.
 
-## Python package Installation
+## Python package
 
 💡 ***A Google Colab notebook demonstrating all installation and usage steps is available [here](https://colab.research.google.com/drive/1KZanZNdr1M6bEEfw0vdAGBpkHyVrV9XH?usp=sharing).***
 
 The easiest way to use this project is through its Python interface.
 
-This package will be published on PyPI in the future. Until then, you need to clone the repository manually.
+### Via `PyPI` (`pip`)
+
+Use `pip install hyperSIS` to install it.
+
+### Build python package
+
+In this case, you need to clone the repository manually.
 
 Before installing, make sure that at least one Fortran compiler is available. By default, the package assumes **GNU Fortran** (`gfortran`) installed and available in your PATH. See [Installing GFortran](https://fortran-lang.org/learn/os_setup/install_gfortran/) for help.
 
@@ -77,16 +83,9 @@ Steps:
     pip install ./python
     ```
 
-4. Verify if `gfortran` and `fpm` are accessible:
+## Usage (Python)
 
-    ```sh
-    gfortran --version
-    fpm --version
-    ```
-
-## Usage
-
-*See [examples.ipynb](https://github.com/gisc-ufv/hyperSIS/blob/main/examples.ipynb) for examples.*
+*See [examples.ipynb](https://github.com/gisc-ufv/hyperSIS/blob/main/examples.ipynb) and [Google Colab](https://colab.research.google.com/drive/1KZanZNdr1M6bEEfw0vdAGBpkHyVrV9XH?usp=sharing) for examples.*
 
 Import the package with
 
@@ -206,6 +205,10 @@ Runs a Hyper-SIS simulation on the specified network.
     - `rho_avg: np.ndarray` – mean number of infected nodes over all runs.
     - `rho_var: np.ndarray` – variance of infected nodes.
     - `n_samples: int` – number of runs where infection is non-zero.
+
+## Fortran executable `hyperSIS_sampling`
+
+Read [hyperSIS_sampling.md](https://github.com/gisc-ufv/tree/main/hyperSIS_sampling.md) for instructions.
 
 ## How to Cite
 
