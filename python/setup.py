@@ -43,10 +43,6 @@ class BuildWithFPM(build_py_orig):
         # Compiles the Fortran executable
         print("🔧 Compiling executable with fpm...")
 
-        # Directory where pip installs scripts/executables
-        bin_dir = Path("python") / Path("hyperSIS") / "bin"
-        bin_dir.mkdir(parents=True, exist_ok=True)
-
         # fpm install with check output and errors
         run_fpm_command(["fpm", "clean", "--all"])
         run_fpm_command([
