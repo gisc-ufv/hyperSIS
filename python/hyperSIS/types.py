@@ -124,11 +124,10 @@ class SimulationArgs:
     remove_files: bool = False
 
     # IO
-    network: NetworkFormat = ("edgelist", # default
-                              "example.edgelist", # path
-                              None, # delimiter
-                              "#", # comment
-                              False # cache
+    network: NetworkFormat = ("PL", # default
+                              "3.0",
+                              "100",
+                              None
                             )
     output_dir: Optional[str] = None
 
