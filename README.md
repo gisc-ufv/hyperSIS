@@ -68,6 +68,15 @@ Steps:
     pip install ./python
     ```
 
+    - If you want to use another compiler and/or Fortran flags, set the `FC` and `FFLAGS`.
+
+    ```sh
+    # Optional: customize the Fortran compiler and flags
+    export FC=gfortran # default is gfortran
+    export FFLAGS="-O3 -march=native -funroll-loops" # adjust optimization flags
+    pip install ./python
+    ```
+
 4. Verify if `gfortran` and `fpm` are accessible:
 
     ```sh
