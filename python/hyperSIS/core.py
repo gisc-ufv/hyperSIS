@@ -57,7 +57,7 @@ def run_simulation(beta1: float, args: SimulationArgs) -> SimulationResult:
 
         # Builds the command string
         inner_cmd = (
-            f"fpm run hyperSIS_sampling --compiler='{args.COMPILER}' --flag='{args.COMPILER_FLAGS}' -- "
+            f"hyperSIS_sampling "
             f"--output {tmpdir}/ "
             f"--remove-files {args.remove_files} "
             f"--edges-file {network_file_fortran} "
