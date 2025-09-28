@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools>=61.0", "wheel", "fpm>=0.12.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "hyperSIS"
-version = "1.0.0"
+dynamic = ["version"]
 readme = 'README.md'
 requires-python = ">=3.10"
 license = {file = "LICENSE"}
@@ -53,3 +53,18 @@ where = ["."]
 
 [tool.setuptools.dynamic.version]
 attr = "hyperSIS.__version__"
+
+[tool.cibuildwheel]
+build-verbosity = 3
+
+[tool.cibuildwheel.macos]
+archs = ["auto"]
+environment = { FC = "gfortran-12", FFLAGS = "-O3 -ffree-line-length-512 -march=native -funroll-loops" }
+before-all = "brew install gcc@12"
+
+[tool.cibuildwheel.windows]
+archs = ["auto64"]
+environment = { FC = "gfortran", FFLAGS = "-O3 -ffree-line-length-512" }
+
+[tool.cibuildwheel.linux]
+environment = { FC = "gfortran", FFLAGS = "-O3 -ffree-line-length-512 -march=native -funroll-loops" }
