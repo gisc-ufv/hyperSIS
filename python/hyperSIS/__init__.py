@@ -1,7 +1,7 @@
 from .core import run_simulation
 from .types import SimulationArgs
 
-__version__ = "1.2.2"
+__version__ = "1.2.3"
 
 __all__ = ["run_simulation", "SimulationArgs"]
 
@@ -11,7 +11,7 @@ Please cite the following paper if you use hyperSIS in your research:
 
     Hugo P. Maia, Wesley Cota, Yamir Moreno, and Silvio C. Ferreira.
     Efficient Gillespie algorithms for spreading phenomena in large and heterogeneous higher-order networks.
-    arXiv:2509.20174, 2025. DOI:10.48550/arXiv.2509.20174. https://arxiv.org/abs/2509.20174
+    Nature Communications (2026). DOI:10.1038/s41467-026-75402-0. https://www.nature.com/articles/s41467-026-75402-0
 """
 
 print(banner)

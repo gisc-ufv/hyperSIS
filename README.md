@@ -225,20 +225,22 @@ Read [hyperSIS_sampling.md](https://github.com/gisc-ufv/hyperSIS/blob/main/hyper
 > [!IMPORTANT]
 > When using this package, please cite the following paper:
 >
-> *Efficient Gillespie algorithms for spreading phenomena in large and heterogeneous higher-order networks*, by Hugo P. Maia, Wesley Cota, Yamir Moreno, and Silvio C. Ferreira (2025)
+> *Efficient Gillespie algorithms for spreading phenomena in large and heterogeneous higher-order networks*, by Hugo P. Maia, Wesley Cota, Yamir Moreno, and Silvio C. Ferreira (2026)
 >
-> Reference: [arxiv:2509.20174](https://arxiv.org/abs/2509.20174) [DOI:10.48550/arXiv.2509.20174](https://arxiv.org/abs/2509.20174)
+> Reference: [Nature Communications](https://www.nature.com/articles/s41467-026-75402-0) DOI:10.1038/s41467-026-75402-0
+> Preprint: [arxiv:2509.20174](https://arxiv.org/abs/2509.20174) [DOI:10.48550/arXiv.2509.20174](https://arxiv.org/abs/2509.20174)
 
 The BibTeX entry is:
 
 ```bib
-@misc{maia2025hoga,
-      title={Efficient Gillespie algorithms for spreading phenomena in large and heterogeneous higher-order networks},
-      author={Hugo P. Maia and Wesley Cota and Yamir Moreno and Silvio C. Ferreira},
-      year={2025},
-      eprint={2509.20174},
-      archivePrefix={arXiv},
-      primaryClass={physics.soc-ph},
-      url={https://arxiv.org/abs/2509.20174},
-}
+@article{Maia2026_hyperSIS,
+   title={Efficient Gillespie algorithms for spreading phenomena in large and heterogeneous higher-order networks},
+   ISSN={2041-1723},
+   url={http://dx.doi.org/10.1038/s41467-026-75402-0},
+   DOI={10.1038/s41467-026-75402-0},
+   journal={Nature Communications},
+   publisher={Springer Science and Business Media LLC},
+   author={Maia, Hugo P. and Cota, Wesley and Moreno, Yamir and Ferreira, Silvio C.},
+   year={2026},
+   month=July }
 ```
