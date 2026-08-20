@@ -6,6 +6,7 @@
 > Main paper: *Efficient Gillespie algorithms for spreading phenomena in large and heterogeneous higher-order networks*, by Hugo P. Maia, Wesley Cota, Yamir Moreno, and Silvio C. Ferreira.
 >
 > Reference: [Nature Communications **17**, 8665 (2026)](https://www.nature.com/articles/s41467-026-75402-0) DOI:10.1038/s41467-026-75402-0
+>
 > Preprint: [arxiv:2509.20174](https://arxiv.org/abs/2509.20174) [DOI:10.48550/arXiv.2509.20174](https://arxiv.org/abs/2509.20174)
 
 [![Nature Communications **17**, 8665 (2026)](natcomm.png)](https://www.nature.com/articles/s41467-026-75402-0)
@@ -231,6 +232,7 @@ Read [hyperSIS_sampling.md](https://github.com/gisc-ufv/hyperSIS/blob/main/hyper
 > *Efficient Gillespie algorithms for spreading phenomena in large and heterogeneous higher-order networks*, by Hugo P. Maia, Wesley Cota, Yamir Moreno, and Silvio C. Ferreira (2026)
 >
 > Reference: [Nature Communications **17**, 8665 (2026)](https://www.nature.com/articles/s41467-026-75402-0) DOI:10.1038/s41467-026-75402-0
+>
 > Preprint: [arxiv:2509.20174](https://arxiv.org/abs/2509.20174) [DOI:10.48550/arXiv.2509.20174](https://arxiv.org/abs/2509.20174)
 
 The BibTeX entry is:
